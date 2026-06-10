@@ -1,0 +1,834 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+
+// JSON-LD Structured Data for SEO Search Results
+const applicationSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "YouTube Earnings Calculator",
+  "operatingSystem": "All",
+  "applicationCategory": "BusinessApplication",
+  "browserRequirements": "Requires JavaScript. Requires HTML5.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0.00",
+    "priceCurrency": "USD"
+  }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the difference between CPM and RPM?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "CPM (Cost Per Mille) is the gross price advertisers pay for every 1,000 ad impressions on your videos. RPM (Revenue Per Mille) is the actual net earnings you receive for every 1,000 total views on your channel. RPM is the most accurate creator metric because it includes YouTube's 45% revenue cut, monetized and unmonetized playbacks, and additional revenue streams like premium views and channel memberships."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is my RPM lower than my CPM?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Your RPM is lower than your CPM for three main reasons: First, YouTube takes a 45% cut of ad revenue. Second, not every video view triggers an ad (only monetized playbacks count). Third, RPM is calculated across all views on your channel, including those from adblockers or views where no ads were shown."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many views do I need to make $1,000 a month on YouTube?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It depends heavily on your channel's RPM. If your RPM is $2.00 (common in gaming or comedy), you need 500,000 monthly views. If your RPM is $10.00 (typical in finance or tech niches), you only need 100,000 views to hit $1,000. In general, views required range from 100,000 to 1,000,000."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What niches have the highest CPM and RPM on YouTube?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Niches that target buying audiences with high-ticket commercial interests have the highest rates. These include Personal Finance, Business/SaaS reviews, Digital Marketing, Tech Hardware, Real Estate, and Software Engineering. Low-paying niches include Gaming, Memes, Comedy, Cooking, and General Vlogging."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does YouTube pay per 1,000 views?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "YouTube does not pay a flat rate. Payment is based on RPM (Revenue Per Mille). In 2026, general RPMs vary from $0.50 to $30.00 or more per 1,000 views, depending on your niche, geographical location of viewers, video duration, and ad monetization settings."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does YouTube pay for Shorts views?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, but at a much lower rate than long-form videos. Shorts monetization works through a Creator Pool model, where ad revenue from Shorts feed ads is pooled and split based on views and music usage. Average Shorts RPM is typically between $0.01 and $0.07 per 1,000 views."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is YouTube's revenue cut?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "YouTube takes a 45% platform cut of standard video ad revenue, leaving 55% for the creator. For YouTube Shorts and Channel Memberships/Super Chats, YouTube's cut is 55% and 30% respectively."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does viewer location (geography) affect my earnings?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Advertisers pay more to target viewers with high purchasing power. Views from Tier 1 countries (US, UK, Canada, Australia) command significantly higher CPMs than views from Tier 3 countries. Even a small audience in Tier 1 regions can generate more revenue than a massive audience in Tier 3 regions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I earn money on YouTube without being in the YouTube Partner Program (YPP)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. While YPP is required to earn from AdSense ads, creators can earn revenue through affiliate marketing product reviews, direct brand sponsorships, selling digital products/merchandise, or directing traffic to membership websites from day one."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do ad blockers affect YouTube creator revenue?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ad blockers prevent video ad scripts from executing. When a viewer uses an ad blocker, no ad impression is counted, which lowers your monetization rate. However, views from YouTube Premium subscribers still compensate creators, even if ads are blocked."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do YouTube Premium views pay creators?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. YouTube distributes a portion of YouTube Premium subscription fees to creators based on how much time Premium subscribers spend watching their videos. Premium views count toward your RPM."
+      }
+    }
+  ]
+};
+---
+
+<Layout title="Free YouTube Earnings Calculator - Imperial Picks" description="Model and project your YouTube channel income. Adjust views, CPM, RPM, and monetization rates to see monthly and annual earnings estimations instantly.">
+  
+  <!-- Inject JSON-LD Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify(applicationSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <Navbar />
+  
+  <main class="relative bg-slate-50 min-h-screen py-12">
+    <!-- Background Patterns -->
+    <div class="absolute inset-0 bg-grid-pattern pointer-events-none"></div>
+
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      
+      <!-- Breadcrumbs -->
+      <nav class="flex text-xs font-semibold text-slate-500 gap-1.5 mb-6 relative z-10" aria-label="Breadcrumb">
+        <a href="/" class="hover:text-indigo-600">Home</a>
+        <span>/</span>
+        <a href="/tools" class="hover:text-indigo-600">Calculators</a>
+        <span>/</span>
+        <span class="text-slate-800 truncate">YouTube Earnings Calculator</span>
+      </nav>
+
+      <!-- Page Header (Hero Section) -->
+      <div class="text-center max-w-3xl mx-auto mb-12 relative z-10">
+        <div class="inline-flex items-center gap-1.5 rounded-full bg-rose-50 px-3 py-1 text-xs font-bold text-rose-800 ring-1 ring-rose-600/15 mb-4 border border-rose-200/40">
+          YouTube Revenue Modeler
+        </div>
+        <h1 class="font-display text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 leading-[1.15] mb-4">
+          YouTube Earnings Calculator
+        </h1>
+        <p class="text-base text-slate-600 max-w-2xl mx-auto">
+          Model and project your potential YouTube channel revenue. Tweak your monthly views, advertiser CPM, net creator RPM, and monetization rates to estimate your baseline AdSense income versus optimized multi-stream revenues.
+        </p>
+      </div>
+
+      <!-- Main Widget Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 relative z-10 max-w-5xl mx-auto">
+        
+        <!-- Left Side: Inputs & Sliders -->
+        <div class="lg:col-span-7 bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-sm space-y-6">
+          <h2 class="font-display text-lg font-bold text-slate-900 border-b border-slate-100 pb-3">
+            Monetization Settings
+          </h2>
+
+          <!-- Input 1: Monthly Views -->
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <label for="num-views" class="text-sm font-semibold text-slate-700">Monthly Video Views</label>
+              <div class="flex items-center gap-2">
+                <input 
+                  type="number" 
+                  id="num-views" 
+                  min="100" 
+                  max="100000000" 
+                  value="100000"
+                  class="w-28 rounded-lg border border-slate-200 bg-slate-50 px-2 py-1 text-right text-sm font-bold text-rose-600 focus:bg-white focus:outline-none focus:ring-2 focus:ring-rose-500/20"
+                />
+              </div>
+            </div>
+            <input 
+              type="range" 
+              id="slide-views" 
+              min="1000" 
+              max="2000000" 
+              step="1000" 
+              value="100000" 
+              class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-rose-600"
+            />
+          </div>
+
+          <!-- Input 2: CPM (Gross Advertiser Cost) -->
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-1.5">
+                <label for="num-cpm" class="text-sm font-semibold text-slate-700">Advertiser CPM ($)</label>
+                <span class="inline-flex items-center rounded-md bg-slate-100 px-1.5 py-0.5 text-[9px] font-medium text-slate-600" title="Gross advertiser spend per 1,000 ad impressions">Gross</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-xs text-slate-400 font-bold">$</span>
+                <input 
+                  type="number" 
+                  id="num-cpm" 
+                  min="0.1" 
+                  max="100" 
+                  step="0.1"
+                  value="6.00"
+                  class="w-20 rounded-lg border border-slate-200 bg-slate-50 px-2 py-1 text-right text-sm font-bold text-rose-600 focus:bg-white focus:outline-none focus:ring-2 focus:ring-rose-500/20"
+                />
+              </div>
+            </div>
+            <input 
+              type="range" 
+              id="slide-cpm" 
+              min="1" 
+              max="30" 
+              step="0.5" 
+              value="6" 
+              class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-rose-600"
+            />
+          </div>
+
+          <!-- Input 3: RPM (Net Creator Yield) -->
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-1.5">
+                <label for="num-rpm" class="text-sm font-semibold text-slate-700">Net Creator RPM ($)</label>
+                <span class="inline-flex items-center rounded-md bg-emerald-50 px-1.5 py-0.5 text-[9px] font-medium text-emerald-700 border border-emerald-200/40" title="Actual take-home revenue per 1,000 total channel views">Net</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-xs text-slate-400 font-bold">$</span>
+                <input 
+                  type="number" 
+                  id="num-rpm" 
+                  min="0.05" 
+                  max="100" 
+                  step="0.05"
+                  value="3.00"
+                  class="w-20 rounded-lg border border-slate-200 bg-slate-50 px-2 py-1 text-right text-sm font-bold text-rose-600 focus:bg-white focus:outline-none focus:ring-2 focus:ring-rose-500/20"
+                />
+              </div>
+            </div>
+            <input 
+              type="range" 
+              id="slide-rpm" 
+              min="0.5" 
+              max="20" 
+              step="0.25" 
+              value="3" 
+              class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-rose-600"
+            />
+          </div>
+
+          <!-- Input 4: Monetization Rate -->
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <label for="num-monetization" class="text-sm font-semibold text-slate-700">Monetization Rate (%)</label>
+              <div class="flex items-center gap-2">
+                <input 
+                  type="number" 
+                  id="num-monetization" 
+                  min="5" 
+                  max="100" 
+                  step="1"
+                  value="60"
+                  class="w-16 rounded-lg border border-slate-200 bg-slate-50 px-2 py-1 text-right text-sm font-bold text-rose-600 focus:bg-white focus:outline-none focus:ring-2 focus:ring-rose-500/20"
+                />
+                <span class="text-xs text-slate-400 font-bold">%</span>
+              </div>
+            </div>
+            <input 
+              type="range" 
+              id="slide-monetization" 
+              min="10" 
+              max="100" 
+              step="5" 
+              value="60" 
+              class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-rose-600"
+            />
+          </div>
+
+          <!-- Alert/Error panel -->
+          <div id="cpm-rpm-warning" class="hidden rounded-xl bg-amber-50 border border-amber-200 p-4 text-xs text-amber-900 leading-relaxed">
+            <strong>⚠️ Configuration Note:</strong> Your Net RPM exceeds your Gross CPM. While possible if a channel earns significant revenue from subscriptions, memberships, or sponsorships, RPM is typically lower than CPM for standard ad-only monetization.
+          </div>
+
+        </div>
+
+        <!-- Right Side: Projections Dashboard -->
+        <div class="lg:col-span-5 flex flex-col justify-between rounded-3xl bg-slate-900 text-white border border-slate-800 p-6 sm:p-8 shadow-lg">
+          
+          <div>
+            <h2 class="font-display text-lg font-bold border-b border-white/10 pb-3 mb-6">
+              Earnings Projections
+            </h2>
+
+            <!-- Main Metric Cards -->
+            <div class="space-y-4">
+              <!-- Estimated Monthly Revenue -->
+              <div class="p-4 rounded-2xl bg-white/5 border border-white/10 relative overflow-hidden">
+                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest block">Est. Monthly Net Revenue</span>
+                <span class="text-3xl font-black text-rose-400 mt-1 block" id="out-monthly">$300</span>
+                <span class="text-[10px] text-slate-500 block mt-1">Based on RPM calculation</span>
+              </div>
+
+              <!-- Estimated Yearly Revenue -->
+              <div class="p-4 rounded-2xl bg-white/5 border border-white/10 relative overflow-hidden">
+                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest block">Est. Yearly Net Revenue</span>
+                <span class="text-3xl font-black text-rose-400 mt-1 block" id="out-yearly">$3,600</span>
+              </div>
+            </div>
+
+            <!-- Revenue Range Panel (Low, Average, High) -->
+            <div class="mt-8 space-y-4">
+              <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Estimated Revenue Range</h3>
+              
+              <div class="space-y-3">
+                <!-- Low Range Card -->
+                <div class="flex items-center justify-between p-3 rounded-xl bg-rose-950/20 border border-rose-900/30">
+                  <div>
+                    <span class="text-[10px] font-bold text-rose-300 uppercase block">Low (AdSense Only)</span>
+                    <span class="text-[9px] text-slate-400">Net ad share after platform cut</span>
+                  </div>
+                  <span class="text-base font-black text-rose-300" id="range-low">$198</span>
+                </div>
+
+                <!-- Average Range Card -->
+                <div class="flex items-center justify-between p-3 rounded-xl bg-indigo-950/20 border border-indigo-900/30">
+                  <div>
+                    <span class="text-[10px] font-bold text-indigo-300 uppercase block">Average (Standard)</span>
+                    <span class="text-[9px] text-slate-400">Combined baseline channel yield</span>
+                  </div>
+                  <span class="text-base font-black text-indigo-300" id="range-avg">$300</span>
+                </div>
+
+                <!-- High Range Card -->
+                <div class="flex items-center justify-between p-3 rounded-xl bg-emerald-950/20 border border-emerald-900/30">
+                  <div>
+                    <span class="text-[10px] font-bold text-emerald-300 uppercase block">High (Optimized)</span>
+                    <span class="text-[9px] text-slate-400">Leveraged sponsorships & merch</span>
+                  </div>
+                  <span class="text-base font-black text-emerald-300" id="range-high">$450</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="mt-8 pt-6 border-t border-white/10 text-[10px] text-slate-400 text-center">
+            Calculations are model forecasts. Actual earnings fluctuate based on retention, ad formats, and audience profile.
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Section 1: Hero Explainer (What is a YouTube Earnings Calculator?) -->
+      <section class="max-w-4xl mx-auto mt-20 bg-white border border-slate-200 rounded-3xl p-6 sm:p-10 shadow-xs prose max-w-none">
+        <h2 class="font-display text-2xl font-black text-slate-900 tracking-tight mb-4 border-b border-slate-100 pb-3">
+          What is a YouTube Earnings Calculator?
+        </h2>
+        <p class="text-sm sm:text-base text-slate-600 leading-relaxed mb-4">
+          A **YouTube Earnings Calculator** is a planning tool designed for content creators, agencies, and digital marketers to model channel revenue. Monetizing a YouTube channel involves multiple factors—including viewer geographical locations, video playbacks, seasonal ad budgets, and platform cuts. 
+        </p>
+        <p class="text-sm sm:text-base text-slate-600 leading-relaxed mb-4">
+          By inputting key statistics (monthly views, advertiser costs, monetization rate, and RPM thresholds), you can simulate how adjustments to view counts and viewer demographics translate into net revenue. This tool helps remove the guesswork, illustrating how high-ticket niches can generate significant revenue even with smaller subscriber counts.
+        </p>
+        
+        <!-- Trust Warning Callout -->
+        <div class="border-l-4 border-rose-500 bg-rose-50/50 p-5 rounded-r-2xl my-6">
+          <h4 class="font-bold text-rose-950 text-xs sm:text-sm">Educational Modeling & Transparency</h4>
+          <p class="text-xs text-rose-800 leading-relaxed mt-1">
+            Imperial Picks does not guarantee earnings. YouTube income is volatile and depends on advertiser budgets, seasonality, and compliance with the YouTube Partner Program. This tool is built strictly for educational planning.
+          </p>
+        </div>
+      </section>
+
+      <!-- Section 3: How YouTube Earnings Work -->
+      <section class="max-w-4xl mx-auto mt-8 bg-white border border-slate-200 rounded-3xl p-6 sm:p-10 shadow-xs prose max-w-none">
+        <h2 class="font-display text-2xl font-black text-slate-900 tracking-tight mb-4 border-b border-slate-100 pb-3">
+          How YouTube Earnings Work
+        </h2>
+        <p class="text-sm sm:text-base text-slate-600 leading-relaxed mb-4">
+          YouTube creators primarily monetize their content through the **YouTube Partner Program (YPP)**. To join YPP, creators must meet specific baseline thresholds (usually 1,000 subscribers and 4,000 valid watch hours within the past 12 months, or 10 million Shorts views).
+        </p>
+        <p class="text-sm sm:text-base text-slate-600 leading-relaxed mb-4">
+          Once accepted, YouTube serves ad impressions on your videos. When ads are shown, advertisers pay a fee. YouTube collects the gross ad spend, takes a **45% platform share fee**, and distributes the remaining **55%** to the creator.
+        </p>
+        <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
+          However, ad revenue is only one stream. Modern creators optimize their earnings by combining AdSense with channel memberships, brand sponsorships, merchandising, and affiliate links. For detailed affiliate calculations, check our free <a href="/tools/affiliate-earnings-calculator" class="font-bold text-indigo-600 hover:underline">Affiliate Earnings Calculator</a> to model product-link conversions alongside video views.
+        </p>
+      </section>
+
+      <!-- Section 4: CPM vs RPM Explained -->
+      <section class="max-w-4xl mx-auto mt-8 bg-white border border-slate-200 rounded-3xl p-6 sm:p-10 shadow-xs prose max-w-none">
+        <h2 class="font-display text-2xl font-black text-slate-900 tracking-tight mb-4 border-b border-slate-100 pb-3">
+          CPM vs RPM Explained: The Gross and Net Difference
+        </h2>
+        <p class="text-sm sm:text-base text-slate-600 leading-relaxed mb-4">
+          Understanding the difference between **CPM** and **RPM** is critical for channel financial planning:
+        </p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
+          <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
+            <h4 class="font-display font-bold text-slate-900 text-sm mb-2">Advertiser CPM (Cost Per Mille)</h4>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              **CPM** is a gross metric representing what advertisers pay per 1,000 ad impressions. Because CPM only measures views that actually show ads, it does not factor in YouTube's revenue split, ad blockers, or unmonetized playbacks. It represents gross advertiser cost, not creator profit.
+            </p>
+          </div>
+          <div class="p-5 rounded-2xl bg-indigo-50/30 border border-indigo-100">
+            <h4 class="font-display font-bold text-indigo-950 text-sm mb-2">Creator RPM (Revenue Per Mille)</h4>
+            <p class="text-xs text-indigo-900 leading-relaxed">
+              **RPM** is a net metric measuring your total earnings per 1,000 video views. Unlike CPM, RPM is calculated by dividing your total earnings (ad-share, YouTube Premium, sponsorships, memberships) by your total views. It takes into account YouTube's 45% cut, representing actual take-home revenue.
+            </p>
+          </div>
+        </div>
+
+        <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
+          While CPM reflects the marketing demand for your niche, RPM represents your channel's actual monetization efficiency. A high CPM is useful, but a well-monetized channel focuses on lifting RPM through memberships and integrations.
+        </p>
+      </section>
+
+      <!-- Section 5: Factors Affecting YouTube Revenue -->
+      <section class="max-w-4xl mx-auto mt-8 bg-white border border-slate-200 rounded-3xl p-6 sm:p-10 shadow-xs prose max-w-none">
+        <h2 class="font-display text-2xl font-black text-slate-900 tracking-tight mb-4 border-b border-slate-100 pb-3">
+          Key Factors Affecting Your YouTube Revenue
+        </h2>
+        <p class="text-sm sm:text-base text-slate-600 leading-relaxed mb-6">
+          Four major variables dictate whether your channel's RPM sits under $1.00 or surpasses $20.00:
+        </p>
+        
+        <div class="space-y-6 text-sm text-slate-600 leading-relaxed">
+          <div class="flex gap-3">
+            <span class="text-indigo-600 shrink-0 font-bold font-display text-base">01.</span>
+            <div>
+              <strong class="text-slate-900">Viewer Demographics (Geography)</strong>
+              <p class="text-xs text-slate-500 mt-1">
+                Advertisers target audiences with high purchasing power. Views from Tier 1 countries (United States, United Kingdom, Canada, Australia) pay substantially higher CPM rates compared to Tier 3 countries. A channel with 10,000 views from the US can easily out-earn a channel with 100,000 views from lower-purchasing-power regions.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex gap-3">
+            <span class="text-indigo-600 shrink-0 font-bold font-display text-base">02.</span>
+            <div>
+              <strong class="text-slate-900">Channel Niche & Commercial Value</strong>
+              <p class="text-xs text-slate-500 mt-1">
+                Your topic determines the ad inventory. Niches targeting high-ticket business decisions (e.g. SaaS software reviews, digital marketing, real estate, personal finance) attract high advertiser competition, yielding high CPMs. General entertainment, comedy, and gaming have low commercial intent, resulting in lower ad rates.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex gap-3">
+            <span class="text-indigo-600 shrink-0 font-bold font-display text-base">03.</span>
+            <div>
+              <strong class="text-slate-900">Video Duration & Mid-Rolls</strong>
+              <p class="text-xs text-slate-500 mt-1">
+                Videos that exceed 8 minutes allow creators to manually place mid-roll ads. This increases the total ad impressions per view, doubling or tripling your ad earnings on a single video compared to shorter content.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex gap-3">
+            <span class="text-indigo-600 shrink-0 font-bold font-display text-base">04.</span>
+            <div>
+              <strong class="text-slate-900">Monetization Diversification</strong>
+              <p class="text-xs text-slate-500 mt-1">
+                Channels that rely solely on YPP are vulnerable to CPM fluctuations. Creators who integrate product reviews (using tools like Cursor and GitHub Copilot compared in our <a href="/ai-tools/best-ai-coding-assistants" class="font-bold text-indigo-600 hover:underline">Best AI Coding Assistants</a> review) boost their net RPM through affiliate payouts and sponsorships.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 6: Revenue Examples (Table) -->
+      <section class="max-w-4xl mx-auto mt-8 bg-white border border-slate-200 rounded-3xl p-6 sm:p-10 shadow-xs">
+        <h2 class="font-display text-2xl font-black text-slate-900 tracking-tight mb-4 border-b border-slate-100 pb-3">
+          Realistic YouTube Revenue Examples by Niche
+        </h2>
+        <p class="text-sm text-slate-600 mb-6">
+          To illustrate how niche selection impacts earnings, here are three realistic channel profiles modeled after average industry benchmarks in 2026.
+        </p>
+
+        <div class="overflow-x-auto rounded-2xl border border-slate-200 bg-slate-50/50 p-1">
+          <table class="w-full text-left text-sm border-collapse bg-white rounded-xl overflow-hidden">
+            <thead>
+              <tr class="bg-slate-900 text-white font-display text-xs uppercase tracking-wider">
+                <th class="py-4 px-4 font-semibold">Niche Example</th>
+                <th class="py-4 px-4 font-semibold">Monthly Views</th>
+                <th class="py-4 px-4 font-semibold">Average CPM</th>
+                <th class="py-4 px-4 font-semibold">Average RPM</th>
+                <th class="py-4 px-4 font-semibold">Est. Monthly Earnings</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100 text-slate-700 text-xs sm:text-sm">
+              <tr class="hover:bg-slate-50/80 transition-colors">
+                <td class="py-4 px-4 font-bold text-slate-900">Personal Finance & Investing</td>
+                <td class="py-4 px-4">50,000</td>
+                <td class="py-4 px-4">$22.00</td>
+                <td class="py-4 px-4">$12.50</td>
+                <td class="py-4 px-4 font-bold text-emerald-600">$625.00</td>
+              </tr>
+              <tr class="hover:bg-slate-50/80 transition-colors">
+                <td class="py-4 px-4 font-bold text-slate-900">SaaS Review & Digital Marketing</td>
+                <td class="py-4 px-4">100,000</td>
+                <td class="py-4 px-4">$18.00</td>
+                <td class="py-4 px-4">$9.00</td>
+                <td class="py-4 px-4 font-bold text-emerald-600">$900.00</td>
+              </tr>
+              <tr class="hover:bg-slate-50/80 transition-colors">
+                <td class="py-4 px-4 font-bold text-slate-900">Tech Hardware & Coding Tutorials</td>
+                <td class="py-4 px-4">250,000</td>
+                <td class="py-4 px-4">$12.00</td>
+                <td class="py-4 px-4">$5.50</td>
+                <td class="py-4 px-4 font-bold text-emerald-600">$1,375.00</td>
+              </tr>
+              <tr class="hover:bg-slate-50/80 transition-colors">
+                <td class="py-4 px-4 font-bold text-slate-900">Gaming & General Entertainment</td>
+                <td class="py-4 px-4">1,000,000</td>
+                <td class="py-4 px-4">$3.50</td>
+                <td class="py-4 px-4">$1.50</td>
+                <td class="py-4 px-4 font-bold text-emerald-600">$1,500.00</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Section 7: FAQ (10+ Questions) -->
+      <section class="max-w-4xl mx-auto mt-8 bg-white border border-slate-200 rounded-3xl p-6 sm:p-10 shadow-xs scroll-mt-20" id="faq">
+        <h2 class="font-display text-2xl font-black text-slate-900 tracking-tight mb-8 border-b border-slate-100 pb-3">
+          Frequently Asked Questions (FAQ)
+        </h2>
+        
+        <div class="space-y-4">
+          
+          <!-- Q1 -->
+          <details class="group rounded-2xl bg-slate-50 border border-slate-200/80 p-4 transition-all duration-300 [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex items-center justify-between cursor-pointer focus:outline-none">
+              <h4 class="text-sm font-semibold text-slate-800 transition-colors group-hover:text-indigo-600">
+                What is the difference between CPM and RPM?
+              </h4>
+              <span class="ml-1.5 shrink-0 rounded-lg bg-white p-1 text-slate-400 group-open:rotate-180 transition-transform duration-300 border border-slate-200">
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                </svg>
+              </span>
+            </summary>
+            <p class="mt-3 text-xs sm:text-sm text-slate-500 leading-relaxed border-t border-slate-200/50 pt-2.5">
+              CPM (Cost Per Mille) measures the advertiser's gross cost for 1,000 ad impressions. RPM (Revenue Per Mille) measures your net take-home earnings (including ad split, channel memberships, and premium views) per 1,000 total video views. RPM is the only metric that tracks your actual income.
+            </p>
+          </details>
+
+          <!-- Q2 -->
+          <details class="group rounded-2xl bg-slate-50 border border-slate-200/80 p-4 transition-all duration-300 [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex items-center justify-between cursor-pointer focus:outline-none">
+              <h4 class="text-sm font-semibold text-slate-800 transition-colors group-hover:text-indigo-600">
+                Why is my RPM lower than my CPM?
+              </h4>
+              <span class="ml-1.5 shrink-0 rounded-lg bg-white p-1 text-slate-400 group-open:rotate-180 transition-transform duration-300 border border-slate-200">
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                </svg>
+              </span>
+            </summary>
+            <p class="mt-3 text-xs sm:text-sm text-slate-500 leading-relaxed border-t border-slate-200/50 pt-2.5">
+              Because RPM accounts for YouTube's 45% ad revenue share, and is calculated over your *total* views, not just views where ads were shown. If ad blockers are used or a video doesn't show ads, those views lower your overall RPM average relative to your CPM.
+            </p>
+          </details>
+
+          <!-- Q3 -->
+          <details class="group rounded-2xl bg-slate-50 border border-slate-200/80 p-4 transition-all duration-300 [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex items-center justify-between cursor-pointer focus:outline-none">
+              <h4 class="text-sm font-semibold text-slate-800 transition-colors group-hover:text-indigo-600">
+                How many views do I need to make $1,000 a month on YouTube?
+              </h4>
+              <span class="ml-1.5 shrink-0 rounded-lg bg-white p-1 text-slate-400 group-open:rotate-180 transition-transform duration-300 border border-slate-200">
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                </svg>
+              </span>
+            </summary>
+            <p class="mt-3 text-xs sm:text-sm text-slate-500 leading-relaxed border-t border-slate-200/50 pt-2.5">
+              It varies based on your RPM. If your channel RPM is $2.00 (gaming/entertainment), you need 500,000 monthly views. If your RPM is $10.00 (personal finance/SaaS reviews), you only need 100,000 views.
+            </p>
+          </details>
+
+          <!-- Q4 -->
+          <details class="group rounded-2xl bg-slate-50 border border-slate-200/80 p-4 transition-all duration-300 [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex items-center justify-between cursor-pointer focus:outline-none">
+              <h4 class="text-sm font-semibold text-slate-800 transition-colors group-hover:text-indigo-600">
+                What niches have the highest CPM and RPM on YouTube?
+              </h4>
+              <span class="ml-1.5 shrink-0 rounded-lg bg-white p-1 text-slate-400 group-open:rotate-180 transition-transform duration-300 border border-slate-200">
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                </svg>
+              </span>
+            </summary>
+            <p class="mt-3 text-xs sm:text-sm text-slate-500 leading-relaxed border-t border-slate-200/50 pt-2.5">
+              Topics that involve corporate budgets, software purchasing, investments, or high-value physical goods pay the highest. Examples include Personal Finance, Affiliate SaaS Tools, Coding Tutorials, Real Estate, and Digital Marketing.
+            </p>
+          </details>
+
+          <!-- Q5 -->
+          <details class="group rounded-2xl bg-slate-50 border border-slate-200/80 p-4 transition-all duration-300 [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex items-center justify-between cursor-pointer focus:outline-none">
+              <h4 class="text-sm font-semibold text-slate-800 transition-colors group-hover:text-indigo-600">
+                Are there tools to help students balance learning and content creation?
+              </h4>
+              <span class="ml-1.5 shrink-0 rounded-lg bg-white p-1 text-slate-400 group-open:rotate-180 transition-transform duration-300 border border-slate-200">
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                </svg>
+              </span>
+            </summary>
+            <p class="mt-3 text-xs sm:text-sm text-slate-500 leading-relaxed border-t border-slate-200/50 pt-2.5">
+              Absolutely. Balanced productivity is key when building a channels while studying. Read our detailed guide on the <a href="/ai-tools/best-ai-tools-for-students" class="font-bold text-indigo-600 hover:underline">Best AI Tools for Students</a> to discover note-takers, visual builders, and research aids.
+            </p>
+          </details>
+
+          <!-- Q6 -->
+          <details class="group rounded-2xl bg-slate-50 border border-slate-200/80 p-4 transition-all duration-300 [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex items-center justify-between cursor-pointer focus:outline-none">
+              <h4 class="text-sm font-semibold text-slate-800 transition-colors group-hover:text-indigo-600">
+                Does YouTube pay for Shorts views?
+              </h4>
+              <span class="ml-1.5 shrink-0 rounded-lg bg-white p-1 text-slate-400 group-open:rotate-180 transition-transform duration-300 border border-slate-200">
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                </svg>
+              </span>
+            </summary>
+            <p class="mt-3 text-xs sm:text-sm text-slate-500 leading-relaxed border-t border-slate-200/50 pt-2.5">
+              Yes, but rates are very low. Instead of standard ad units, Shorts pool revenue and distribute it based on total view shares. Net Shorts RPM averages between $0.01 and $0.07 per 1,000 views.
+            </p>
+          </details>
+
+          <!-- Q7 -->
+          <details class="group rounded-2xl bg-slate-50 border border-slate-200/80 p-4 transition-all duration-300 [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex items-center justify-between cursor-pointer focus:outline-none">
+              <h4 class="text-sm font-semibold text-slate-800 transition-colors group-hover:text-indigo-600">
+                Is it better to use ChatGPT or Claude for video outlines and scripting?
+              </h4>
+              <span class="ml-1.5 shrink-0 rounded-lg bg-white p-1 text-slate-400 group-open:rotate-180 transition-transform duration-300 border border-slate-200">
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                </svg>
+              </span>
+            </summary>
+            <p class="mt-3 text-xs sm:text-sm text-slate-500 leading-relaxed border-t border-slate-200/50 pt-2.5">
+              Both are excellent, but they excel in different areas. Claude is highly recommended for structured scripting and human-like transitions, while ChatGPT's code interpreter is great for logic and database calculations. Check out our head-to-head comparison: <a href="/ai-tools/chatgpt-vs-claude" class="font-bold text-indigo-600 hover:underline">ChatGPT vs Claude: Which AI Assistant Is Better in 2026?</a>.
+            </p>
+          </details>
+
+          <!-- Q8 -->
+          <details class="group rounded-2xl bg-slate-50 border border-slate-200/80 p-4 transition-all duration-300 [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex items-center justify-between cursor-pointer focus:outline-none">
+              <h4 class="text-sm font-semibold text-slate-800 transition-colors group-hover:text-indigo-600">
+                How does viewer location (geography) affect my earnings?
+              </h4>
+              <span class="ml-1.5 shrink-0 rounded-lg bg-white p-1 text-slate-400 group-open:rotate-180 transition-transform duration-300 border border-slate-200">
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                </svg>
+              </span>
+            </summary>
+            <p class="mt-3 text-xs sm:text-sm text-slate-500 leading-relaxed border-t border-slate-200/50 pt-2.5">
+              Advertisers pay higher CPMs to display ads to viewers in Tier 1 countries (US, UK, Canada, Australia) because of their higher average purchasing power. A view from Tier 1 can pay up to 10–20x more than a view from a Tier 3 country.
+            </p>
+          </details>
+
+          <!-- Q9 -->
+          <details class="group rounded-2xl bg-slate-50 border border-slate-200/80 p-4 transition-all duration-300 [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex items-center justify-between cursor-pointer focus:outline-none">
+              <h4 class="text-sm font-semibold text-slate-800 transition-colors group-hover:text-indigo-600">
+                Can I earn money on YouTube without being in YPP?
+              </h4>
+              <span class="ml-1.5 shrink-0 rounded-lg bg-white p-1 text-slate-400 group-open:rotate-180 transition-transform duration-300 border border-slate-200">
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                </svg>
+              </span>
+            </summary>
+            <p class="mt-3 text-xs sm:text-sm text-slate-500 leading-relaxed border-t border-slate-200/50 pt-2.5">
+              Yes. You can place affiliate links in descriptions, promote brand sponsorships, sell merchandise, or build private memberships. Affiliate integrations are particularly popular for tech and programming channels.
+            </p>
+          </details>
+
+          <!-- Q10 -->
+          <details class="group rounded-2xl bg-slate-50 border border-slate-200/80 p-4 transition-all duration-300 [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex items-center justify-between cursor-pointer focus:outline-none">
+              <h4 class="text-sm font-semibold text-slate-800 transition-colors group-hover:text-indigo-600">
+                Do creators use AI helpers to build their video editing plugins?
+              </h4>
+              <span class="ml-1.5 shrink-0 rounded-lg bg-white p-1 text-slate-400 group-open:rotate-180 transition-transform duration-300 border border-slate-200">
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                </svg>
+              </span>
+            </summary>
+            <p class="mt-3 text-xs sm:text-sm text-slate-500 leading-relaxed border-t border-slate-200/50 pt-2.5">
+              Yes, many developer-creators build specialized script extensions and editing automation tools using advanced code engines. Compare the top coding models in our guide: <a href="/ai-tools/best-ai-coding-assistants" class="font-bold text-indigo-600 hover:underline">Best AI Coding Assistants in 2026</a>.
+            </p>
+          </details>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<script>
+  const setupYoutubeCalculator = () => {
+    // Sliders
+    const slideViews = document.getElementById('slide-views') as HTMLInputElement;
+    const slideCpm = document.getElementById('slide-cpm') as HTMLInputElement;
+    const slideRpm = document.getElementById('slide-rpm') as HTMLInputElement;
+    const slideMonetization = document.getElementById('slide-monetization') as HTMLInputElement;
+
+    // Number Inputs
+    const numViews = document.getElementById('num-views') as HTMLInputElement;
+    const numCpm = document.getElementById('num-cpm') as HTMLInputElement;
+    const numRpm = document.getElementById('num-rpm') as HTMLInputElement;
+    const numMonetization = document.getElementById('num-monetization') as HTMLInputElement;
+
+    // Outputs
+    const outMonthly = document.getElementById('out-monthly');
+    const outYearly = document.getElementById('out-yearly');
+    const rangeLow = document.getElementById('range-low');
+    const rangeAvg = document.getElementById('range-avg');
+    const rangeHigh = document.getElementById('range-high');
+    const cpmRpmWarning = document.getElementById('cpm-rpm-warning');
+
+    if (
+      !slideViews || !slideCpm || !slideRpm || !slideMonetization ||
+      !numViews || !numCpm || !numRpm || !numMonetization ||
+      !outMonthly || !outYearly || !rangeLow || !rangeAvg || !rangeHigh || !cpmRpmWarning
+    ) return;
+
+    const formatCurrency = (val: number) => {
+      return new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        maximumFractionDigits: 0
+      }).format(val);
+    };
+
+    const formatDecimal = (val: number) => {
+      return new Intl.NumberFormat('en-US', {
+        maximumFractionDigits: 0
+      }).format(val);
+    };
+
+    const calculate = (triggerSource: 'slider' | 'number') => {
+      let views = 100000;
+      let cpm = 6.00;
+      let rpm = 3.00;
+      let monetization = 60;
+
+      if (triggerSource === 'slider') {
+        views = parseFloat(slideViews.value) || 0;
+        cpm = parseFloat(slideCpm.value) || 0;
+        rpm = parseFloat(slideRpm.value) || 0;
+        monetization = parseFloat(slideMonetization.value) || 0;
+
+        // Synchronize numbers
+        numViews.value = String(views);
+        numCpm.value = cpm.toFixed(2);
+        numRpm.value = rpm.toFixed(2);
+        numMonetization.value = String(monetization);
+      } else {
+        views = Math.max(0, parseFloat(numViews.value) || 0);
+        cpm = Math.max(0, parseFloat(numCpm.value) || 0);
+        rpm = Math.max(0, parseFloat(numRpm.value) || 0);
+        monetization = Math.min(100, Math.max(0, parseFloat(numMonetization.value) || 0));
+
+        // Synchronize sliders
+        slideViews.value = String(Math.min(parseFloat(slideViews.max), views));
+        slideCpm.value = String(Math.min(parseFloat(slideCpm.max), cpm));
+        slideRpm.value = String(Math.min(parseFloat(slideRpm.max), rpm));
+        slideMonetization.value = String(Math.min(parseFloat(slideMonetization.max), monetization));
+      }
+
+      // Calculations
+      const monthlyRevenue = (views / 1000) * rpm;
+      const yearlyRevenue = monthlyRevenue * 12;
+
+      // Low: AdSense Ad Share baseline: Views * MonetizationRate * CPM * 55% creator share
+      const lowEstimate = (views / 1000) * (monetization / 100) * cpm * 0.55;
+      const avgEstimate = monthlyRevenue;
+      // High: Optimized with memberships and premium sponsorship potential (1.5x)
+      const highEstimate = monthlyRevenue * 1.5;
+
+      // Update UI outputs
+      outMonthly.textContent = formatCurrency(monthlyRevenue);
+      outYearly.textContent = formatCurrency(yearlyRevenue);
+      rangeLow.textContent = formatCurrency(lowEstimate);
+      rangeAvg.textContent = formatCurrency(avgEstimate);
+      rangeHigh.textContent = formatCurrency(highEstimate);
+
+      // Warning when RPM is greater than CPM
+      if (rpm > cpm) {
+        cpmRpmWarning.classList.remove('hidden');
+      } else {
+        cpmRpmWarning.classList.add('hidden');
+      }
+    };
+
+    // Slider Event Listeners
+    [slideViews, slideCpm, slideRpm, slideMonetization].forEach(slider => {
+      slider.addEventListener('input', () => calculate('slider'));
+    });
+
+    // Number Inputs Event Listeners
+    [numViews, numCpm, numRpm, numMonetization].forEach(numInput => {
+      numInput.addEventListener('input', () => calculate('number'));
+      numInput.addEventListener('blur', () => {
+        // Enforce validation boundaries on focus loss
+        if (numViews.value === '' || parseFloat(numViews.value) < 100) numViews.value = '100';
+        if (parseFloat(numCpm.value) < 0.1) numCpm.value = '0.1';
+        if (parseFloat(numRpm.value) < 0.05) numRpm.value = '0.05';
+        if (parseFloat(numMonetization.value) < 5) numMonetization.value = '5';
+        if (parseFloat(numMonetization.value) > 100) numMonetization.value = '100';
+        calculate('number');
+      });
+    });
+
+    // Run first calculation
+    calculate('slider');
+  };
+
+  setupYoutubeCalculator();
+  document.addEventListener('astro:after-swap', setupYoutubeCalculator);
+</script>

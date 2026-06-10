@@ -72,20 +72,7 @@ const realArticles = [
 ];
 
 // Planned editorial articles (Coming Soon)
-const plannedArticles = [
-  {
-    title: "The Ultimate Ad Spend ROI Cheat Sheet for Bootstrap Founders",
-    excerpt: "Unpack cost-effective customer acquisition metrics, benchmark CPC averages, and learn how to configure a balanced LTV/CAC ratio from day one.",
-    category: "Marketing",
-    tags: ["marketing", "ROI", "adspend", "startups"]
-  },
-  {
-    title: "Choosing Between Next.js, Astro, and Remix: A 2026 Guide",
-    excerpt: "An in-depth breakdown of server rendering speed, static building, content-driven layouts, and full-stack integrations for modern platforms.",
-    category: "Development",
-    tags: ["nextjs", "astro", "remix", "rendering"]
-  }
-];
+const plannedArticles = [];
 
 const totalRealCount = realArticles.length;
 const totalPlannedCount = plannedArticles.length;
@@ -208,42 +195,43 @@ const totalPlannedCount = plannedArticles.length;
           </div>
         </div>
 
-        <!-- Planned/Upcoming Articles Grid -->
-        <div class="border-t border-slate-200/60 pt-16">
-          <div class="mb-8">
-            <h2 class="font-display text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
-              Upcoming Guides & Research
-            </h2>
-            <p class="text-xs text-slate-500 mt-1">
-              The following topics are currently being researched. Subscribe to be notified when they are released.
-            </p>
-          </div>
-          
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {plannedArticles.map((art) => (
-              <div class="group border border-slate-200 bg-white/60 rounded-3xl p-6 shadow-xs relative overflow-hidden flex flex-col justify-between h-48 opacity-80 hover:opacity-100 transition-opacity duration-300">
-                <div>
-                  <div class="flex items-center justify-between mb-4">
-                    <span class="inline-flex items-center rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-bold text-slate-600 ring-1 ring-inset ring-slate-500/10">
-                      Research In Progress
-                    </span>
-                    <span class="text-[9px] font-semibold text-slate-400">Planned</span>
+        {totalPlannedCount > 0 && (
+          <div class="border-t border-slate-200/60 pt-16">
+            <div class="mb-8">
+              <h2 class="font-display text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
+                Upcoming Guides & Research
+              </h2>
+              <p class="text-xs text-slate-500 mt-1">
+                The following topics are currently being researched. Subscribe to be notified when they are released.
+              </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {plannedArticles.map((art) => (
+                <div class="group border border-slate-200 bg-white/60 rounded-3xl p-6 shadow-xs relative overflow-hidden flex flex-col justify-between h-48 opacity-80 hover:opacity-100 transition-opacity duration-300">
+                  <div>
+                    <div class="flex items-center justify-between mb-4">
+                      <span class="inline-flex items-center rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-bold text-slate-600 ring-1 ring-inset ring-slate-500/10">
+                        Research In Progress
+                      </span>
+                      <span class="text-[9px] font-semibold text-slate-400">Planned</span>
+                    </div>
+                    <h3 class="font-display text-base font-bold text-slate-900 mb-2">{art.title}</h3>
+                    <p class="text-xs text-slate-500 leading-relaxed line-clamp-2">{art.excerpt}</p>
                   </div>
-                  <h3 class="font-display text-base font-bold text-slate-900 mb-2">{art.title}</h3>
-                  <p class="text-xs text-slate-500 leading-relaxed line-clamp-2">{art.excerpt}</p>
+                  
+                  <div class="flex flex-wrap gap-1 mt-4">
+                    {art.tags.map((tag) => (
+                      <span class="inline-flex items-center rounded-md bg-slate-50 px-2 py-0.5 text-[9px] font-medium text-slate-400 border border-slate-200/40">
+                        #{tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-                
-                <div class="flex flex-wrap gap-1 mt-4">
-                  {art.tags.map((tag) => (
-                    <span class="inline-flex items-center rounded-md bg-slate-50 px-2 py-0.5 text-[9px] font-medium text-slate-400 border border-slate-200/40">
-                      #{tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
+        )}
 
       </div>
 
