@@ -1,0 +1,794 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+
+// Schema Markup for SEO
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Best AI Tools for Students in 2026: The Ultimate Guide",
+  "description": "Compare the best AI tools for college and high school students in 2026. Detailed reviews, pricing, pros, cons, and guide for ChatGPT, Claude, Gemini, Perplexity, and Notion AI.",
+  "datePublished": "2026-06-10T08:00:00Z",
+  "dateModified": "2026-06-10T08:00:00Z",
+  "author": {
+    "@type": "Organization",
+    "name": "Imperial Picks Editorial Team",
+    "url": "https://imperialpicks.in/about"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Imperial Picks",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://imperialpicks.in/favicon.svg"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://imperialpicks.in/ai-tools/best-ai-tools-for-students"
+  }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is using AI tools for schoolwork considered cheating?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It depends on how you use it and your school's policies. Using AI as a brainstorm partner, private tutor, or structural editor is generally accepted as an educational aid. Copying and pasting AI-generated text directly into your assignments and representing it as your own work is plagiarism and is considered academic dishonesty."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which AI tool is best for writing essays?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Claude is widely considered the best AI tool for writing essays and humanities papers. It produces a natural, fluid tone that avoids the cliché vocabulary patterns common in other language models, and exhibits advanced reading comprehension when parsing long academic PDFs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which AI tool is best for math, coding, and STEM subjects?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ChatGPT is currently the top tool for coding, math, and STEM. Its integration of advanced reasoning models (like the o1 and newer reasoning series) allows it to run step-by-step logic, debug programming scripts, and explain complex mathematical theorems systematically."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can AI tools search the live web for current sources?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Perplexity and Gemini are built specifically with web-search integration. Perplexity stands out by searching the live web and returning structured bibliographies, citing the exact domains and papers it pulled details from."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are my document uploads kept private by these platforms?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "By default, many free-tier consumer AI services may use your conversations and uploaded documents to train their models. If you are uploading proprietary study notes, check the settings to opt-out of model training, or use platforms that specify zero-data retention policies."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there a completely free AI tool for organizing notes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, Notion offers a robust free tier for students to organize notes and study databases. While its built-in Notion AI assistant requires an additional paid add-on, the core organization templates, task systems, and databases are completely free."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do AI models make up facts (hallucinate)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Every large language model is susceptible to hallucinations, where it confidently generates false facts, citation links, or mathematical computations. Always cross-verify critical academic facts against reliable textbooks, search engines, or peer-reviewed papers."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How can I avoid getting flagged by AI detectors?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The only reliable way to avoid AI detection flags is to write the final assignments yourself. Use AI tools exclusively to outline ideas, structure draft paragraphs, or debug errors, then rewrite the actual copy in your own unique voice and stylistic structure."
+      }
+    }
+  ]
+};
+---
+
+<Layout title="Best AI Tools for Students in 2026: The Ultimate Guide" description="Compare the best AI tools for college and high school students in 2026. Detailed reviews, pricing, pros, cons, and guide for ChatGPT, Claude, Gemini, Perplexity, and Notion AI.">
+  
+  <!-- Inject JSON-LD Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <Navbar />
+  
+  <main class="relative bg-slate-50 min-h-screen py-12">
+    <!-- Background Patterns -->
+    <div class="absolute inset-0 bg-grid-pattern pointer-events-none"></div>
+
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      
+      <!-- Breadcrumbs -->
+      <nav class="flex text-xs font-semibold text-slate-500 gap-1.5 mb-6 relative z-10" aria-label="Breadcrumb">
+        <a href="/" class="hover:text-indigo-600">Home</a>
+        <span>/</span>
+        <a href="/#categories" class="hover:text-indigo-600">AI Tools</a>
+        <span>/</span>
+        <span class="text-slate-800 truncate">Best AI Tools for Students</span>
+      </nav>
+
+      <!-- Layout Grid: Left Content (Prose), Right Sticky Table of Contents -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 relative z-10">
+        
+        <!-- Main Article Body (Prose) -->
+        <article class="lg:col-span-8 bg-white border border-slate-200/80 rounded-3xl p-6 sm:p-10 lg:p-12 shadow-xs max-w-none">
+          
+          <!-- Article Header -->
+          <header class="border-b border-slate-100 pb-8 mb-8">
+            <span class="inline-flex items-center rounded-md bg-indigo-50 px-2.5 py-1 text-xs font-bold text-indigo-700 mb-4">
+              Academic Productivity
+            </span>
+            <h1 class="font-display text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-[1.15] mb-6">
+              Best AI Tools for Students in 2026: The Ultimate Guide
+            </h1>
+            
+            <!-- Author Card -->
+            <div class="flex items-center gap-3">
+              <div class="h-10 w-10 rounded-full bg-indigo-600 text-indigo-50 flex items-center justify-center font-display text-sm font-bold shadow-sm">
+                IP
+              </div>
+              <div class="text-xs">
+                <p class="font-bold text-slate-800">Imperial Picks Editorial Team</p>
+                <p class="text-slate-400 font-medium mt-0.5">Published on June 10, 2026 • 12 min read</p>
+              </div>
+            </div>
+          </header>
+
+          <!-- Introduction Section -->
+          <section id="introduction" class="prose max-w-[72ch]">
+            <p class="text-base sm:text-lg text-slate-600 leading-relaxed font-medium mb-6">
+              Modern academic workloads have reached an all-time high. Between balancing course modules, analyzing dense research reports, coding projects, and configuring financial studies, students face severe cognitive load. 
+            </p>
+            <p class="text-sm sm:text-base text-slate-600 leading-relaxed mb-6">
+              Fortunately, the evolution of artificial intelligence has changed study habits. Rather than serving as automated shortcut engines, the top tools in 2026 act as private tutors, code debuggers, brainstorming partners, and reference organizers. When used ethically and strategically, AI allows students to digest complex topics, learn new languages, and map study schedules faster than ever before.
+            </p>
+
+            <!-- Callout: Ethical AI Use -->
+            <div class="border-l-4 border-amber-500 bg-amber-50/50 p-5 rounded-r-2xl mb-8">
+              <div class="flex gap-2">
+                <span class="text-lg">💡</span>
+                <div>
+                  <h4 class="font-bold text-amber-900 text-sm">A Note on Academic Integrity</h4>
+                  <p class="text-xs text-amber-800 leading-relaxed mt-1">
+                    AI tools should be used to support and enhance your learning, not replace your critical thinking. Copying and pasting AI outputs directly into your school assignments constitutes plagiarism. Always verify school codes of conduct before utilizing LLMs for homework.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Quick Comparison Table -->
+          <section id="comparison-table" class="mt-12">
+            <h2 class="font-display text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight mb-6 pb-2 border-b border-slate-100">
+              Quick Comparison: Student AI Tools
+            </h2>
+            
+            <div class="overflow-x-auto rounded-2xl border border-slate-200 bg-slate-50/50 p-1 mb-8">
+              <table class="w-full text-left text-sm border-collapse bg-white rounded-xl overflow-hidden">
+                <thead>
+                  <tr class="bg-slate-900 text-white font-display text-xs uppercase tracking-wider">
+                    <th class="py-4 px-4 font-semibold">Tool</th>
+                    <th class="py-4 px-4 font-semibold">Best For</th>
+                    <th class="py-4 px-4 font-semibold">Free Plan</th>
+                    <th class="py-4 px-4 font-semibold">Starting Price</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100 text-slate-700">
+                  <tr class="hover:bg-slate-50/80 transition-colors">
+                    <td class="py-4 px-4 font-bold text-slate-900">ChatGPT</td>
+                    <td class="py-4 px-4">STEM, coding, and logical reasoning</td>
+                    <td class="py-4 px-4">
+                      <span class="inline-flex items-center rounded-md bg-emerald-50 px-2 py-1 text-xs font-semibold text-emerald-800 border border-emerald-200/50">Yes (GPT-4o mini)</span>
+                    </td>
+                    <td class="py-4 px-4 font-semibold text-slate-900">$20/month</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50/80 transition-colors">
+                    <td class="py-4 px-4 font-bold text-slate-900">Claude</td>
+                    <td class="py-4 px-4">Essay writing, humanities, and PDF summaries</td>
+                    <td class="py-4 px-4">
+                      <span class="inline-flex items-center rounded-md bg-emerald-50 px-2 py-1 text-xs font-semibold text-emerald-800 border border-emerald-200/50">Yes (Limited GPT access)</span>
+                    </td>
+                    <td class="py-4 px-4 font-semibold text-slate-900">$20/month</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50/80 transition-colors">
+                    <td class="py-4 px-4 font-bold text-slate-900">Gemini</td>
+                    <td class="py-4 px-4">Google Workspace integrations and research</td>
+                    <td class="py-4 px-4">
+                      <span class="inline-flex items-center rounded-md bg-emerald-50 px-2 py-1 text-xs font-semibold text-emerald-800 border border-emerald-200/50">Yes (Gemini Flash)</span>
+                    </td>
+                    <td class="py-4 px-4 font-semibold text-slate-900">$20/month</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50/80 transition-colors">
+                    <td class="py-4 px-4 font-bold text-slate-900">Perplexity</td>
+                    <td class="py-4 px-4">Academic citations and verified research</td>
+                    <td class="py-4 px-4">
+                      <span class="inline-flex items-center rounded-md bg-emerald-50 px-2 py-1 text-xs font-semibold text-emerald-800 border border-emerald-200/50">Yes (Basic searches)</span>
+                    </td>
+                    <td class="py-4 px-4 font-semibold text-slate-900">$20/month</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50/80 transition-colors">
+                    <td class="py-4 px-4 font-bold text-slate-900">Notion AI</td>
+                    <td class="py-4 px-4">Note-taking, scheduling, and database organization</td>
+                    <td class="py-4 px-4">
+                      <span class="inline-flex items-center rounded-md bg-rose-50 px-2 py-1 text-xs font-semibold text-rose-800 border border-rose-200/50">No (Add-on required)</span>
+                    </td>
+                    <td class="py-4 px-4 font-semibold text-slate-900">$10/month</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- Detailed Reviews Section -->
+          <section id="detailed-reviews" class="mt-16 space-y-16">
+            <h2 class="font-display text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight pb-2 border-b border-slate-100">
+              Detailed Reviews: Top 5 Tools
+            </h2>
+
+            <!-- Review: ChatGPT -->
+            <div id="tool-chatgpt" class="scroll-mt-20">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-orange-50 text-orange-600 border border-orange-100 font-bold font-display">01</span>
+                <h3 class="font-display text-2xl font-extrabold text-slate-900">ChatGPT (OpenAI)</h3>
+              </div>
+              
+              <p class="text-sm sm:text-base text-slate-600 leading-relaxed mb-6">
+                OpenAI's ChatGPT remains the benchmark for conversational AI, particularly with its advanced reasoning engines. In the classroom, ChatGPT behaves like an infinite whiteboard, explaining mathematical equations, translating code languages, or breaking down physics laws into simple analogies.
+              </p>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+                <!-- Pros -->
+                <div class="p-5 rounded-2xl bg-emerald-50/30 border border-emerald-100">
+                  <h4 class="font-display font-bold text-emerald-950 text-sm mb-3">✓ Advantages</h4>
+                  <ul class="list-disc pl-4 space-y-2 text-xs text-emerald-800">
+                    <li>Advanced mathematical reasoning using step-by-step logic.</li>
+                    <li>Industry-standard coding capabilities (Python, C++, Java).</li>
+                    <li>Large community with custom GPTs specialized for study guidelines.</li>
+                  </ul>
+                </div>
+                <!-- Cons -->
+                <div class="p-5 rounded-2xl bg-rose-50/30 border border-rose-100">
+                  <h4 class="font-display font-bold text-rose-950 text-sm mb-3">✗ Disadvantages</h4>
+                  <ul class="list-disc pl-4 space-y-2 text-xs text-rose-800">
+                    <li>Can output generic, robotic phrasing in essay drafts.</li>
+                    <li>Web browsing capability can be slower compared to search-first engines.</li>
+                    <li>Free tier limits access to the most advanced models during busy hours.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Callout: ChatGPT Spec Table -->
+              <div class="rounded-2xl border border-slate-200 bg-slate-50/50 p-5 space-y-3 text-sm">
+                <p><strong>Best For:</strong> STEM subjects, computer science assignments, complex math debugging, and study flashcards.</p>
+                <p><strong>Key Feature:</strong> Advanced reasoning mode (handles complex multi-step computations and checks its logic before answering).</p>
+                <p><strong>Pricing:</strong> Free basic plan (includes GPT-4o mini). ChatGPT Plus costs $20/month for full priority access.</p>
+                <p><strong>Verdict:</strong> Choose ChatGPT if your degree involves programming, quantitative analytics, or hard sciences.</p>
+              </div>
+            </div>
+
+            <!-- Review: Claude -->
+            <div id="tool-claude" class="scroll-mt-20 border-t border-slate-100 pt-12">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-50 text-amber-600 border border-amber-100 font-bold font-display">02</span>
+                <h3 class="font-display text-2xl font-extrabold text-slate-900">Claude (Anthropic)</h3>
+              </div>
+              
+              <p class="text-sm sm:text-base text-slate-600 leading-relaxed mb-6">
+                Claude, developed by Anthropic, has earned a stellar reputation for its human-like writing tone and extensive context parsing. Unlike other platforms, Claude excels at matching natural academic writing, analyzing whole books uploaded as PDFs, and outlining comparative arguments.
+              </p>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+                <!-- Pros -->
+                <div class="p-5 rounded-2xl bg-emerald-50/30 border border-emerald-100">
+                  <h4 class="font-display font-bold text-emerald-950 text-sm mb-3">✓ Advantages</h4>
+                  <ul class="list-disc pl-4 space-y-2 text-xs text-emerald-800">
+                    <li>Highly nuanced, human-like writing quality with minimal AI buzzwords.</li>
+                    <li>Extensive document context (easily reads 200+ page research papers).</li>
+                    <li>"Projects" feature allows you to upload syllabus guidelines for continuous context.</li>
+                  </ul>
+                </div>
+                <!-- Cons -->
+                <div class="p-5 rounded-2xl bg-rose-50/30 border border-rose-100">
+                  <h4 class="font-display font-bold text-rose-950 text-sm mb-3">✗ Disadvantages</h4>
+                  <ul class="list-disc pl-4 space-y-2 text-xs text-rose-800">
+                    <li>Strict rate limits on the free tier (often runs out after 5-10 messages).</li>
+                    <li>No native live web browsing capabilities without integrations.</li>
+                    <li>No built-in voice interaction interface.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Callout: Claude Spec Table -->
+              <div class="rounded-2xl border border-slate-200 bg-slate-50/50 p-5 space-y-3 text-sm">
+                <p><strong>Best For:</strong> Writing essays, summarizing research literature, and editing creative papers.</p>
+                <p><strong>Key Feature:</strong> Artifacts UI (opens a side window to view, format, and edit code or generated text documents in real-time).</p>
+                <p><strong>Pricing:</strong> Free tier has limited access to Claude 3.5 Sonnet. Claude Pro costs $20/month.</p>
+                <p><strong>Verdict:</strong> The premier choice for humanities, history, and social science students who parse dense texts.</p>
+              </div>
+            </div>
+
+            <!-- Review: Gemini -->
+            <div id="tool-gemini" class="scroll-mt-20 border-t border-slate-100 pt-12">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-blue-600 border border-blue-100 font-bold font-display">03</span>
+                <h3 class="font-display text-2xl font-extrabold text-slate-900">Gemini (Google)</h3>
+              </div>
+              
+              <p class="text-sm sm:text-base text-slate-600 leading-relaxed mb-6">
+                Google's Gemini stands out due to its deep integration into the Google ecosystem. It has direct access to live Google Search indices and integrates directly with Google Docs, Gmail, and Google Drive, allowing you to summarize study materials saved on your cloud storage instantly.
+              </p>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+                <!-- Pros -->
+                <div class="p-5 rounded-2xl bg-emerald-50/30 border border-emerald-100">
+                  <h4 class="font-display font-bold text-emerald-950 text-sm mb-3">✓ Advantages</h4>
+                  <ul class="list-disc pl-4 space-y-2 text-xs text-emerald-800">
+                    <li>Reads and updates documents directly inside Google Docs and Drive.</li>
+                    <li>Massive context processing limits (can parse hours of lecture recordings).</li>
+                    <li>"Double Check" button searches Google to verify AI statements.</li>
+                  </ul>
+                </div>
+                <!-- Cons -->
+                <div class="p-5 rounded-2xl bg-rose-50/30 border border-rose-100">
+                  <h4 class="font-display font-bold text-rose-950 text-sm mb-3">✗ Disadvantages</h4>
+                  <ul class="list-disc pl-4 space-y-2 text-xs text-rose-800">
+                    <li>Can sometimes struggle with complex multi-step logical math.</li>
+                    <li>Can produce generic outputs if prompts lack details.</li>
+                    <li>Interface can feel cluttered due to workspace integrations.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Callout: Gemini Spec Table -->
+              <div class="rounded-2xl border border-slate-200 bg-slate-50/50 p-5 space-y-3 text-sm">
+                <p><strong>Best For:</strong> Lecture recording summaries, presentations, and working within Google Workspace.</p>
+                <p><strong>Key Feature:</strong> Workspace Extensions (pulls data from Gmail, Drive, Docs, and YouTube dynamically).</p>
+                <p><strong>Pricing:</strong> Free tier includes Gemini Flash. Gemini Advanced costs $20/month (comes with 2TB Google One storage).</p>
+                <p><strong>Verdict:</strong> Best for busy students who store all their lecture notes, PDFs, and slide decks inside Google Drive.</p>
+              </div>
+            </div>
+
+            <!-- Review: Perplexity -->
+            <div id="tool-perplexity" class="scroll-mt-20 border-t border-slate-100 pt-12">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-teal-50 text-teal-600 border border-teal-100 font-bold font-display">04</span>
+                <h3 class="font-display text-2xl font-extrabold text-slate-900">Perplexity AI</h3>
+              </div>
+              
+              <p class="text-sm sm:text-base text-slate-600 leading-relaxed mb-6">
+                Perplexity AI is a search-first answer engine designed to eliminate general web browsing. For students compiling research studies or writing term papers, Perplexity acts as a digital research assistant, searching the live web and returning cited, footnoted paragraphs pointing to primary source documents.
+              </p>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+                <!-- Pros -->
+                <div class="p-5 rounded-2xl bg-emerald-50/30 border border-emerald-100">
+                  <h4 class="font-display font-bold text-emerald-950 text-sm mb-3">✓ Advantages</h4>
+                  <ul class="list-disc pl-4 space-y-2 text-xs text-emerald-800">
+                    <li>Automatically cites sources with footnotes pointing to active URLs.</li>
+                    <li>"Focus" mode limits searches to Academic sources (via Semantic Scholar).</li>
+                    <li>Reduces search time by answering queries directly with inline sources.</li>
+                  </ul>
+                </div>
+                <!-- Cons -->
+                <div class="p-5 rounded-2xl bg-rose-50/30 border border-rose-100">
+                  <h4 class="font-display font-bold text-rose-950 text-sm mb-3">✗ Disadvantages</h4>
+                  <ul class="list-disc pl-4 space-y-2 text-xs text-rose-800">
+                    <li>Not designed for long-form creative writing or coding projects.</li>
+                    <li>Sourced websites can occasionally contain outdated data.</li>
+                    <li>Free queries are limited to standard, less comprehensive web searches.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Callout: Perplexity Spec Table -->
+              <div class="rounded-2xl border border-slate-200 bg-slate-50/50 p-5 space-y-3 text-sm">
+                <p><strong>Best For:</strong> Writing bibliographies, validating historical dates, and checking facts for debates.</p>
+                <p><strong>Key Feature:</strong> Focus Mode (filters search targets to Academic journals, Reddit forums, or YouTube videos).</p>
+                <p><strong>Pricing:</strong> Free basic search engine. Perplexity Pro costs $20/month for advanced model switches (Claude/GPT-4o).</p>
+                <p><strong>Verdict:</strong> Essential for researchers who need to verify facts and compile references for papers.</p>
+              </div>
+            </div>
+
+            <!-- Review: Notion AI -->
+            <div id="tool-notion" class="scroll-mt-20 border-t border-slate-100 pt-12">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-purple-50 text-purple-600 border border-purple-100 font-bold font-display">05</span>
+                <h3 class="font-display text-2xl font-extrabold text-slate-900">Notion AI</h3>
+              </div>
+              
+              <p class="text-sm sm:text-base text-slate-600 leading-relaxed mb-6">
+                Notion AI brings generative capabilities directly into the world's most popular student note-taking tool. By integrating AI inside your workspace, Notion AI summarizes notes, auto-formats class logs, and helps database pages communicate with each other to build study guides.
+              </p>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+                <!-- Pros -->
+                <div class="p-5 rounded-2xl bg-emerald-50/30 border border-emerald-100">
+                  <h4 class="font-display font-bold text-emerald-950 text-sm mb-3">✓ Advantages</h4>
+                  <ul class="list-disc pl-4 space-y-2 text-xs text-emerald-800">
+                    <li>Tightly integrated with note folders, study logs, and schedules.</li>
+                    <li>Autogenerates custom study guides, outlines, and flashcard sets.</li>
+                    <li>"Q&A" feature searches your entire note catalog to answer study queries.</li>
+                  </ul>
+                </div>
+                <!-- Cons -->
+                <div class="p-5 rounded-2xl bg-rose-50/30 border border-rose-100">
+                  <h4 class="font-display font-bold text-rose-950 text-sm mb-3">✗ Disadvantages</h4>
+                  <ul class="list-disc pl-4 space-y-2 text-xs text-rose-800">
+                    <li>No fully functional free tier for Notion AI (requires subscription add-on).</li>
+                    <li>Slower for general web research compared to search engines.</li>
+                    <li>Cannot execute or debug complex computer programming scripts natively.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Callout: Notion AI Spec Table -->
+              <div class="rounded-2xl border border-slate-200 bg-slate-50/50 p-5 space-y-3 text-sm">
+                <p><strong>Best For:</strong> Document organization, lecture note summarization, task planning, and exam preparation.</p>
+                <p><strong>Key Feature:</strong> Q&A Search (searches your private notes workspace to pull dates and facts instantly).</p>
+                <p><strong>Pricing:</strong> Core Notion is free for students. Notion AI is a $10/month subscription add-on.</p>
+                <p><strong>Verdict:</strong> Ideal for highly organized students who already utilize Notion databases to track courses.</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- How to Choose the Right AI Tool -->
+          <section id="how-to-choose" class="mt-20 border-t border-slate-100 pt-12">
+            <h2 class="font-display text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight mb-6 pb-2 border-b border-slate-100">
+              How to Choose the Right AI Tool for Your Major
+            </h2>
+            <p class="text-sm sm:text-base text-slate-600 leading-relaxed mb-6">
+              Not all academic programs require the same features. Choosing a tool depends on your primary studies:
+            </p>
+            
+            <div class="space-y-4">
+              <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200/60">
+                <h4 class="font-bold text-slate-900 text-sm">1. STEM & Computer Science Majors</h4>
+                <p class="text-xs text-slate-500 mt-1 leading-relaxed">
+                  Focus on models with strong logical reasoning and code interpretation. <strong>ChatGPT</strong> is the logical choice here due to its advanced debugging capabilities and python sandboxes.
+                </p>
+              </div>
+              
+              <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200/60">
+                <h4 class="font-bold text-slate-900 text-sm">2. Humanities & Liberal Arts Majors</h4>
+                <p class="text-xs text-slate-500 mt-1 leading-relaxed">
+                  Prioritize stylistic writing quality and long document processing. <strong>Claude</strong> leads in reading, analyzing, and synthesizing long text sources.
+                </p>
+              </div>
+
+              <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200/60">
+                <h4 class="font-bold text-slate-900 text-sm">3. Medicine & Pre-Law Research</h4>
+                <p class="text-xs text-slate-500 mt-1 leading-relaxed">
+                  Require verified citations and references. <strong>Perplexity AI</strong> prevents you from citing fake sources, mapping every statement back to primary literature databases.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Common Mistakes Students Make -->
+          <section id="common-mistakes" class="mt-16">
+            <h2 class="font-display text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight mb-6 pb-2 border-b border-slate-100">
+              Common Mistakes Students Make Using AI
+            </h2>
+            <p class="text-sm sm:text-base text-slate-600 leading-relaxed mb-6">
+              While AI tools can accelerate your study tracks, relying on them improperly can damage your GPA and reputation. Avoid these common pitfalls:
+            </p>
+            
+            <ul class="space-y-4 text-sm text-slate-600 leading-relaxed">
+              <li class="flex gap-2">
+                <span class="text-rose-500 shrink-0">⚠️</span>
+                <div>
+                  <strong>Blindly Trusting Computations:</strong> Large language models are probabilistic, meaning they guess the next word rather than calculate math equations. Always double-check formulas manually.
+                </div>
+              </li>
+              <li class="flex gap-2">
+                <span class="text-rose-500 shrink-0">⚠️</span>
+                <div>
+                  <strong>Ignoring Hallucinations:</strong> AI models frequently invent citations, case studies, or page numbers. Check every source link Perplexity or ChatGPT provides before referencing it in your paper.
+                </div>
+              </li>
+              <li class="flex gap-2">
+                <span class="text-rose-500 shrink-0">⚠️</span>
+                <div>
+                  <strong>Uploading Private Institutional Material:</strong> Avoid uploading unreleased exams, proprietary lab materials, or personal identifying data, as these files may enter model training datasets.
+                </div>
+              </li>
+              <li class="flex gap-2">
+                <span class="text-rose-500 shrink-0">⚠️</span>
+                <div>
+                  <strong>Omitting Human Edits:</strong> AI-generated writing has distinct vocabulary patterns ("delve", "testament", "tapestry"). Relying on AI text without editing will trigger plagiarism detectors.
+                </div>
+              </li>
+            </ul>
+          </section>
+
+          <!-- FAQ Section -->
+          <section id="faq" class="mt-20 border-t border-slate-100 pt-12">
+            <h2 class="font-display text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight mb-8">
+              Frequently Asked Questions (FAQ)
+            </h2>
+            
+            <div class="space-y-4">
+              
+              <!-- Q1 -->
+              <details class="group rounded-2xl bg-slate-50 border border-slate-200/80 p-4 transition-all duration-300 [&_summary::-webkit-details-marker]:hidden">
+                <summary class="flex items-center justify-between cursor-pointer focus:outline-none">
+                  <h4 class="text-sm font-semibold text-slate-800 transition-colors group-hover:text-indigo-600">
+                    Is using AI tools for schoolwork considered cheating?
+                  </h4>
+                  <span class="ml-1.5 shrink-0 rounded-lg bg-white p-1 text-slate-400 group-open:rotate-180 transition-transform duration-300 border border-slate-200">
+                    <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                    </svg>
+                  </span>
+                </summary>
+                <p class="mt-3 text-xs text-slate-500 leading-relaxed border-t border-slate-200/50 pt-2.5">
+                  It depends on how you use it and your school's policies. Using AI as a brainstorm partner, private tutor, or structural editor is generally accepted as an educational aid. Copying and pasting AI-generated text directly into your assignments and representing it as your own work is plagiarism and is considered academic dishonesty.
+                </p>
+              </details>
+
+              <!-- Q2 -->
+              <details class="group rounded-2xl bg-slate-50 border border-slate-200/80 p-4 transition-all duration-300 [&_summary::-webkit-details-marker]:hidden">
+                <summary class="flex items-center justify-between cursor-pointer focus:outline-none">
+                  <h4 class="text-sm font-semibold text-slate-800 transition-colors group-hover:text-indigo-600">
+                    Which AI tool is best for writing essays?
+                  </h4>
+                  <span class="ml-1.5 shrink-0 rounded-lg bg-white p-1 text-slate-400 group-open:rotate-180 transition-transform duration-300 border border-slate-200">
+                    <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                    </svg>
+                  </span>
+                </summary>
+                <p class="mt-3 text-xs text-slate-500 leading-relaxed border-t border-slate-200/50 pt-2.5">
+                  Claude is widely considered the best AI tool for writing essays and humanities papers. It produces a natural, fluid tone that avoids the cliché vocabulary patterns common in other language models, and exhibits advanced reading comprehension when parsing long academic PDFs.
+                </p>
+              </details>
+
+              <!-- Q3 -->
+              <details class="group rounded-2xl bg-slate-50 border border-slate-200/80 p-4 transition-all duration-300 [&_summary::-webkit-details-marker]:hidden">
+                <summary class="flex items-center justify-between cursor-pointer focus:outline-none">
+                  <h4 class="text-sm font-semibold text-slate-800 transition-colors group-hover:text-indigo-600">
+                    Which AI tool is best for math, coding, and STEM subjects?
+                  </h4>
+                  <span class="ml-1.5 shrink-0 rounded-lg bg-white p-1 text-slate-400 group-open:rotate-180 transition-transform duration-300 border border-slate-200">
+                    <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                    </svg>
+                  </span>
+                </summary>
+                <p class="mt-3 text-xs text-slate-500 leading-relaxed border-t border-slate-200/50 pt-2.5">
+                  ChatGPT is currently the top tool for coding, math, and STEM. Its integration of advanced reasoning models (like the o1 and newer reasoning series) allows it to run step-by-step logic, debug programming scripts, and explain complex mathematical theorems systematically.
+                </p>
+              </details>
+
+              <!-- Q4 -->
+              <details class="group rounded-2xl bg-slate-50 border border-slate-200/80 p-4 transition-all duration-300 [&_summary::-webkit-details-marker]:hidden">
+                <summary class="flex items-center justify-between cursor-pointer focus:outline-none">
+                  <h4 class="text-sm font-semibold text-slate-800 transition-colors group-hover:text-indigo-600">
+                    Can AI tools search the live web for current sources?
+                  </h4>
+                  <span class="ml-1.5 shrink-0 rounded-lg bg-white p-1 text-slate-400 group-open:rotate-180 transition-transform duration-300 border border-slate-200">
+                    <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                    </svg>
+                  </span>
+                </summary>
+                <p class="mt-3 text-xs text-slate-500 leading-relaxed border-t border-slate-200/50 pt-2.5">
+                  Yes. Perplexity and Gemini are built specifically with web-search integration. Perplexity stands out by searching the live web and returning structured bibliographies, citing the exact domains and papers it pulled details from.
+                </p>
+              </details>
+
+              <!-- Q5 -->
+              <details class="group rounded-2xl bg-slate-50 border border-slate-200/80 p-4 transition-all duration-300 [&_summary::-webkit-details-marker]:hidden">
+                <summary class="flex items-center justify-between cursor-pointer focus:outline-none">
+                  <h4 class="text-sm font-semibold text-slate-800 transition-colors group-hover:text-indigo-600">
+                    Are my document uploads kept private by these platforms?
+                  </h4>
+                  <span class="ml-1.5 shrink-0 rounded-lg bg-white p-1 text-slate-400 group-open:rotate-180 transition-transform duration-300 border border-slate-200">
+                    <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                    </svg>
+                  </span>
+                </summary>
+                <p class="mt-3 text-xs text-slate-500 leading-relaxed border-t border-slate-200/50 pt-2.5">
+                  By default, many free-tier consumer AI services may use your conversations and uploaded documents to train their models. If you are uploading proprietary study notes, check the settings to opt-out of model training, or use platforms that specify zero-data retention policies.
+                </p>
+              </details>
+
+              <!-- Q6 -->
+              <details class="group rounded-2xl bg-slate-50 border border-slate-200/80 p-4 transition-all duration-300 [&_summary::-webkit-details-marker]:hidden">
+                <summary class="flex items-center justify-between cursor-pointer focus:outline-none">
+                  <h4 class="text-sm font-semibold text-slate-800 transition-colors group-hover:text-indigo-600">
+                    Is there a completely free AI tool for organizing notes?
+                  </h4>
+                  <span class="ml-1.5 shrink-0 rounded-lg bg-white p-1 text-slate-400 group-open:rotate-180 transition-transform duration-300 border border-slate-200">
+                    <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                    </svg>
+                  </span>
+                </summary>
+                <p class="mt-3 text-xs text-slate-500 leading-relaxed border-t border-slate-200/50 pt-2.5">
+                  Yes, Notion offers a robust free tier for students to organize notes and study databases. While its built-in Notion AI assistant requires an additional paid add-on, the core organization templates, task systems, and databases are completely free.
+                </p>
+              </details>
+
+              <!-- Q7 -->
+              <details class="group rounded-2xl bg-slate-50 border border-slate-200/80 p-4 transition-all duration-300 [&_summary::-webkit-details-marker]:hidden">
+                <summary class="flex items-center justify-between cursor-pointer focus:outline-none">
+                  <h4 class="text-sm font-semibold text-slate-800 transition-colors group-hover:text-indigo-600">
+                    Do AI models make up facts (hallucinate)?
+                  </h4>
+                  <span class="ml-1.5 shrink-0 rounded-lg bg-white p-1 text-slate-400 group-open:rotate-180 transition-transform duration-300 border border-slate-200">
+                    <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                    </svg>
+                  </span>
+                </summary>
+                <p class="mt-3 text-xs text-slate-500 leading-relaxed border-t border-slate-200/50 pt-2.5">
+                  Yes. Every large language model is susceptible to hallucinations, where it confidently generates false facts, citation links, or mathematical computations. Always cross-verify critical academic facts against reliable textbooks, search engines, or peer-reviewed papers.
+                </p>
+              </details>
+
+              <!-- Q8 -->
+              <details class="group rounded-2xl bg-slate-50 border border-slate-200/80 p-4 transition-all duration-300 [&_summary::-webkit-details-marker]:hidden">
+                <summary class="flex items-center justify-between cursor-pointer focus:outline-none">
+                  <h4 class="text-sm font-semibold text-slate-800 transition-colors group-hover:text-indigo-600">
+                    How can I avoid getting flagged by AI detectors?
+                  </h4>
+                  <span class="ml-1.5 shrink-0 rounded-lg bg-white p-1 text-slate-400 group-open:rotate-180 transition-transform duration-300 border border-slate-200">
+                    <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                    </svg>
+                  </span>
+                </summary>
+                <p class="mt-3 text-xs text-slate-500 leading-relaxed border-t border-slate-200/50 pt-2.5">
+                  The only reliable way to avoid AI detection flags is to write the final assignments yourself. Use AI tools exclusively to outline ideas, structure draft paragraphs, or debug errors, then rewrite the actual copy in your own unique voice and stylistic structure.
+                </p>
+              </details>
+
+            </div>
+          </section>
+
+          <!-- Final Recommendations -->
+          <section id="final-recommendations" class="mt-16">
+            <h2 class="font-display text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight mb-6 pb-2 border-b border-slate-100">
+              Final Recommendations: Mapping Tools to Needs
+            </h2>
+            <p class="text-sm sm:text-base text-slate-600 leading-relaxed mb-6">
+              To summarize, don't look for a single AI tool to manage your entire education. A combined, strategic approach yields the best results:
+            </p>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
+              <div class="p-5 bg-slate-50 border border-slate-200 rounded-2xl">
+                <h4 class="font-bold text-slate-900 text-sm">Best Research Trio</h4>
+                <p class="text-xs text-slate-500 leading-relaxed mt-2">
+                  Combine <strong>Perplexity AI</strong> (finding source facts) + <strong>Claude</strong> (synthesizing and outlining arguments) for high-grade term studies.
+                </p>
+              </div>
+              <div class="p-5 bg-slate-50 border border-slate-200 rounded-2xl">
+                <h4 class="font-bold text-slate-900 text-sm">Best Coding Duo</h4>
+                <p class="text-xs text-slate-500 leading-relaxed mt-2">
+                  Combine <strong>ChatGPT</strong> (writing and debugging code structures) + <strong>Notion AI</strong> (maintaining project files and calendars).
+                </p>
+              </div>
+              <div class="p-5 bg-slate-50 border border-slate-200 rounded-2xl">
+                <h4 class="font-bold text-slate-900 text-sm">Best Lecture Combo</h4>
+                <p class="text-xs text-slate-500 leading-relaxed mt-2">
+                  Use <strong>Gemini</strong> to summarize high-volume recording transcripts directly within your <strong>Google Docs</strong> account.
+                </p>
+              </div>
+            </div>
+
+            <!-- Author Signoff -->
+            <div class="border-t border-slate-100 pt-8 mt-12 flex items-center justify-between text-xs text-slate-400">
+              <span>© 2026 Imperial Picks. All reviews independent and verified.</span>
+              <a href="/affiliate-disclosure" class="hover:underline text-indigo-600 font-semibold">Affiliate Disclosure</a>
+            </div>
+          </section>
+
+        </article>
+
+        <!-- Right Column: Sticky Table of Contents Sidebar -->
+        <aside class="hidden lg:block lg:col-span-4">
+          <div class="sticky top-24 space-y-6">
+            
+            <!-- Table of Contents Card -->
+            <div class="bg-white border border-slate-200/80 rounded-3xl p-6 shadow-xs">
+              <h3 class="font-display text-sm font-bold text-slate-900 uppercase tracking-widest border-b border-slate-100 pb-3 mb-4">
+                Table of Contents
+              </h3>
+              <nav class="space-y-3">
+                <a href="#introduction" class="toc-link block text-sm text-slate-600 hover:text-indigo-600 transition-colors font-medium">1. Introduction</a>
+                <a href="#comparison-table" class="toc-link block text-sm text-slate-600 hover:text-indigo-600 transition-colors font-medium">2. Comparison Table</a>
+                
+                <!-- Sublinks for detailed reviews -->
+                <div class="pl-4 border-l border-slate-200 space-y-2">
+                  <a href="#tool-chatgpt" class="toc-link block text-xs text-slate-500 hover:text-indigo-600 transition-colors">ChatGPT Review</a>
+                  <a href="#tool-claude" class="toc-link block text-xs text-slate-500 hover:text-indigo-600 transition-colors">Claude Review</a>
+                  <a href="#tool-gemini" class="toc-link block text-xs text-slate-500 hover:text-indigo-600 transition-colors">Gemini Review</a>
+                  <a href="#tool-perplexity" class="toc-link block text-xs text-slate-500 hover:text-indigo-600 transition-colors">Perplexity Review</a>
+                  <a href="#tool-notion" class="toc-link block text-xs text-slate-500 hover:text-indigo-600 transition-colors">Notion AI Review</a>
+                </div>
+
+                <a href="#how-to-choose" class="toc-link block text-sm text-slate-600 hover:text-indigo-600 transition-colors font-medium">3. How to Choose</a>
+                <a href="#common-mistakes" class="toc-link block text-sm text-slate-600 hover:text-indigo-600 transition-colors font-medium">4. Common Mistakes</a>
+                <a href="#faq" class="toc-link block text-sm text-slate-600 hover:text-indigo-600 transition-colors font-medium">5. FAQ Section</a>
+                <a href="#final-recommendations" class="toc-link block text-sm text-slate-600 hover:text-indigo-600 transition-colors font-medium">6. Final Recommendations</a>
+              </nav>
+            </div>
+
+            <!-- Submit a Tool Ad Card -->
+            <div class="bg-gradient-to-br from-indigo-900 via-indigo-950 to-slate-950 rounded-3xl p-6 text-white relative overflow-hidden shadow-sm">
+              <div class="absolute inset-0 bg-grid-pattern opacity-5 pointer-events-none"></div>
+              <h4 class="font-display text-base font-bold">Have a Great App?</h4>
+              <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+                Submit your AI utility to our catalog for organic curation and review by the editorial team.
+              </p>
+              <a 
+                href="/contact" 
+                class="inline-flex items-center justify-center w-full rounded-xl bg-white text-indigo-950 py-2.5 mt-4 text-xs font-bold shadow-xs hover:bg-slate-100 transition-colors"
+              >
+                Submit Now
+              </a>
+            </div>
+
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<script>
+  // Simple active state observer for the Table of Contents sidebar
+  const setupTOC = () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const id = entry.target.getAttribute('id');
+        const tocLink = document.querySelector(`.toc-link[href="#${id}"]`);
+        
+        if (!tocLink) return;
+
+        if (entry.isIntersecting) {
+          tocLink.classList.add('text-indigo-600');
+          tocLink.classList.remove('text-slate-600', 'text-slate-500');
+        } else {
+          tocLink.classList.remove('text-indigo-600');
+          if (tocLink.classList.contains('text-xs')) {
+            tocLink.classList.add('text-slate-500');
+          } else {
+            tocLink.classList.add('text-slate-600');
+          }
+        }
+      });
+    }, {
+      rootMargin: '-100px 0px -60% 0px'
+    });
+
+    const targets = document.querySelectorAll('section[id], div[id^="tool-"]');
+    targets.forEach(target => observer.observe(target));
+  };
+
+  setupTOC();
+  document.addEventListener('astro:after-swap', setupTOC);
+</script>
