@@ -1,0 +1,308 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import ArticleCard from "../components/ArticleCard.astro";
+
+// Real published articles
+const realArticles = [
+  {
+    title: "Best AI Tools for Students in 2026: The Ultimate Guide",
+    excerpt: "An in-depth review and comparison of ChatGPT, Claude, Gemini, Perplexity, and Notion AI, tailored for college and high school workloads.",
+    category: "Education",
+    date: "June 10, 2026",
+    readTime: "12 min read",
+    author: "Imperial Picks Editorial Team",
+    authorInitials: "IP",
+    authorColor: "bg-indigo-600 text-indigo-50",
+    visualClass: "from-blue-600 to-indigo-700",
+    link: "/ai-tools/best-ai-tools-for-students",
+    tags: ["students", "writing", "coding", "tutoring"],
+    visualPattern: `<svg class="absolute inset-0 h-full w-full stroke-white/10 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]" aria-hidden="true">
+      <defs>
+        <pattern id="grid-student" width="20" height="20" patternUnits="userSpaceOnUse" x="-1" y="-1">
+          <path d="M.5 20V.5H20" fill="none" />
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" stroke-width="0" fill="url(#grid-student)" />
+    </svg>`
+  },
+  {
+    title: "ChatGPT vs Claude: Which AI Assistant Is Better in 2026?",
+    excerpt: "An honest, hands-on head-to-head comparison of ChatGPT and Claude. Evaluate coding sandboxes, writing cadence, file limits, and premium subscription value.",
+    category: "AI Tools",
+    date: "June 10, 2026",
+    readTime: "15 min read",
+    author: "Imperial Picks Editorial Team",
+    authorInitials: "IP",
+    authorColor: "bg-indigo-600 text-indigo-50",
+    visualClass: "from-amber-600 to-orange-700",
+    link: "/ai-tools/chatgpt-vs-claude",
+    tags: ["chatgpt", "claude", "reasoning", "writing"],
+    visualPattern: `<svg class="absolute inset-0 h-full w-full stroke-white/10 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]" aria-hidden="true">
+      <defs>
+        <pattern id="grid-compare" width="20" height="20" patternUnits="userSpaceOnUse" x="-1" y="-1">
+          <path d="M20 0H0V20" fill="none" />
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#grid-compare)" />
+    </svg>`
+  }
+];
+
+// Planned editorial articles (Coming Soon)
+const plannedArticles = [
+  {
+    title: "The Ultimate Ad Spend ROI Cheat Sheet for Bootstrap Founders",
+    excerpt: "Unpack cost-effective customer acquisition metrics, benchmark CPC averages, and learn how to configure a balanced LTV/CAC ratio from day one.",
+    category: "Marketing",
+    tags: ["marketing", "ROI", "adspend", "startups"]
+  },
+  {
+    title: "Choosing Between Next.js, Astro, and Remix: A 2026 Guide",
+    excerpt: "An in-depth breakdown of server rendering speed, static building, content-driven layouts, and full-stack integrations for modern platforms.",
+    category: "Development",
+    tags: ["nextjs", "astro", "remix", "rendering"]
+  }
+];
+
+const totalRealCount = realArticles.length;
+const totalPlannedCount = plannedArticles.length;
+---
+
+<Layout title="Editorial Guides & Strategic Tutorials - Imperial Picks" description="Read comprehensive guides, comparison analyses, and tutorials on AI models, modern web development, and digital marketing return projections.">
+  <Navbar />
+  
+  <main class="relative bg-slate-50 min-h-screen py-12">
+    <!-- Background Patterns -->
+    <div class="absolute inset-0 bg-grid-pattern pointer-events-none"></div>
+
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Breadcrumbs -->
+      <nav class="flex text-xs font-semibold text-slate-500 gap-1.5 mb-6" aria-label="Breadcrumb">
+        <a href="/" class="hover:text-indigo-600">Home</a>
+        <span>/</span>
+        <span class="text-slate-800 font-bold">Blog</span>
+      </nav>
+
+      <!-- Hero Section -->
+      <div class="bg-white border border-slate-200/80 rounded-3xl p-6 sm:p-10 lg:p-12 shadow-xs mb-12">
+        <div class="max-w-3xl">
+          <span class="inline-flex items-center rounded-md bg-emerald-50 px-2.5 py-1 text-xs font-bold text-emerald-800 ring-1 ring-emerald-600/15 mb-4 border border-emerald-200/40">
+            Imperial Journal
+          </span>
+          <h1 class="font-display text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight mb-4">
+            Guides, Case Studies & Insights
+          </h1>
+          <p class="text-base sm:text-lg text-slate-600 leading-relaxed">
+            Deep analyses, software tutorials, and structural frameworks written by builders, for builders. We dig deep into APIs, study tools, and campaign metrics to help you make informed decisions.
+          </p>
+
+          <!-- Dynamic Statistics Badge -->
+          <div class="flex items-center gap-6 mt-8 border-t border-slate-100 pt-6">
+            <div>
+              <span class="text-xs font-semibold text-slate-400 block uppercase tracking-wider">Verified Articles</span>
+              <span class="text-2xl font-black text-slate-900 mt-1 block">{totalRealCount} Published</span>
+            </div>
+            <div class="h-8 w-px bg-slate-200"></div>
+            <div>
+              <span class="text-xs font-semibold text-slate-400 block uppercase tracking-wider">Research Queue</span>
+              <span class="text-2xl font-black text-slate-500 mt-1 block">{totalPlannedCount} Upcoming</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Controls Panel (Search & Filter) -->
+      <div class="bg-white border border-slate-200/80 rounded-3xl p-6 shadow-xs mb-10">
+        <div class="flex flex-col md:flex-row gap-4 justify-between items-center">
+          
+          <!-- Search box -->
+          <div class="w-full md:max-w-md relative">
+            <label for="search-input" class="sr-only">Search Articles</label>
+            <input 
+              type="text" 
+              id="search-input" 
+              placeholder="Search by keyword, author, or topic..." 
+              class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-2.5 pl-10 text-sm font-medium text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
+            />
+            <svg class="h-5 w-5 text-slate-400 absolute left-3 top-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </div>
+
+          <!-- Type Filters -->
+          <div class="flex flex-wrap gap-1.5 self-start md:self-auto" id="blog-filters">
+            <button 
+              data-filter="all" 
+              class="filter-btn rounded-xl px-3.5 py-1.5 text-xs font-bold bg-indigo-600 text-white transition-colors"
+            >
+              All Guides
+            </button>
+            <button 
+              data-filter="education" 
+              class="filter-btn rounded-xl px-3.5 py-1.5 text-xs font-bold bg-slate-50 text-slate-600 hover:text-slate-900 border border-slate-200/60 transition-colors"
+            >
+              Education
+            </button>
+            <button 
+              data-filter="ai tools" 
+              class="filter-btn rounded-xl px-3.5 py-1.5 text-xs font-bold bg-slate-50 text-slate-600 hover:text-slate-900 border border-slate-200/60 transition-colors"
+            >
+              AI Tools
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Content Grid -->
+      <div class="space-y-16">
+        
+        <!-- Published Articles Grid -->
+        <div>
+          <h2 class="font-display text-xl sm:text-2xl font-bold text-slate-900 tracking-tight mb-6 flex items-center gap-2">
+            <span class="h-2 w-2 rounded-full bg-emerald-500"></span> Published Guides
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="blog-grid">
+            {realArticles.map((art) => (
+              <div class="blog-card-wrapper" data-category={art.category.toLowerCase()} data-title={art.title.toLowerCase()} data-excerpt={art.excerpt.toLowerCase()}>
+                <ArticleCard {...art} />
+              </div>
+            ))}
+          </div>
+
+          <!-- Empty State -->
+          <div id="empty-state" class="hidden bg-white border border-slate-200/80 rounded-3xl p-12 text-center max-w-md mx-auto">
+            <div class="h-12 w-12 rounded-full bg-slate-50 text-slate-400 flex items-center justify-center mx-auto mb-4 border border-slate-200/60">
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h3 class="font-display text-base font-bold text-slate-900">No Articles Found</h3>
+            <p class="text-xs text-slate-500 mt-2">
+              We couldn't find any articles matching your search criteria. Try modifying your search term.
+            </p>
+          </div>
+        </div>
+
+        <!-- Planned/Upcoming Articles Grid -->
+        <div class="border-t border-slate-200/60 pt-16">
+          <div class="mb-8">
+            <h2 class="font-display text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
+              Upcoming Guides & Research
+            </h2>
+            <p class="text-xs text-slate-500 mt-1">
+              The following topics are currently being researched. Subscribe to be notified when they are released.
+            </p>
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {plannedArticles.map((art) => (
+              <div class="group border border-slate-200 bg-white/60 rounded-3xl p-6 shadow-xs relative overflow-hidden flex flex-col justify-between h-48 opacity-80 hover:opacity-100 transition-opacity duration-300">
+                <div>
+                  <div class="flex items-center justify-between mb-4">
+                    <span class="inline-flex items-center rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-bold text-slate-600 ring-1 ring-inset ring-slate-500/10">
+                      Research In Progress
+                    </span>
+                    <span class="text-[9px] font-semibold text-slate-400">Planned</span>
+                  </div>
+                  <h3 class="font-display text-base font-bold text-slate-900 mb-2">{art.title}</h3>
+                  <p class="text-xs text-slate-500 leading-relaxed line-clamp-2">{art.excerpt}</p>
+                </div>
+                
+                <div class="flex flex-wrap gap-1 mt-4">
+                  {art.tags.map((tag) => (
+                    <span class="inline-flex items-center rounded-md bg-slate-50 px-2 py-0.5 text-[9px] font-medium text-slate-400 border border-slate-200/40">
+                      #{tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<script>
+  const setupBlogFilters = () => {
+    const searchInput = document.getElementById('search-input') as HTMLInputElement;
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const articles = document.querySelectorAll('.blog-card-wrapper');
+    const emptyState = document.getElementById('empty-state');
+    const blogGrid = document.getElementById('blog-grid');
+
+    if (!articles.length) return;
+
+    let activeFilter = 'all';
+    let searchQuery = '';
+
+    const filterArticles = () => {
+      let visibleCount = 0;
+
+      articles.forEach(art => {
+        const title = art.getAttribute('data-title') || '';
+        const excerpt = art.getAttribute('data-excerpt') || '';
+        const category = art.getAttribute('data-category') || '';
+
+        const matchesSearch = title.includes(searchQuery) || excerpt.includes(searchQuery);
+        const matchesFilter = activeFilter === 'all' || category === activeFilter;
+
+        if (matchesSearch && matchesFilter) {
+          art.classList.remove('hidden');
+          visibleCount++;
+        } else {
+          art.classList.add('hidden');
+        }
+      });
+
+      // Toggle Empty State
+      if (emptyState && blogGrid) {
+        if (visibleCount === 0) {
+          emptyState.classList.remove('hidden');
+          blogGrid.classList.add('hidden');
+        } else {
+          emptyState.classList.add('hidden');
+          blogGrid.classList.remove('hidden');
+        }
+      }
+    };
+
+    // Filter Buttons listeners
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filterVal = btn.getAttribute('data-filter') || 'all';
+
+        // Toggle active design styles
+        filterButtons.forEach(b => {
+          b.classList.remove('bg-indigo-600', 'text-white');
+          b.classList.add('bg-slate-50', 'text-slate-600', 'border-slate-200/60');
+        });
+        btn.classList.add('bg-indigo-600', 'text-white');
+        btn.classList.remove('bg-slate-50', 'text-slate-600', 'border-slate-200/60');
+
+        activeFilter = filterVal;
+        filterArticles();
+      });
+    });
+
+    // Search input listener
+    if (searchInput) {
+      searchInput.addEventListener('input', () => {
+        searchQuery = searchInput.value.toLowerCase().trim();
+        filterArticles();
+      });
+    }
+  };
+
+  setupBlogFilters();
+  document.addEventListener('astro:after-swap', setupBlogFilters);
+</script>

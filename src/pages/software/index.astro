@@ -1,0 +1,204 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import CategoryCard from "../../components/CategoryCard.astro";
+
+// Planned review verticals
+const plannedSoftware = [
+  {
+    title: "CRM Software",
+    description: "Evaluations of lead tracking databases, pipeline tools, and customer management SaaS for startups.",
+    tags: ["Sales Pipeline", "CRM Analytics", "Customer Support"]
+  },
+  {
+    title: "Email Marketing Software",
+    description: "Audits of newsletter tools, drip sequence automations, drag-and-drop builders, and deliverability metrics.",
+    tags: ["Newsletters", "Campaign Automation", "A/B Testing"]
+  },
+  {
+    title: "Productivity Software",
+    description: "Comparisons of collaborative hubs, note-taking directories, project management boards, and time tracking logs.",
+    tags: ["Tasks Management", "Collaboration", "Workspaces"]
+  },
+  {
+    title: "Business Software",
+    description: "Reviews of invoicing platforms, bookkeeping spreadsheets, contract templates, and human resource databases.",
+    tags: ["Accounting", "Invoicing", "HR SaaS"]
+  }
+];
+---
+
+<Layout title="SaaS & Software Audits Directory - Imperial Picks" description="Independent evaluations and comparisons of cloud software, marketing CRM platforms, and productivity suites. Pure analysis, zero sponsor biases.">
+  <Navbar />
+  
+  <main class="relative bg-slate-50 min-h-screen py-12">
+    <!-- Background Patterns -->
+    <div class="absolute inset-0 bg-grid-pattern pointer-events-none"></div>
+
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Breadcrumbs -->
+      <nav class="flex text-xs font-semibold text-slate-500 gap-1.5 mb-6" aria-label="Breadcrumb">
+        <a href="/" class="hover:text-indigo-600">Home</a>
+        <span>/</span>
+        <span class="text-slate-800 font-bold">Software</span>
+      </nav>
+
+      <!-- Hero Section -->
+      <div class="bg-white border border-slate-200/80 rounded-3xl p-6 sm:p-10 lg:p-12 shadow-xs mb-12">
+        <div class="max-w-3xl">
+          <span class="inline-flex items-center rounded-md bg-purple-50 px-2.5 py-1 text-xs font-bold text-purple-700 mb-4 border border-purple-200/40">
+            SaaS Directory
+          </span>
+          <h1 class="font-display text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight mb-4">
+            Software & SaaS Audits
+          </h1>
+          <p class="text-base sm:text-lg text-slate-600 leading-relaxed">
+            Discover the best software platforms and cloud applications to grow your business. Our audits evaluate interface speeds, API integrations, real pricing values, and team collaboration setups.
+          </p>
+
+          <!-- Dynamic Statistics Badge -->
+          <div class="flex items-center gap-6 mt-8 border-t border-slate-100 pt-6">
+            <div>
+              <span class="text-xs font-semibold text-slate-400 block uppercase tracking-wider">Verified Audits</span>
+              <span class="text-2xl font-black text-slate-400 mt-1 block">0 Published</span>
+            </div>
+            <div class="h-8 w-px bg-slate-200"></div>
+            <div>
+              <span class="text-xs font-semibold text-slate-400 block uppercase tracking-wider">In Evaluation Queue</span>
+              <span class="text-2xl font-black text-slate-900 mt-1 block">4 Verticals</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Empty State & Planned Structure -->
+      <div class="space-y-16">
+        
+        <!-- Premium Empty State Panel -->
+        <div class="bg-white border border-slate-200/80 rounded-3xl p-8 sm:p-12 text-center max-w-2xl mx-auto shadow-xs">
+          <!-- Info Circle Icon -->
+          <div class="h-14 w-14 rounded-full bg-amber-50 text-amber-600 flex items-center justify-center mx-auto mb-6 border border-amber-200/40 shadow-xs">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+          </div>
+          <h2 class="font-display text-xl font-bold text-slate-900 mb-3">Directory Under Development</h2>
+          <p class="text-sm text-slate-600 leading-relaxed max-w-md mx-auto mb-6">
+            To ensure complete honesty and precision, we do not copy-paste standard reviews or publish fake marketing numbers. Our editorial team is currently evaluating several SaaS tools to generate objective reports.
+          </p>
+          
+          <div class="inline-flex gap-4">
+            <a 
+              href="/#newsletter" 
+              class="inline-flex items-center justify-center rounded-xl bg-slate-900 px-4.5 py-2.5 text-xs font-semibold text-white shadow-sm transition-colors hover:bg-slate-800"
+            >
+              Get Notified on Launch
+            </a>
+            <a 
+              href="/contact" 
+              class="inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-4.5 py-2.5 text-xs font-semibold text-slate-700 shadow-xs hover:bg-slate-50 transition-colors"
+            >
+              Submit Your App for Review
+            </a>
+          </div>
+        </div>
+
+        <!-- Planned Verticals Section -->
+        <div class="border-t border-slate-200/60 pt-16">
+          <div class="mb-8">
+            <h2 class="font-display text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
+              Planned Evaluation Verticals
+            </h2>
+            <p class="text-xs text-slate-500 mt-1">
+              Our analysis team is structuring evaluation metrics for the following SaaS groupings.
+            </p>
+          </div>
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {plannedSoftware.map((sw) => (
+              <div class="group border border-slate-200 bg-white rounded-3xl p-6 shadow-xs relative overflow-hidden flex flex-col justify-between h-52">
+                <div>
+                  <span class="inline-flex items-center rounded-full bg-slate-100 px-2 py-0.5 text-[9px] font-bold text-slate-500 mb-4 ring-1 ring-inset ring-slate-500/10">
+                    Niche Planned
+                  </span>
+                  <h3 class="font-display text-base font-bold text-slate-900 mb-2">{sw.title}</h3>
+                  <p class="text-xs text-slate-500 leading-relaxed line-clamp-3">{sw.description}</p>
+                </div>
+                
+                <div class="flex flex-wrap gap-1 mt-4">
+                  {sw.tags.map((tag) => (
+                    <span class="inline-flex items-center rounded-md bg-slate-50 px-1.5 py-0.5 text-[9px] font-medium text-slate-400 border border-slate-200/40">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Cross Linking Section (Navigating to other active pages) -->
+        <div class="border-t border-slate-200/60 pt-16">
+          <h2 class="font-display text-xl font-bold text-slate-900 mb-6">Explore Other Directories</h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            <CategoryCard 
+              id="ai-tools" 
+              title="AI Tools" 
+              description="Review and compare the top artificial intelligence models, text writers, and coders."
+              count="2 Verified Guides"
+              tags={["LLMs", "Reasoning", "Writing"]}
+              gradient="from-blue-500 to-indigo-600"
+              shadow="shadow-blue-100/50"
+              bgLight="bg-blue-50/50"
+              textCol="text-blue-700"
+            >
+              <svg slot="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 21m0 0-.813-5.096L9 21Zm0 0h-9m11.813-5.096L15 21m0 0 .813-5.096L15 21Zm0 0h9m-11.813-5.096L12 9.75M9 21H3a1.5 1.5 0 0 1-1.5-1.5V15m18 6h-6a1.5 1.5 0 0 0-1.5-1.5V15M9 9.75c0 .621-.504 1.125-1.125 1.125h-3A1.125 1.125 0 0 1 3.75 9.75v-3A1.125 1.125 0 0 1 4.875 5.625h3c.621 0 1.125 0.504 1.125 1.125v3ZM20.25 9.75c0 .621-.504 1.125-1.125 1.125h-3a1.125 1.125 0 0 1-1.125-1.125v-3a1.125 1.125 0 0 1 1.125-1.125h3c.621 0 1.125 0.504 1.125 1.125v3Z" />
+              </svg>
+            </CategoryCard>
+
+            <CategoryCard 
+              id="tools" 
+              title="Interactive Calculators" 
+              description="Model and estimate campaigns with our free marketing and affiliate ROI tools."
+              count="2 Interactive Tools"
+              tags={["ROI", "Affiliate Math", "Conversions"]}
+              gradient="from-amber-500 to-orange-600"
+              shadow="shadow-amber-100/50"
+              bgLight="bg-amber-50/50"
+              textCol="text-amber-700"
+            >
+              <svg slot="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 15.75h.008v.008h-.008v-.008Zm0-2.25h.008v.008h-.008v-.008Zm0-2.25h.008v.008h-.008v-.008Zm0-2.25h.008v.008h-.008v-.008Zm0-2.25h.008v.008h-.008v-.008Zm-2.25 11.25h.008v.008h-.008v-.008Zm0-2.25h.008v.008h-.008v-.008Zm0-2.25h.008v.008h-.008v-.008Zm0-2.25h.008v.008h-.008v-.008Zm0-2.25h.008v.008h-.008v-.008Zm-2.25 11.25h.008v.008h-.008v-.008Zm0-2.25h.008v.008h-.008v-.008Zm0-2.25h.008v.008h-.008v-.008Zm0-2.25h.008v.008h-.008v-.008Zm-2.25 9h.008v.008H9v-.008Zm0-2.25h.008v.008H9v-.008Zm0-2.25h.008v.008H9v-.008Zm-2.25 6.75h.008v.008H6.75v-.008Zm0-2.25h.008v.008H6.75v-.008Zm0-2.25h.008v.008H6.75v-.008ZM2.25 21h19.5a2.25 2.25 0 0 0 2.25-2.25V5.25A2.25 2.25 0 0 0 21.75 3H2.25A2.25 2.25 0 0 0 0 5.25v13.5A2.25 2.25 0 0 0 2.25 21Z" />
+              </svg>
+            </CategoryCard>
+
+            <CategoryCard 
+              id="blog" 
+              title="Editorial Guides & Blog" 
+              description="Read tutorials and strategies for marketing setups, framework performance, and study tools."
+              count="2 Guides"
+              tags={["SEO", "Development", "Education"]}
+              gradient="from-emerald-500 to-teal-600"
+              shadow="shadow-emerald-100/50"
+              bgLight="bg-emerald-50/50"
+              textCol="text-emerald-700"
+            >
+              <svg slot="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
+              </svg>
+            </CategoryCard>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

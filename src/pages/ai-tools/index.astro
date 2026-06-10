@@ -1,0 +1,317 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import ArticleCard from "../../components/ArticleCard.astro";
+
+// Real Article List
+const realArticles = [
+  {
+    title: "Best AI Tools for Students in 2026: The Ultimate Guide",
+    excerpt: "An in-depth review and comparison of ChatGPT, Claude, Gemini, Perplexity, and Notion AI, tailored for college and high school workloads.",
+    category: "Education",
+    date: "June 10, 2026",
+    readTime: "12 min read",
+    author: "Imperial Picks Editorial Team",
+    authorInitials: "IP",
+    authorColor: "bg-indigo-600 text-indigo-50",
+    visualClass: "from-blue-600 to-indigo-700",
+    link: "/ai-tools/best-ai-tools-for-students",
+    tags: ["students", "writing", "coding", "tutoring"],
+    visualPattern: `<svg class="absolute inset-0 h-full w-full stroke-white/10 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]" aria-hidden="true">
+      <defs>
+        <pattern id="grid-student" width="20" height="20" patternUnits="userSpaceOnUse" x="-1" y="-1">
+          <path d="M.5 20V.5H20" fill="none" />
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" stroke-width="0" fill="url(#grid-student)" />
+    </svg>`
+  },
+  {
+    title: "ChatGPT vs Claude: Which AI Assistant Is Better in 2026?",
+    excerpt: "An honest, hands-on head-to-head comparison of ChatGPT and Claude. Evaluate coding sandboxes, writing cadence, file limits, and premium subscription value.",
+    category: "AI Tools",
+    date: "June 10, 2026",
+    readTime: "15 min read",
+    author: "Imperial Picks Editorial Team",
+    authorInitials: "IP",
+    authorColor: "bg-indigo-600 text-indigo-50",
+    visualClass: "from-amber-600 to-orange-700",
+    link: "/ai-tools/chatgpt-vs-claude",
+    tags: ["chatgpt", "claude", "reasoning", "writing"],
+    visualPattern: `<svg class="absolute inset-0 h-full w-full stroke-white/10 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]" aria-hidden="true">
+      <defs>
+        <pattern id="grid-compare" width="20" height="20" patternUnits="userSpaceOnUse" x="-1" y="-1">
+          <path d="M20 0H0V20" fill="none" />
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#grid-compare)" />
+    </svg>`
+  }
+];
+
+// Planned Articles (Coming Soon)
+const plannedArticles = [
+  {
+    title: "Best AI Coding Assistants",
+    description: "An evaluation of code-generation engines, copilot integrations, and command-line helpers for developers.",
+    tags: ["developers", "copilot", "coding"]
+  },
+  {
+    title: "Best AI Note-Taking Apps",
+    description: "Compare AI-enhanced document editors, smart folders, search indexes, and voice recording transcript systems.",
+    tags: ["productivity", "organization", "notes"]
+  },
+  {
+    title: "Best AI Image Generators",
+    description: "Compare text-to-image render engines, vector art generators, and design prototypes for marketers.",
+    tags: ["design", "art", "marketing"]
+  }
+];
+
+const totalRealCount = realArticles.length;
+const totalPlannedCount = plannedArticles.length;
+---
+
+<Layout title="AI Tools Curation & Comparisons - Imperial Picks" description="Discover and compare the top artificial intelligence models, custom agents, text writers, and coding assistants in 2026. Honest, non-sponsored editorial analyses.">
+  <Navbar />
+  
+  <main class="relative bg-slate-50 min-h-screen py-12">
+    <!-- Background Patterns -->
+    <div class="absolute inset-0 bg-grid-pattern pointer-events-none"></div>
+
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Breadcrumbs -->
+      <nav class="flex text-xs font-semibold text-slate-500 gap-1.5 mb-6" aria-label="Breadcrumb">
+        <a href="/" class="hover:text-indigo-600">Home</a>
+        <span>/</span>
+        <span class="text-slate-800 font-bold">AI Tools</span>
+      </nav>
+
+      <!-- Hero Section -->
+      <div class="bg-white border border-slate-200/80 rounded-3xl p-6 sm:p-10 lg:p-12 shadow-xs mb-12">
+        <div class="max-w-3xl">
+          <span class="inline-flex items-center rounded-md bg-blue-50 px-2.5 py-1 text-xs font-bold text-blue-700 mb-4 border border-blue-200/40">
+            Technology Directory
+          </span>
+          <h1 class="font-display text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight mb-4">
+            AI Tools Curation Hub
+          </h1>
+          <p class="text-base sm:text-lg text-slate-600 leading-relaxed">
+            Supercharge your workflow with our handpicked directory of artificial intelligence tools, reasoning models, writing assistants, and graphic synthesis engines. Our team tests and audits each system to bring you unbiased reviews.
+          </p>
+
+          <!-- Dynamic Statistics Badge -->
+          <div class="flex items-center gap-6 mt-8 border-t border-slate-100 pt-6">
+            <div>
+              <span class="text-xs font-semibold text-slate-400 block uppercase tracking-wider">Verified Guides</span>
+              <span class="text-2xl font-black text-slate-900 mt-1 block">{totalRealCount} Published</span>
+            </div>
+            <div class="h-8 w-px bg-slate-200"></div>
+            <div>
+              <span class="text-xs font-semibold text-slate-400 block uppercase tracking-wider">In Research</span>
+              <span class="text-2xl font-black text-slate-500 mt-1 block">{totalPlannedCount} Upcoming</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Controls Panel (Search & Tags Filter) -->
+      <div class="bg-white border border-slate-200/80 rounded-3xl p-6 shadow-xs mb-10">
+        <div class="flex flex-col md:flex-row gap-4 justify-between items-center">
+          
+          <!-- Search box -->
+          <div class="w-full md:max-w-md relative">
+            <label for="search-input" class="sr-only">Search AI Tools Guides</label>
+            <input 
+              type="text" 
+              id="search-input" 
+              placeholder="Search guides, comparison terms..." 
+              class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-2.5 pl-10 text-sm font-medium text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
+            />
+            <svg class="h-5 w-5 text-slate-400 absolute left-3 top-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </div>
+
+          <!-- Tag Filters -->
+          <div class="flex flex-wrap gap-1.5 self-start md:self-auto" id="tag-filters">
+            <button 
+              data-filter="all" 
+              class="filter-btn rounded-xl px-3.5 py-1.5 text-xs font-bold bg-indigo-600 text-white transition-colors"
+            >
+              All Topics
+            </button>
+            <button 
+              data-filter="students" 
+              class="filter-btn rounded-xl px-3.5 py-1.5 text-xs font-bold bg-slate-50 text-slate-600 hover:text-slate-900 border border-slate-200/60 transition-colors"
+            >
+              Students
+            </button>
+            <button 
+              data-filter="writing" 
+              class="filter-btn rounded-xl px-3.5 py-1.5 text-xs font-bold bg-slate-50 text-slate-600 hover:text-slate-900 border border-slate-200/60 transition-colors"
+            >
+              Writing
+            </button>
+            <button 
+              data-filter="coding" 
+              class="filter-btn rounded-xl px-3.5 py-1.5 text-xs font-bold bg-slate-50 text-slate-600 hover:text-slate-900 border border-slate-200/60 transition-colors"
+            >
+              Coding
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Content Sections -->
+      <div class="space-y-16">
+        
+        <!-- Published Content Grid -->
+        <div>
+          <h2 class="font-display text-xl sm:text-2xl font-bold text-slate-900 tracking-tight mb-6 flex items-center gap-2">
+            <span class="h-2 w-2 rounded-full bg-emerald-500"></span> Editorial Guides
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="published-grid">
+            {realArticles.map((art) => (
+              <div class="card-wrapper" data-tags={art.tags.join(',')} data-title={art.title.toLowerCase()} data-excerpt={art.excerpt.toLowerCase()}>
+                <ArticleCard {...art} />
+              </div>
+            ))}
+          </div>
+          
+          <!-- Empty State (Hidden by default, toggled via script) -->
+          <div id="empty-state" class="hidden bg-white border border-slate-200/80 rounded-3xl p-12 text-center max-w-md mx-auto">
+            <div class="h-12 w-12 rounded-full bg-slate-50 text-slate-400 flex items-center justify-center mx-auto mb-4 border border-slate-200/60">
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h3 class="font-display text-base font-bold text-slate-900">No Guides Found</h3>
+            <p class="text-xs text-slate-500 mt-2">
+              We couldn't find any published reviews matching your search criteria. Try clearing filters or typing a different term.
+            </p>
+          </div>
+        </div>
+
+        <!-- Planned Content Grid (Placeholders) -->
+        <div class="border-t border-slate-200/60 pt-16">
+          <div class="mb-8">
+            <h2 class="font-display text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
+              Upcoming Curation & Research
+            </h2>
+            <p class="text-xs text-slate-500 mt-1">
+              Our review queue represents articles undergoing testing. No fake logs or pre-baked scores are generated.
+            </p>
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {plannedArticles.map((planned) => (
+              <div class="group border border-slate-200 bg-white/60 rounded-3xl p-6 shadow-xs relative overflow-hidden flex flex-col justify-between h-48 opacity-80 hover:opacity-100 transition-opacity duration-300">
+                <div>
+                  <div class="flex items-center justify-between mb-4">
+                    <span class="inline-flex items-center rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-bold text-slate-600 ring-1 ring-inset ring-slate-500/10">
+                      Under Evaluation
+                    </span>
+                    <span class="text-[9px] font-semibold text-slate-400">Planned</span>
+                  </div>
+                  <h3 class="font-display text-base font-bold text-slate-900 mb-2">{planned.title}</h3>
+                  <p class="text-xs text-slate-500 leading-relaxed line-clamp-2">{planned.description}</p>
+                </div>
+                
+                <div class="flex flex-wrap gap-1 mt-4">
+                  {planned.tags.map((tag) => (
+                    <span class="inline-flex items-center rounded-md bg-slate-50 px-2 py-0.5 text-[9px] font-medium text-slate-400 border border-slate-200/40">
+                      #{tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<script>
+  const setupAIFilters = () => {
+    const searchInput = document.getElementById('search-input') as HTMLInputElement;
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.card-wrapper');
+    const emptyState = document.getElementById('empty-state');
+    const publishedGrid = document.getElementById('published-grid');
+
+    if (!cards.length) return;
+
+    let activeFilter = 'all';
+    let searchQuery = '';
+
+    const filterCards = () => {
+      let visibleCount = 0;
+
+      cards.forEach(card => {
+        const title = card.getAttribute('data-title') || '';
+        const excerpt = card.getAttribute('data-excerpt') || '';
+        const tags = (card.getAttribute('data-tags') || '').split(',');
+
+        const matchesSearch = title.includes(searchQuery) || excerpt.includes(searchQuery);
+        const matchesFilter = activeFilter === 'all' || tags.includes(activeFilter);
+
+        if (matchesSearch && matchesFilter) {
+          card.classList.remove('hidden');
+          visibleCount++;
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+
+      // Toggle Empty State
+      if (emptyState && publishedGrid) {
+        if (visibleCount === 0) {
+          emptyState.classList.remove('hidden');
+          publishedGrid.classList.add('hidden');
+        } else {
+          emptyState.classList.add('hidden');
+          publishedGrid.classList.remove('hidden');
+        }
+      }
+    };
+
+    // Filter Buttons listeners
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filterVal = btn.getAttribute('data-filter') || 'all';
+
+        // Toggle active design styles
+        filterButtons.forEach(b => {
+          b.classList.remove('bg-indigo-600', 'text-white');
+          b.classList.add('bg-slate-50', 'text-slate-600', 'border-slate-200/60');
+        });
+        btn.classList.add('bg-indigo-600', 'text-white');
+        btn.classList.remove('bg-slate-50', 'text-slate-600', 'border-slate-200/60');
+
+        activeFilter = filterVal;
+        filterCards();
+      });
+    });
+
+    // Search input listener
+    if (searchInput) {
+      searchInput.addEventListener('input', () => {
+        searchQuery = searchInput.value.toLowerCase().trim();
+        filterCards();
+      });
+    }
+  };
+
+  setupAIFilters();
+  document.addEventListener('astro:after-swap', setupAIFilters);
+</script>
