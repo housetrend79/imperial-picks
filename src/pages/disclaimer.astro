@@ -1,0 +1,118 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout title="Disclaimer - Imperial Picks" description="Read the Disclaimer for Imperial Picks (https://imperialpicks.in). Learn about educational limits, professional advice exclusions, and user risk allocations.">
+  <Navbar />
+  
+  <main class="relative bg-slate-50 min-h-screen">
+    <!-- Background Patterns -->
+    <div class="absolute inset-0 bg-grid-pattern pointer-events-none"></div>
+    
+    <!-- Header Hero -->
+    <section class="relative pt-16 pb-10 sm:pt-20 border-b border-slate-200 bg-white">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <h1 class="font-display text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
+          Disclaimer
+        </h1>
+        <div class="mt-3 flex flex-wrap items-center gap-4 text-sm text-slate-500 font-medium">
+          <span>Website URL: <a href="https://imperialpicks.in" class="text-indigo-600 hover:underline">https://imperialpicks.in</a></span>
+          <span class="hidden sm:inline text-slate-300">•</span>
+          <span>Last Updated: June 10, 2026</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Disclaimer Content -->
+    <section class="relative py-16">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-3xl border border-slate-200 p-6 sm:p-10 shadow-xs space-y-8">
+          
+          <div>
+            <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
+              This Disclaimer sets forth the general guidelines, disclosures, and terms regarding your use of the Imperial Picks directory, tools, and calculators located at <a href="https://imperialpicks.in" class="text-indigo-600 hover:underline">https://imperialpicks.in</a>. By accessing or using this website, you acknowledge that you have read and agreed to these terms.
+            </p>
+          </div>
+
+          <!-- Section 1 -->
+          <div>
+            <h2 class="font-display text-xl font-bold text-slate-900 border-b border-slate-100 pb-2 mb-4">
+              1. Educational & Informational Purposes Only
+            </h2>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              All information, articles, product reviews, software comparisons, guides, and interactive tools published on Imperial Picks are intended solely for educational, planning, and informational purposes. The content represents our opinions, research, and analysis at the time of writing, but should not be taken as a complete, definitive source of truth.
+            </p>
+          </div>
+
+          <!-- Section 2 -->
+          <div>
+            <h2 class="font-display text-xl font-bold text-slate-900 border-b border-slate-100 pb-2 mb-4">
+              2. No Professional Advice
+            </h2>
+            <p class="text-sm text-slate-600 leading-relaxed mb-4">
+              The information provided on this website does not constitute, and must not be treated as:
+            </p>
+            <ul class="list-disc pl-6 space-y-2.5 text-sm text-slate-600 leading-relaxed">
+              <li>
+                <strong>Financial or Investment Advice:</strong> Our reviews of paid SaaS platforms, billing structures, or ROI estimations do not constitute recommendations to purchase securities, invest, or commit capital.
+              </li>
+              <li>
+                <strong>Legal or Compliance Advice:</strong> Descriptions of privacy, GDPR, or compliance parameters of third-party tools are for general context and should not be relied upon to meet legal audits.
+              </li>
+              <li>
+                <strong>Campaign or Marketing Guarantees:</strong> Projections made by our Ad Spend ROI Calculator are strictly mathematical simulations. We do not guarantee ad conversions, click counts, sales revenues, or campaign results.
+              </li>
+            </ul>
+          </div>
+
+          <!-- Section 3 -->
+          <div>
+            <h2 class="font-display text-xl font-bold text-slate-900 border-b border-slate-100 pb-2 mb-4">
+              3. User Responsibility & Allocation of Risk
+            </h2>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              You assume full responsibility for any choices or actions you make based on information found on our site. Imperial Picks, its writers, and its parent organization shall not be held liable for any direct, indirect, incidental, or consequential damages resulting from your use of reviewed tools, calculator assumptions, or marketing campaign configurations. You are urged to perform your own due diligence before investing money in ad spend, software licenses, or digital business setups.
+            </p>
+          </div>
+
+          <!-- Section 4 -->
+          <div>
+            <h2 class="font-display text-xl font-bold text-slate-900 border-b border-slate-100 pb-2 mb-4">
+              4. Accuracy of Product Details & Pricing
+            </h2>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Although we strive to keep reviews up to date, software vendors frequently update their terms, pricing packages, features, and API integrations. We make no representations or warranties of any kind, express or implied, regarding the current completeness, accuracy, reliability, or availability of the featured software listings on our directory. Always verify current prices and features directly on the vendor's website.
+            </p>
+          </div>
+
+          <!-- Section 5 -->
+          <div>
+            <h2 class="font-display text-xl font-bold text-slate-900 border-b border-slate-100 pb-2 mb-4">
+              5. Third-Party Products & Software Actions
+            </h2>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Imperial Picks frequently links out to third-party tools, repositories, and SaaS platforms. If you choose to register, purchase a subscription, or download files from those platforms, you do so entirely at your own risk. We are not responsible for any security exploits, billing discrepancies, account terminations, or data breaches that may occur on external platforms.
+            </p>
+          </div>
+
+          <!-- Contact Details -->
+          <div class="pt-6 border-t border-slate-100">
+            <h3 class="font-display text-base font-bold text-slate-900">Disclaimer Questions</h3>
+            <p class="mt-2 text-sm text-slate-600 leading-relaxed">
+              If you have any questions regarding this Disclaimer or the limits of our interactive calculators, reach out to us at:
+              <a href="mailto:contact@imperialpicks.in" class="text-indigo-600 font-bold hover:underline ml-1">
+                contact@imperialpicks.in
+              </a>
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+  
+  <Footer />
+</Layout>

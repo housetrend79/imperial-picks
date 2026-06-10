@@ -1,0 +1,188 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout title="About Us - Imperial Picks" description="Learn about the mission, curation principles, and team behind Imperial Picks—the ultimate directory for AI tools, SaaS products, resources, and free calculators.">
+  <Navbar />
+  
+  <main class="relative bg-slate-50 min-h-screen">
+    <!-- Background patterns -->
+    <div class="absolute inset-0 bg-grid-pattern pointer-events-none"></div>
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 pointer-events-none w-[600px] h-[600px] bg-indigo-500/5 bg-gradient-radial from-indigo-500/10 via-transparent to-transparent blur-3xl"></div>
+
+    <!-- Page Header Hero -->
+    <section class="relative pt-20 pb-12 sm:pt-24 text-center">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <div class="inline-flex items-center gap-1.5 rounded-full bg-indigo-50 px-3.5 py-1.5 text-xs font-semibold text-indigo-700 ring-1 ring-indigo-700/10 ring-inset mb-6">
+          Our Story
+        </div>
+        <h1 class="font-display text-4xl sm:text-5xl font-black tracking-tight text-slate-900 leading-[1.1]">
+          Empowering Creators with <span class="bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">Curated Excellence</span>
+        </h1>
+        <p class="mt-6 text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+          Imperial Picks is a digital product discovery catalog. We research, test, and catalog the absolute best AI tools, software, online business resources, and free calculators.
+        </p>
+      </div>
+    </section>
+
+    <!-- Mission & Curation Core -->
+    <section class="relative py-16">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        
+        <!-- Two Column Overview -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+          
+          <div class="space-y-6">
+            <h2 class="font-display text-2xl font-bold text-slate-900">
+              Our Primary Mission
+            </h2>
+            <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
+              In an era overwhelmed by digital solutions and AI advancements, finding the right tool can feel like finding a needle in a haystack. Builders, founders, and creators waste precious hours testing sub-par software or paying for overpriced subscriptions.
+            </p>
+            <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
+              Our mission is to solve this by building the most trusted, comprehensive, and clean directory of tools and calculators. We do the heavy lifting of sorting, categorizing, and filtering so you can focus entirely on executing your ideas.
+            </p>
+            <div class="border-l-4 border-indigo-500 pl-4 italic text-slate-700 text-sm">
+              "We believe digital tools should accelerate your productivity, not create cognitive friction. Honest curation is our highest priority."
+            </div>
+          </div>
+
+          <!-- Feature Cards Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            
+            <!-- Card 1 -->
+            <div class="p-6 rounded-2xl bg-white border border-slate-200/80 shadow-xs">
+              <div class="h-10 w-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-4">
+                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.602 10.602Z" />
+                </svg>
+              </div>
+              <h3 class="font-display font-bold text-slate-900">Unbiased Reviews</h3>
+              <p class="mt-2 text-xs text-slate-500 leading-relaxed">
+                We review platforms objectively based on features, speed, value, and true user experience.
+              </p>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="p-6 rounded-2xl bg-white border border-slate-200/80 shadow-xs">
+              <div class="h-10 w-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-4">
+                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
+                </svg>
+              </div>
+              <h3 class="font-display font-bold text-slate-900">Free Math Utilities</h3>
+              <p class="mt-2 text-xs text-slate-500 leading-relaxed">
+                We build interactive calculators for ROI, margins, LTV/CAC, and ad spend to assist with business modeling.
+              </p>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="p-6 rounded-2xl bg-white border border-slate-200/80 shadow-xs">
+              <div class="h-10 w-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-4">
+                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
+                </svg>
+              </div>
+              <h3 class="font-display font-bold text-slate-900">Community Driven</h3>
+              <p class="mt-2 text-xs text-slate-500 leading-relaxed">
+                Our voting engine lets the developer community upvote their favorite platforms, keeping rankings organic.
+              </p>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="p-6 rounded-2xl bg-white border border-slate-200/80 shadow-xs">
+              <div class="h-10 w-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-4">
+                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
+                </svg>
+              </div>
+              <h3 class="font-display font-bold text-slate-900">Zero Pay-to-Play</h3>
+              <p class="mt-2 text-xs text-slate-500 leading-relaxed">
+                Paid listings do not buy positive reviews. Our research remains independent to ensure you receive true guidance.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Curation Principles & Editorial Standards -->
+    <section class="py-16 border-t border-slate-200 bg-white relative">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        
+        <div class="max-w-3xl mx-auto text-center mb-16">
+          <h2 class="font-display text-3xl font-black text-slate-900">
+            Our Editorial Standards
+          </h2>
+          <p class="mt-4 text-base text-slate-600 leading-relaxed">
+            Imperial Picks is committed to upholding rigorous standards of accuracy, transparency, and integrity across all our comparison pages, product reviews, and calculators.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          
+          <div class="space-y-3">
+            <span class="text-3xl">🛡️</span>
+            <h3 class="font-display text-lg font-bold text-slate-900">Thorough Research</h3>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              We test tools manually. We look at load speeds, feature integration, developer documentation, billing terms, and community reviews. We reject low-quality listings immediately.
+            </p>
+          </div>
+
+          <div class="space-y-3">
+            <span class="text-3xl">⚖️</span>
+            <h3 class="font-display text-lg font-bold text-slate-900">Objectivity & Honesty</h3>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              While we display affiliate links for some platforms (which compensates our writers), these connections never influence our final ratings, pros-and-cons lists, or editorial choices.
+            </p>
+          </div>
+
+          <div class="space-y-3">
+            <span class="text-3xl">🔍</span>
+            <h3 class="font-display text-lg font-bold text-slate-900">Calculated Accuracy</h3>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Our marketing and SaaS calculators are modeled on industry-standard financial and conversion math, verifying the logic before deploying interactive widgets online.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Submissions CTA -->
+    <section class="py-20 relative overflow-hidden bg-gradient-to-br from-indigo-900 via-indigo-950 to-slate-950 text-white text-center">
+      <div class="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none"></div>
+      <div class="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <h2 class="font-display text-3xl font-black tracking-tight sm:text-4xl">
+          Do You Build Quality Products?
+        </h2>
+        <p class="mt-4 text-base text-slate-300 max-w-2xl mx-auto leading-relaxed">
+          If you have built an AI-powered tool, SaaS software, or a free utility calculator, submit it to our editorial queue for review and community voting.
+        </p>
+        <div class="mt-8 flex flex-wrap justify-center gap-4">
+          <a 
+            href="/contact" 
+            class="rounded-xl bg-white px-6 py-3 text-sm font-semibold text-indigo-950 shadow-md hover:bg-slate-100 transition-colors"
+          >
+            Get in Touch
+          </a>
+          <a 
+            href="/" 
+            class="rounded-xl border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-white hover:bg-white/10 transition-colors"
+          >
+            Explore Directory
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  
+  <Footer />
+</Layout>
