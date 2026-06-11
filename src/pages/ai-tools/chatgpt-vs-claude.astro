@@ -100,6 +100,9 @@ const faqSchema = {
     }
   ]
 };
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import AuthorBox from "../../components/AuthorBox.astro";
+import RelatedArticles from "../../components/RelatedArticles.astro";
 ---
 
 <Layout title="ChatGPT vs Claude: Which AI Assistant Is Better in 2026? - Imperial Picks" description="An honest, in-depth comparison of ChatGPT and Claude in 2026. Evaluate pricing, coding capabilities, writing naturalness, student use cases, and key features.">
@@ -117,13 +120,11 @@ const faqSchema = {
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       
       <!-- Breadcrumbs -->
-      <nav class="flex text-xs font-semibold text-slate-500 gap-1.5 mb-6 relative z-10" aria-label="Breadcrumb">
-        <a href="/" class="hover:text-indigo-600">Home</a>
-        <span>/</span>
-        <a href="/#categories" class="hover:text-indigo-600">AI Tools</a>
-        <span>/</span>
-        <span class="text-slate-800 truncate">ChatGPT vs Claude</span>
-      </nav>
+      <Breadcrumbs items={[
+        { label: "Home", link: "/" },
+        { label: "AI Tools", link: "/ai-tools" },
+        { label: "ChatGPT vs Claude" }
+      ]} />
 
       <!-- Layout Grid: Left Content (Prose), Right Sticky Table of Contents -->
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 relative z-10">
@@ -158,10 +159,10 @@ const faqSchema = {
               The generative artificial intelligence race has entered a new phase of maturity in 2026. While hundreds of specialized LLM wrappers have emerged, the consumer market remains heavily anchored around two titans: OpenAI’s <strong>ChatGPT</strong> and Anthropic’s <strong>Claude</strong>.
             </p>
             <p class="text-sm sm:text-base text-slate-600 leading-relaxed mb-6">
-              For several years, the decision was simple: ChatGPT was the general-purpose, fast assistant with live web capabilities, while Claude was the niche writing assistant with better style. Today, however, the dividing lines have blurred. OpenAI has pushed hard into specialized reasoning models (such as the o1 and o3-mini series) that check their own logic before outputting, while Anthropic has refined Claude’s multi-file execution and UI prototyping abilities with features like Projects and Artifacts.
+              For several years, the decision was simple: ChatGPT was the general-purpose, fast assistant with live web capabilities, while Claude was the niche writing assistant with better style. Today, however, the dividing lines have blurred. OpenAI has pushed hard into specialized reasoning models (such as the o1 and o3-mini series) that check their own logic before outputting, while Anthropic has refined Claude’s multi-file execution and UI prototyping abilities with features like Projects and Artifacts. If you are comparing how these models stack up inside dedicated developer tools, read our audit of the <a href="/ai-tools/best-ai-coding-assistants" class="font-bold text-indigo-600 hover:underline">Best AI Coding Assistants</a>. For copywriters seeking structured campaign generators, see our guide on the <a href="/ai-tools/best-ai-writing-tools" class="font-bold text-indigo-600 hover:underline">Best AI Writing Tools</a>.
             </p>
             <p class="text-sm sm:text-base text-slate-600 leading-relaxed mb-6">
-              In this comprehensive, honest comparison, we break down how both platforms perform across core verticals: user interface, pricing, creative writing, coding, and academic workflows. We skip the marketing hype to evaluate which subscription ($20/month Plus vs Pro) actually delivers better value for your specific daily workflows in 2026.
+              In this comprehensive, honest comparison, we break down how both platforms perform across core verticals: user interface, pricing, creative writing, coding, and academic workflows. If you need to integrate these assistants into your daily work planning, explore our reviews of the <a href="/ai-tools/best-ai-productivity-tools" class="font-bold text-indigo-600 hover:underline">Best AI Productivity Tools</a>. For college and research tasks, try our guide on the <a href="/ai-tools/best-ai-research-tools" class="font-bold text-indigo-600 hover:underline">Best AI Research Tools</a>. Finally, to model the financial margins of your campaigns, use our <a href="/tools/roi-calculator" class="font-bold text-indigo-600 hover:underline">ROI Calculator</a>.
             </p>
           </section>
 
@@ -590,7 +591,8 @@ const faqSchema = {
             </div>
           </section>
 
-        </article>
+          <AuthorBox />
+          </article>
 
         <!-- Right Column: Sticky Table of Contents Sidebar -->
         <aside class="hidden lg:block lg:col-span-4">
@@ -632,7 +634,10 @@ const faqSchema = {
         </aside>
 
       </div>
-    </div>
+    
+      <!-- Related Articles Section -->
+      <RelatedArticles currentPath="/ai-tools/chatgpt-vs-claude" currentCategory="AI Tools" />
+</div>
   </main>
 
   <Footer />

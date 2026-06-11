@@ -4,11 +4,13 @@ import "../styles/global.css";
 interface Props {
   title?: string;
   description?: string;
+  canonicalURL?: string;
 }
 
 const { 
   title = "Imperial Picks - Discover the Best AI Tools, Software & Calculators", 
-  description = "Imperial Picks is your premier hub to discover top AI tools, SaaS products, free financial/business calculators, and curated online business resources." 
+  description = "Imperial Picks is your premier hub to discover top AI tools, SaaS products, free financial/business calculators, and curated online business resources.",
+  canonicalURL = new URL(Astro.url.pathname, Astro.site || "https://imperialpicks.in").href
 } = Astro.props;
 ---
 
@@ -34,10 +36,11 @@ const {
     <title>{title}</title>
     <meta name="title" content={title} />
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://imperialpicks.in/" />
+    <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content="/favicon.svg" />

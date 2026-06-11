@@ -2,23 +2,193 @@
 import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import Hero from "../components/Hero.astro";
-import FeaturedCategories from "../components/FeaturedCategories.astro";
-import PopularTools from "../components/PopularTools.astro";
-import InteractiveCalculator from "../components/InteractiveCalculator.astro";
-import LatestArticles from "../components/LatestArticles.astro";
-import Newsletter from "../components/Newsletter.astro";
 import Footer from "../components/Footer.astro";
+import ArticleCard from "../components/ArticleCard.astro";
+import ToolCard from "../components/ToolCard.astro";
+import { articles } from "../data/articles.js";
+import { calculators } from "../data/calculators.js";
+
+// Featured Articles based on user request:
+const featuredTitles = [
+  "Best AI Tools for Students in 2026: The Ultimate Guide",
+  "ChatGPT vs Claude: Which AI Assistant Is Better in 2026?",
+  "Best AI Research Tools in 2026: Unbiased Editorial Review",
+  "Best AI Productivity Tools in 2026: Unbiased Editorial Review"
+];
+const featuredArticles = articles.filter(a => featuredTitles.includes(a.title));
+
+// Categories configuration
+const popularCategories = [
+  {
+    id: "ai-tools",
+    title: "AI Tools & Models",
+    description: "Compare the leading artificial intelligence systems, custom developer agents, writing apps, and image engines.",
+    count: "9 Curated Guides",
+    link: "/ai-tools",
+    color: "from-indigo-500/10 to-violet-500/10 border-indigo-200/50 hover:border-indigo-400/50",
+    icon: `<svg class="h-6 w-6 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 21m0 0-.813-5.096L9 21Zm0 0h-9m11.813-5.096L15 21m0 0 .813-5.096L15 21Zm0 0h9m-11.813-5.096L12 9.75" />
+    </svg>`
+  },
+  {
+    id: "software",
+    title: "Software & SaaS",
+    description: "Sleek and robust cloud dashboards, analytics databases, automation tools, and developer resources.",
+    count: "Handpicked Reviews",
+    link: "/software",
+    color: "from-purple-500/10 to-pink-500/10 border-pink-200/50 hover:border-pink-400/50",
+    icon: `<svg class="h-6 w-6 text-pink-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 13.5h3.86a2.25 2.25 0 0 1 2.008 1.24l.885 1.77a2.25 2.25 0 0 0 2.007 1.24h1.98a2.25 2.25 0 0 0 2.007-1.24l.885-1.77a2.25 2.25 0 0 1 2.007-1.24h3.86m-18 0h18" />
+    </svg>`
+  },
+  {
+    id: "tools",
+    title: "Interactive Calculators",
+    description: "Zero-dependency dynamic calculators to model marketing campaign budgets, commission payouts, and growth returns.",
+    count: "3 Active Utilities",
+    link: "/tools",
+    color: "from-amber-500/10 to-orange-500/10 border-orange-200/50 hover:border-orange-400/50",
+    icon: `<svg class="h-6 w-6 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 15.75h.008v.008h-.008v-.008Zm0-2.25h.008v.008h-.008v-.008Zm0-2.25h.008v.008h-.008v-.008Zm0-2.25h.008v.008h-.008v-.008Z" />
+    </svg>`
+  }
+];
 ---
 
-<Layout>
+<Layout title="Imperial Picks - Discover the Best AI Tools, SaaS & Calculators" description="Imperial Picks is your premier, non-sponsored editorial hub to discover top-voted artificial intelligence models, SaaS suites, and free interactive calculators.">
   <Navbar />
-  <main>
+  
+  <main class="bg-slate-50 min-h-screen">
+    <!-- Hero Section -->
     <Hero />
-    <FeaturedCategories />
-    <PopularTools />
-    <InteractiveCalculator />
-    <LatestArticles />
-    <Newsletter />
+
+    <!-- Section: Popular Categories -->
+    <section class="py-20 bg-white border-t border-slate-200/60 relative">
+      <div class="absolute inset-0 bg-grid-pattern pointer-events-none opacity-40"></div>
+      
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="inline-flex items-center rounded-md bg-indigo-50 px-2.5 py-1 text-xs font-bold text-indigo-700 mb-4">
+            Taxonomy
+          </span>
+          <h2 class="font-display text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
+            Popular Resource Categories
+          </h2>
+          <p class="mt-4 text-base text-slate-600">
+            Explore our handpicked curation directories, sorted systematically by software type and user application.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {popularCategories.map(cat => (
+            <a href={cat.link} class={`group flex flex-col justify-between p-6 sm:p-8 bg-gradient-to-br ${cat.color} border rounded-3xl transition-all duration-300 hover:shadow-md hover:-translate-y-0.5`}>
+              <div>
+                <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-white shadow-xs mb-6 group-hover:scale-105 transition-transform duration-300">
+                  <Fragment set:html={cat.icon} />
+                </div>
+                <h3 class="font-display text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition-colors">
+                  {cat.title}
+                </h3>
+                <p class="mt-2 text-sm text-slate-600 leading-relaxed">
+                  {cat.description}
+                </p>
+              </div>
+              <div class="mt-6 pt-4 border-t border-slate-200/40 flex items-center justify-between text-xs text-slate-400 font-semibold">
+                <span>{cat.count}</span>
+                <span class="text-indigo-600 group-hover:translate-x-0.5 transition-transform">Explore Directory →</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: Featured Calculators -->
+    <section class="py-20 bg-slate-50 border-t border-b border-slate-250/20 relative">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+          <div class="max-w-2xl">
+            <span class="inline-flex items-center rounded-md bg-amber-50 px-2.5 py-1 text-xs font-bold text-amber-700 mb-4">
+              Interactive Tools
+            </span>
+            <h2 class="font-display text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+              Featured Interactive Calculators
+            </h2>
+            <p class="mt-3 text-base text-slate-600">
+              Run mock figures and estimate marketing spend returns, payout commission parameters, and channel earnings.
+            </p>
+          </div>
+          
+          <a href="/tools" class="inline-flex items-center gap-1.5 rounded-xl border border-slate-200 bg-white px-4 py-2 text-xs font-bold text-slate-700 hover:border-indigo-300 hover:text-indigo-600 transition-all shadow-xs self-start md:self-auto">
+            View All Calculators →
+          </a>
+        </div>
+
+        <!-- Calculators Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {calculators.map(calc => (
+            <div class="flex">
+              <ToolCard {...calc} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: Featured Articles -->
+    <section class="py-20 bg-white relative">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+          <div class="max-w-2xl">
+            <span class="inline-flex items-center rounded-md bg-indigo-50 px-2.5 py-1 text-xs font-bold text-indigo-750 mb-4">
+              Editorial Reviews
+            </span>
+            <h2 class="font-display text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+              Featured Editorial Guides
+            </h2>
+            <p class="mt-3 text-base text-slate-600">
+              Deep dives and honest, non-sponsored editorial analyses covering software models and productivity workflows.
+            </p>
+          </div>
+          
+          <a href="/blog" class="inline-flex items-center gap-1.5 rounded-xl border border-slate-200 bg-white px-4 py-2 text-xs font-bold text-slate-700 hover:border-indigo-300 hover:text-indigo-600 transition-all shadow-xs self-start md:self-auto">
+            Browse All Guides →
+          </a>
+        </div>
+
+        <!-- Articles Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {featuredArticles.map(art => (
+            <ArticleCard {...art} />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action (CTA) Section -->
+    <section class="py-16 bg-gradient-to-br from-indigo-900 via-indigo-950 to-slate-950 text-white relative overflow-hidden">
+      <div class="absolute inset-0 bg-grid-pattern opacity-5 pointer-events-none"></div>
+      
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-6">
+        <h2 class="font-display text-3xl sm:text-4xl font-extrabold tracking-tight">
+          Have a SaaS Product or AI Utility?
+        </h2>
+        <p class="text-sm sm:text-base text-slate-300 max-w-2xl mx-auto leading-relaxed">
+          Submit your product description to our editorial board. We conduct rigorous, non-sponsored testing to rank tools organically based on utility, data integrity, and cost metrics.
+        </p>
+        <div class="pt-4 flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a href="/contact" class="rounded-xl bg-white px-6 py-3 text-sm font-bold text-indigo-950 shadow-xs hover:bg-slate-100 transition-colors w-full sm:w-auto">
+            Submit a Product
+          </a>
+          <a href="/about" class="rounded-xl border border-white/20 bg-white/5 px-6 py-3 text-sm font-bold text-white hover:bg-white/10 transition-colors w-full sm:w-auto">
+            Our Review Standards
+          </a>
+        </div>
+      </div>
+    </section>
   </main>
+  
   <Footer />
 </Layout>

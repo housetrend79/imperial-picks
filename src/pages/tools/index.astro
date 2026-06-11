@@ -3,6 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import Navbar from "../../components/Navbar.astro";
 import Footer from "../../components/Footer.astro";
 import ToolCard from "../../components/ToolCard.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
 
 // Real Interactive Tools
 const realTools = [
@@ -83,11 +84,10 @@ const totalPlannedCount = plannedTools.length;
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
       
       <!-- Breadcrumbs -->
-      <nav class="flex text-xs font-semibold text-slate-500 gap-1.5 mb-6" aria-label="Breadcrumb">
-        <a href="/" class="hover:text-indigo-600">Home</a>
-        <span>/</span>
-        <span class="text-slate-800 font-bold">Calculators</span>
-      </nav>
+      <Breadcrumbs items={[
+        { label: "Home", link: "/" },
+        { label: "Calculators" }
+      ]} />
 
       <!-- Hero Section -->
       <div class="bg-white border border-slate-200/80 rounded-3xl p-6 sm:p-10 lg:p-12 shadow-xs mb-12">

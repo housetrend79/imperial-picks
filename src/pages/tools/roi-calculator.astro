@@ -98,6 +98,8 @@ const faqSchema = {
     }
   ]
 };
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import RelatedArticles from "../../components/RelatedArticles.astro";
 ---
 
 <Layout title="Free ROI Calculator (Return on Investment) - Imperial Picks" description="Calculate your Return on Investment (ROI) instantly. Adjust initial investment, revenue generated, and operating costs to project net profits and ROI percentages in real time.">
@@ -114,13 +116,11 @@ const faqSchema = {
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       
       <!-- Breadcrumbs -->
-      <nav class="flex text-xs font-semibold text-slate-500 gap-1.5 mb-6 relative z-10" aria-label="Breadcrumb">
-        <a href="/" class="hover:text-indigo-600">Home</a>
-        <span>/</span>
-        <a href="/tools" class="hover:text-indigo-600">Calculators</a>
-        <span>/</span>
-        <span class="text-slate-800 truncate">ROI Calculator</span>
-      </nav>
+      <Breadcrumbs items={[
+        { label: "Home", link: "/" },
+        { label: "Calculators", link: "/tools" },
+        { label: "ROI Calculator" }
+      ]} />
 
       <!-- Page Header -->
       <div class="text-center max-w-3xl mx-auto mb-12 relative z-10">
@@ -477,7 +477,10 @@ const faqSchema = {
         </div>
       </section>
 
-    </div>
+    
+      <!-- Related Articles Section -->
+      <RelatedArticles currentPath="/tools/roi-calculator" currentCategory="Tools" />
+</div>
   </main>
   
   <Footer />

@@ -100,6 +100,9 @@ const faqSchema = {
     }
   ]
 };
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import AuthorBox from "../../components/AuthorBox.astro";
+import RelatedArticles from "../../components/RelatedArticles.astro";
 ---
 
 <Layout title="Best AI Tools for Students in 2026: The Ultimate Guide" description="Compare the best AI tools for college and high school students in 2026. Detailed reviews, pricing, pros, cons, and guide for ChatGPT, Claude, Gemini, Perplexity, and Notion AI.">
@@ -117,13 +120,11 @@ const faqSchema = {
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       
       <!-- Breadcrumbs -->
-      <nav class="flex text-xs font-semibold text-slate-500 gap-1.5 mb-6 relative z-10" aria-label="Breadcrumb">
-        <a href="/" class="hover:text-indigo-600">Home</a>
-        <span>/</span>
-        <a href="/#categories" class="hover:text-indigo-600">AI Tools</a>
-        <span>/</span>
-        <span class="text-slate-800 truncate">Best AI Tools for Students</span>
-      </nav>
+      <Breadcrumbs items={[
+        { label: "Home", link: "/" },
+        { label: "AI Tools", link: "/ai-tools" },
+        { label: "Best AI Tools for Students" }
+      ]} />
 
       <!-- Layout Grid: Left Content (Prose), Right Sticky Table of Contents -->
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 relative z-10">
@@ -155,10 +156,10 @@ const faqSchema = {
           <!-- Introduction Section -->
           <section id="introduction" class="prose max-w-[72ch]">
             <p class="text-base sm:text-lg text-slate-600 leading-relaxed font-medium mb-6">
-              Modern academic workloads have reached an all-time high. Between balancing course modules, analyzing dense research reports, coding projects, and configuring financial studies, students face severe cognitive load. 
+              Modern academic workloads have reached an all-time high. Between balancing course modules, analyzing dense research reports, coding projects, and configuring financial studies, students face severe cognitive load. For students looking to optimize specific segments of their workload, exploring dedicated tools like the <a href="/ai-tools/best-ai-coding-assistants" class="font-bold text-indigo-600 hover:underline">Best AI Coding Assistants</a> can clarify programming syntax, while reviewing the <a href="/ai-tools/best-ai-research-tools" class="font-bold text-indigo-600 hover:underline">Best AI Research Tools</a> simplifies literature citations and verification.
             </p>
             <p class="text-sm sm:text-base text-slate-600 leading-relaxed mb-6">
-              Fortunately, the evolution of artificial intelligence has changed study habits. Rather than serving as automated shortcut engines, the top tools in 2026 act as private tutors, code debuggers, brainstorming partners, and reference organizers. When used ethically and strategically, AI allows students to digest complex topics, learn new languages, and map study schedules faster than ever before.
+              Fortunately, the evolution of artificial intelligence has changed study habits. Rather than serving as automated shortcut engines, the top tools in 2026 act as private tutors, code debuggers, brainstorming partners, and reference organizers. To organize lecture notes efficiently, students can leverage the <a href="/ai-tools/best-ai-note-taking-apps" class="font-bold text-indigo-600 hover:underline">Best AI Note-Taking Apps</a>. For managing busy calendars and project tasks, utilizing the <a href="/ai-tools/best-ai-productivity-tools" class="font-bold text-indigo-600 hover:underline">Best AI Productivity Tools</a> keeps workloads balanced. Furthermore, when preparing for internships or post-graduation applications, selection from the <a href="/ai-tools/best-ai-resume-builders" class="font-bold text-indigo-600 hover:underline">Best AI Resume Builders</a> helps structure ATS-optimized templates.
             </p>
 
             <!-- Callout: Ethical AI Use -->
@@ -696,6 +697,8 @@ const faqSchema = {
               </div>
             </div>
 
+            <AuthorBox />
+
             <!-- Author Signoff -->
             <div class="border-t border-slate-100 pt-8 mt-12 flex items-center justify-between text-xs text-slate-400">
               <span>© 2026 Imperial Picks. All reviews independent and verified.</span>
@@ -753,7 +756,10 @@ const faqSchema = {
         </aside>
 
       </div>
-    </div>
+    
+      <!-- Related Articles Section -->
+      <RelatedArticles currentPath="/ai-tools/best-ai-tools-for-students" currentCategory="Education" />
+</div>
   </main>
 
   <Footer />

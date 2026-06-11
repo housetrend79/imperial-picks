@@ -2,6 +2,8 @@
 import Layout from "../../layouts/Layout.astro";
 import Navbar from "../../components/Navbar.astro";
 import Footer from "../../components/Footer.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import RelatedArticles from "../../components/RelatedArticles.astro";
 ---
 
 <Layout title="Free Affiliate Earnings Calculator - Imperial Picks" description="Estimate your monthly and yearly affiliate commissions. Adjust monthly visitors, CTR, conversion rates, and commissions per sale to project earnings instantly.">
@@ -14,13 +16,11 @@ import Footer from "../../components/Footer.astro";
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       
       <!-- Breadcrumbs -->
-      <nav class="flex text-xs font-semibold text-slate-500 gap-1.5 mb-6 relative z-10" aria-label="Breadcrumb">
-        <a href="/" class="hover:text-indigo-600">Home</a>
-        <span>/</span>
-        <a href="/#categories" class="hover:text-indigo-600">Free Calculators</a>
-        <span>/</span>
-        <span class="text-slate-800 truncate">Affiliate Earnings Calculator</span>
-      </nav>
+      <Breadcrumbs items={[
+        { label: "Home", link: "/" },
+        { label: "Calculators", link: "/tools" },
+        { label: "Affiliate Earnings Calculator" }
+      ]} />
 
       <!-- Page Header -->
       <div class="text-center max-w-3xl mx-auto mb-12 relative z-10">
@@ -280,6 +280,13 @@ import Footer from "../../components/Footer.astro";
           </div>
 
           <div class="border-t border-slate-100 pt-6">
+            <h3 class="font-display text-base font-bold text-slate-900 mb-2">Explore Related Tools & Guides</h3>
+            <p class="text-xs leading-relaxed text-slate-500">
+              If you run paid marketing campaigns, use our <a href="/tools/roi-calculator" class="text-indigo-600 font-semibold hover:underline">ROI Calculator</a> to calculate return on ad spend. Video content creators can model prospective channel ad payouts using the <a href="/tools/youtube-earnings-calculator" class="text-indigo-600 font-semibold hover:underline">YouTube Earnings Calculator</a>. Additionally, if you use AI to generate review copy or portfolios, explore our independent audits of the <a href="/ai-tools/best-ai-writing-tools" class="text-indigo-600 font-semibold hover:underline">Best AI Writing Tools</a> and the <a href="/ai-tools/best-ai-resume-builders" class="text-indigo-600 font-semibold hover:underline">Best AI Resume Builders</a>.
+            </p>
+          </div>
+
+          <div class="border-t border-slate-100 pt-6">
             <h3 class="font-display text-base font-bold text-slate-900 mb-2">Our Curation Policy</h3>
             <p class="text-xs">
               At Imperial Picks, we maintain transparency regarding affiliate links. While we participate in referral programs to support our calculators and guides, these partnerships never compromise our editorial reviews. We evaluate tools objectively based on features, speed, and overall value. Read our full <a href="/affiliate-disclosure" class="text-indigo-600 font-semibold hover:underline">Affiliate Disclosure</a> for details.
@@ -288,7 +295,10 @@ import Footer from "../../components/Footer.astro";
         </div>
       </section>
 
-    </div>
+    
+      <!-- Related Articles Section -->
+      <RelatedArticles currentPath="/tools/affiliate-earnings-calculator" currentCategory="Tools" />
+</div>
   </main>
 
   <Footer />

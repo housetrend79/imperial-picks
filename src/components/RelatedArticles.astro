@@ -1,0 +1,30 @@
+---
+import ArticleCard from "./ArticleCard.astro";
+import { articles } from "../data/articles.js";
+
+interface Props {
+  currentPath: string;
+  currentCategory: string;
+}
+
+const { currentPath, currentCategory } = Astro.props;
+
+// Filter out current page
+const filtered = articles.filter(a => a.link !== currentPath);
+
+// Sort related content: matching category first, then fallbacks
+const matching = filtered.filter(a => a.category === currentCategory);
+const fallback = filtered.filter(a => a.category !== currentCategory);
+const relatedArticles = [...matching, ...fallback].slice(0, 3);
+---
+
+<section class="mt-16 border-t border-slate-200 pt-16">
+  <h3 class="font-display text-2xl font-bold text-slate-900 tracking-tight mb-8">
+    Related Articles & Guides
+  </h3>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    {relatedArticles.map((art) => (
+      <ArticleCard {...art} />
+    ))}
+  </div>
+</section>

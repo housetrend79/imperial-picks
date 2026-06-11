@@ -116,6 +116,9 @@ const faqSchema = {
     }
   ]
 };
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import AuthorBox from "../../components/AuthorBox.astro";
+import RelatedArticles from "../../components/RelatedArticles.astro";
 ---
 
 <Layout title="Best AI Coding Assistants in 2026: The Ultimate Guide - Imperial Picks" description="An honest, 3500+ word comparison of the best AI coding assistants in 2026. Evaluate pricing, features, pros, cons, and coding quality for Cursor, Copilot, Windsurf, and more.">
@@ -138,13 +141,11 @@ const faqSchema = {
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       
       <!-- Breadcrumbs -->
-      <nav class="flex text-xs font-semibold text-slate-500 gap-1.5 mb-6 relative z-10" aria-label="Breadcrumb">
-        <a href="/" class="hover:text-indigo-600">Home</a>
-        <span>/</span>
-        <a href="/ai-tools" class="hover:text-indigo-600">AI Tools</a>
-        <span>/</span>
-        <span class="text-slate-800 truncate font-semibold">Best AI Coding Assistants</span>
-      </nav>
+      <Breadcrumbs items={[
+        { label: "Home", link: "/" },
+        { label: "AI Tools", link: "/ai-tools" },
+        { label: "Best AI Coding Assistants" }
+      ]} />
 
       <!-- Layout Grid: Left Content (Prose), Right Sticky Table of Contents -->
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 relative z-10">
@@ -883,7 +884,8 @@ const faqSchema = {
             </div>
           </section>
 
-        </article>
+          <AuthorBox />
+          </article>
 
         <!-- Right Column: Sticky Table of Contents Sidebar -->
         <aside class="hidden lg:block lg:col-span-4">
@@ -934,7 +936,10 @@ const faqSchema = {
         </aside>
 
       </div>
-    </div>
+    
+      <!-- Related Articles Section -->
+      <RelatedArticles currentPath="/ai-tools/best-ai-coding-assistants" currentCategory="AI Tools" />
+</div>
   </main>
 
   <Footer />
