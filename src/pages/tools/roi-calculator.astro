@@ -1,0 +1,631 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+
+// FAQ Schema for SEO
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is Return on Investment (ROI)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Return on Investment (ROI) is a financial metric used to evaluate the efficiency or profitability of an investment. It measures the amount of return on an investment relative to its initial cost, expressed as a percentage."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is ROI calculated with operating costs?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "To calculate ROI including operating costs, use the formula: ROI = ((Revenue - Costs - Initial Investment) / Initial Investment) x 100. This ensures that ongoing costs are subtracted from the gross revenues before dividing by the investment cost."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a good ROI percentage?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A 'good' ROI depends heavily on the industry, asset class, and risk level. In general, an annual ROI of 7% to 10% is considered good for stock market index funds, while digital marketing campaigns (like SEO or PPC) often target an ROI of 400% to 500% (a 4:1 or 5:1 ratio of revenue to spend)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can ROI be negative?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. If the total revenue generated is less than the sum of your initial investment and operating costs, the net profit is negative, resulting in a negative ROI. This indicates a financial loss on the investment."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does ROI differ from Profit Margin?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Profit Margin measures how much net profit is retained from each dollar of revenue generated (Net Profit / Revenue). ROI measures how much return you generate relative to the cash you spent to start the project (Net Profit / Investment)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does this calculator support compounding returns over time?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. This calculator is designed for simple, absolute ROI modeling of single campaigns or fixed-term projects. For compound interest projections over multiple years, you should use a dedicated compounding calculator."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the limitations of simple ROI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Simple ROI does not take into account the time value of money. An investment that yields a 50% ROI in one month is much more profitable than one that yields 50% ROI in five years, but the simple ROI formula ranks them identically. It also ignores cash flow timing and risk factors."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I calculate ROI if my Initial Investment is zero?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Mathematically, you cannot divide by zero, so ROI is undefined if the initial investment is $0. In business practice, if you have no upfront capital investment (e.g., organic social posts), you should treat your time cost as the investment, or measure profitability using gross profit margins instead of ROI."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What costs should I include in the calculator?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You should include all costs directly associated with running the project or campaign. This includes ad spend, software subscriptions, transaction fees, agency hires, employee labor hours, and product manufacturing costs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does transaction volume impact ad campaign ROI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Higher transaction volumes can dilute ROI if acquisition costs (CAC) scale upward. However, if your sales conversion rates remain stable, higher volume can increase total net profit even if the ROI percentage slightly declines due to rising ad costs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is past campaign ROI a guarantee of future performance?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Past ROI is never a guarantee of future campaign results. Market competition, changes in advertising algorithms, seasonal demand variations, and product pricing adjustments can all significantly impact future return rates."
+      }
+    }
+  ]
+};
+---
+
+<Layout title="Free ROI Calculator (Return on Investment) - Imperial Picks" description="Calculate your Return on Investment (ROI) instantly. Adjust initial investment, revenue generated, and operating costs to project net profits and ROI percentages in real time.">
+  
+  <!-- FAQ Schema Injection -->
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)}></script>
+
+  <Navbar />
+  
+  <main class="relative bg-slate-50 min-h-screen py-12">
+    <!-- Background Patterns -->
+    <div class="absolute inset-0 bg-grid-pattern pointer-events-none"></div>
+
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      
+      <!-- Breadcrumbs -->
+      <nav class="flex text-xs font-semibold text-slate-500 gap-1.5 mb-6 relative z-10" aria-label="Breadcrumb">
+        <a href="/" class="hover:text-indigo-600">Home</a>
+        <span>/</span>
+        <a href="/tools" class="hover:text-indigo-600">Calculators</a>
+        <span>/</span>
+        <span class="text-slate-800 truncate">ROI Calculator</span>
+      </nav>
+
+      <!-- Page Header -->
+      <div class="text-center max-w-3xl mx-auto mb-12 relative z-10">
+        <div class="inline-flex items-center gap-1.5 rounded-full bg-indigo-50 px-3 py-1 text-xs font-bold text-indigo-800 ring-1 ring-indigo-600/15 mb-4">
+          Financial Analytics
+        </div>
+        <h1 class="font-display text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
+          Return on Investment (ROI) Calculator
+        </h1>
+        <p class="mt-3 text-base text-slate-600">
+          Determine the profitability and capital efficiency of your marketing campaigns, software stack migration, or business investments. Adjust sliders in real time to model returns.
+        </p>
+      </div>
+
+      <!-- Main Widget Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 relative z-10 max-w-5xl mx-auto mb-16">
+        
+        <!-- Left Side: Inputs & Sliders -->
+        <div class="lg:col-span-7 bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-sm space-y-6">
+          <h2 class="font-display text-lg font-bold text-slate-900 border-b border-slate-100 pb-3">
+            Investment Parameters
+          </h2>
+
+          <!-- Parameter 1: Initial Investment -->
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <label for="num-investment" class="text-sm font-semibold text-slate-700">Initial Investment ($)</label>
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs text-slate-400 font-bold">$</span>
+                <input 
+                  type="number" 
+                  id="num-investment" 
+                  min="0" 
+                  max="10000000" 
+                  value="10000"
+                  class="w-28 rounded-lg border border-slate-200 bg-slate-50 px-2 py-1 text-right text-sm font-bold text-indigo-600 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
+                />
+              </div>
+            </div>
+            <input 
+              type="range" 
+              id="slide-investment" 
+              min="0" 
+              max="100000" 
+              step="500" 
+              value="10000" 
+              class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-600"
+            />
+          </div>
+
+          <!-- Parameter 2: Revenue Generated -->
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <label for="num-revenue" class="text-sm font-semibold text-slate-700">Revenue Generated ($)</label>
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs text-slate-400 font-bold">$</span>
+                <input 
+                  type="number" 
+                  id="num-revenue" 
+                  min="0" 
+                  max="10000000" 
+                  value="25000"
+                  class="w-28 rounded-lg border border-slate-200 bg-slate-50 px-2 py-1 text-right text-sm font-bold text-indigo-600 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
+                />
+              </div>
+            </div>
+            <input 
+              type="range" 
+              id="slide-revenue" 
+              min="0" 
+              max="200000" 
+              step="1000" 
+              value="25000" 
+              class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-600"
+            />
+          </div>
+
+          <!-- Parameter 3: Costs -->
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <label for="num-costs" class="text-sm font-semibold text-slate-700">Operating Costs ($)</label>
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs text-slate-400 font-bold">$</span>
+                <input 
+                  type="number" 
+                  id="num-costs" 
+                  min="0" 
+                  max="10000000" 
+                  value="5000"
+                  class="w-28 rounded-lg border border-slate-200 bg-slate-50 px-2 py-1 text-right text-sm font-bold text-indigo-600 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
+                />
+              </div>
+            </div>
+            <input 
+              type="range" 
+              id="slide-costs" 
+              min="0" 
+              max="100000" 
+              step="500" 
+              value="5000" 
+              class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-600"
+            />
+          </div>
+
+        </div>
+
+        <!-- Right Side: Projections Dashboard -->
+        <div class="lg:col-span-5 flex flex-col justify-between rounded-3xl bg-slate-900 text-white border border-slate-800 p-6 sm:p-8 shadow-lg">
+          
+          <div>
+            <h2 class="font-display text-lg font-bold border-b border-white/10 pb-3 mb-6">
+              Calculation Dashboard
+            </h2>
+
+            <!-- Metric Cards -->
+            <div class="space-y-4">
+              
+              <!-- ROI Status Banner -->
+              <div id="status-card" class="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-center transition-colors duration-300">
+                <span class="text-[9px] font-bold text-slate-400 uppercase tracking-widest block">Investment Status</span>
+                <span id="out-status" class="text-lg font-black text-emerald-400 uppercase mt-1 block">Net Profit</span>
+              </div>
+
+              <!-- Net Profit Output -->
+              <div class="p-4 rounded-2xl bg-white/5 border border-white/10">
+                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest block">Net Profit / Loss</span>
+                <span class="text-3xl font-black text-white mt-1 block" id="out-profit">$10,000</span>
+              </div>
+
+              <!-- ROI Output -->
+              <div class="p-4 rounded-2xl bg-white/5 border border-white/10">
+                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest block">Return on Investment (ROI)</span>
+                <span class="text-3xl font-black text-indigo-400 mt-1 block" id="out-roi">100.00%</span>
+              </div>
+
+            </div>
+
+            <!-- Visual Performance Scale -->
+            <div class="mt-8 space-y-3">
+              <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Break-Even Visualizer</h3>
+              
+              <div class="space-y-2 text-xs">
+                <!-- Visual progress bar pointing to profits -->
+                <div class="space-y-1">
+                  <div class="flex justify-between text-[10px] text-slate-400">
+                    <span>Investment + Costs</span>
+                    <span id="funnel-costs">$15,000</span>
+                  </div>
+                  <div class="h-2 w-full rounded-full bg-white/10 overflow-hidden">
+                    <div class="h-full bg-indigo-500 transition-all duration-300" id="bar-costs" style="width: 60%;"></div>
+                  </div>
+                </div>
+
+                <!-- Visual progress bar pointing to revenues -->
+                <div class="space-y-1">
+                  <div class="flex justify-between text-[10px] text-slate-400">
+                    <span>Revenue Generated</span>
+                    <span id="funnel-revenue">$25,000</span>
+                  </div>
+                  <div class="h-2 w-full rounded-full bg-white/10 overflow-hidden">
+                    <div class="h-full bg-emerald-500 transition-all duration-300" id="bar-revenue" style="width: 100%;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Error Notification Panel (Hidden by default) -->
+            <div id="error-alert" class="hidden mt-6 p-4 rounded-xl bg-rose-500/10 border border-rose-500/20 text-xs text-rose-300 leading-relaxed">
+              ⚠️ <strong>Error:</strong> Initial Investment cannot be zero or empty. ROI percentage cannot be calculated because division-by-zero is undefined. Please enter a valid investment amount.
+            </div>
+
+          </div>
+
+          <div class="mt-8 pt-6 border-t border-white/10 text-[9px] text-slate-400 text-center leading-relaxed">
+            All models are educational estimations. Past ROI rates do not guarantee future commercial returns.
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Educational Content Section -->
+      <section class="max-w-4xl mx-auto bg-white border border-slate-200 rounded-3xl p-6 sm:p-10 shadow-xs mb-16">
+        <article class="prose max-w-none text-slate-600 text-sm leading-relaxed space-y-8">
+          
+          <!-- 1. What is ROI? -->
+          <section>
+            <h2 class="font-display text-2xl font-black text-slate-900 border-b border-slate-150 pb-3 mb-4">
+              1. What is Return on Investment (ROI)?
+            </h2>
+            <p>
+              Return on Investment (ROI) is a primary financial ratio used by businesses, investors, and marketers to analyze the efficiency of spent capital. It evaluates the direct return generated by an investment relative to its initial purchase or launch cost. 
+            </p>
+            <p>
+              Unlike net profit, which displays return in raw currency amounts, ROI represents capital efficiency as a percentage. This allows managers to compare projects of completely different scales—for instance, comparing a small Facebook advertising campaign costing $1,000 to an enterprise software license upgrade costing $250,000.
+            </p>
+          </section>
+
+          <!-- 2. How ROI is Calculated -->
+          <section>
+            <h2 class="font-display text-2xl font-black text-slate-900 border-b border-slate-150 pb-3 mb-4">
+              2. How ROI is Calculated
+            </h2>
+            <p>
+              Calculating ROI is a multi-step process that requires compiling all project-related revenues and subtractable costs. 
+            </p>
+            <ol class="list-decimal pl-5 space-y-2">
+              <li><strong>Track Revenues:</strong> Compile all gross income generated directly as a result of the investment.</li>
+              <li><strong>Calculate Total Costs:</strong> Sum all operating fees, transaction taxes, labor, and ongoing subscriptions.</li>
+              <li><strong>Find Initial Investment:</strong> Identify the upfront capital spent to launch the campaign.</li>
+              <li><strong>Subtract and Divide:</strong> Subtract costs and investments from revenue to find net profit, then divide that net profit by the initial investment.</li>
+            </ol>
+          </section>
+
+          <!-- 3. ROI Formula Explanation -->
+          <section>
+            <h2 class="font-display text-2xl font-black text-slate-900 border-b border-slate-150 pb-3 mb-4">
+              3. The ROI Formula
+            </h2>
+            <p>
+              Our ROI calculator uses the standard business formula that incorporates operating expenses alongside the initial investment:
+            </p>
+            <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200/60 text-slate-800 my-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+              <div class="flex items-center gap-3 text-sm font-bold">
+                <span class="text-indigo-600 font-extrabold text-base">ROI (%) =</span>
+                <div class="flex flex-col items-center">
+                  <span class="px-3 border-b border-slate-400 pb-1 font-mono text-xs">Revenue - Operating Costs - Initial Investment</span>
+                  <span class="pt-1 font-mono text-xs">Initial Investment</span>
+                </div>
+                <span class="text-indigo-600 font-extrabold text-base">× 100</span>
+              </div>
+            </div>
+            <p>
+              Let's break down the individual parts of this equation:
+            </p>
+            <ul class="list-disc pl-5 space-y-2 text-xs">
+              <li><strong>Revenue:</strong> The total gross earnings received.</li>
+              <li><strong>Costs:</strong> Ongoing, subtractable operating expenses that occurred during the campaign duration.</li>
+              <li><strong>Initial Investment:</strong> The upfront capital spent to secure resources or purchase the assets.</li>
+            </ul>
+          </section>
+
+          <!-- 4. Examples -->
+          <section>
+            <h2 class="font-display text-2xl font-black text-slate-900 border-b border-slate-150 pb-3 mb-4">
+              4. ROI Examples in Practice
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-4">
+              <div class="p-5 bg-slate-50 border border-slate-200 rounded-2xl">
+                <h4 class="font-bold text-slate-900 text-sm mb-2">Example A: Digital Marketing Campaign</h4>
+                <p class="text-xs text-slate-500 leading-relaxed">
+                  An e-commerce store spends **$5,000** on Facebook ad setup (Initial Investment) and incurs **$1,000** in transaction fees (Operating Costs). The campaign generates **$15,000** in gross revenue.
+                </p>
+                <div class="mt-3 font-mono text-xs text-indigo-700 bg-white p-2.5 rounded-lg border border-slate-200/60 text-center">
+                  ROI = (($15,000 - $1,000 - $5,000) / $5,000) × 100 = 180%
+                </div>
+              </div>
+
+              <div class="p-5 bg-slate-50 border border-slate-200 rounded-2xl">
+                <h4 class="font-bold text-slate-900 text-sm mb-2">Example B: Software Stack Migration</h4>
+                <p class="text-xs text-slate-500 leading-relaxed">
+                  A company invests **$20,000** in custom API developer setups (Initial Investment). In the first year, they pay **$2,000** in server fees (Operating Costs) and save **$35,000** in legacy licensing costs (treated as Revenue).
+                </p>
+                <div class="mt-3 font-mono text-xs text-indigo-700 bg-white p-2.5 rounded-lg border border-slate-200/60 text-center">
+                  ROI = (($35,000 - $2,000 - $20,000) / $20,000) × 100 = 65%
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- 5. Common ROI Mistakes -->
+          <section>
+            <h2 class="font-display text-2xl font-black text-slate-900 border-b border-slate-150 pb-3 mb-4">
+              5. Common ROI Calculation Mistakes
+            </h2>
+            <p>
+              When modeling financial returns, avoid these four common pitfalls:
+            </p>
+            <ul class="space-y-3 pl-1 text-slate-650">
+              <li class="flex gap-2">
+                <span class="text-rose-500 shrink-0">⚠️</span>
+                <div>
+                  <strong>Omitting Operating Expenses:</strong> Skimming over ongoing fees like server costs, subscription plans, and merchant processing fees makes ROI appear artificially high.
+                </div>
+              </li>
+              <li class="flex gap-2">
+                <span class="text-rose-500 shrink-0">⚠️</span>
+                <div>
+                  <strong>Ignoring Labor Costs:</strong> Many businesses forget to factor in employee labor or agency setup hours, which are critical parts of the initial investment.
+                </div>
+              </li>
+              <li class="flex gap-2">
+                <span class="text-rose-500 shrink-0">⚠️</span>
+                <div>
+                  <strong>Confusing ROI with Cash Flow:</strong> A high ROI project can still fail if cash inflows are delayed, leaving the business unable to meet monthly payroll or bill cycles.
+                </div>
+              </li>
+              <li class="flex gap-2">
+                <span class="text-rose-500 shrink-0">⚠️</span>
+                <div>
+                  <strong>Neglecting Time Horizon:</strong> Simple ROI ignores time. A 100% ROI over 5 years is less efficient than a 30% annual ROI compounded over the same duration.
+                </div>
+              </li>
+            </ul>
+          </section>
+
+          <!-- Links to related tools -->
+          <section class="border-t border-slate-100 pt-8">
+            <h3 class="font-display text-base font-bold text-slate-900 mb-4">Explore Our Financial & Study Utilities</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-semibold">
+              <a href="/tools/affiliate-earnings-calculator" class="p-3 bg-slate-50 border border-slate-200 rounded-xl hover:text-indigo-650 transition-colors">
+                Affiliate Earnings Calculator →
+              </a>
+              <a href="/tools/youtube-earnings-calculator" class="p-3 bg-slate-50 border border-slate-200 rounded-xl hover:text-indigo-650 transition-colors">
+                YouTube Earnings Calculator →
+              </a>
+              <a href="/ai-tools/best-ai-research-tools" class="p-3 bg-slate-50 border border-slate-200 rounded-xl hover:text-indigo-650 transition-colors">
+                Best AI Research Tools →
+              </a>
+              <a href="/ai-tools/best-ai-tools-for-students" class="p-3 bg-slate-50 border border-slate-200 rounded-xl hover:text-indigo-650 transition-colors">
+                Best AI Tools for Students →
+              </a>
+            </div>
+          </section>
+
+        </article>
+      </section>
+
+      <!-- FAQ Accordions -->
+      <section class="max-w-4xl mx-auto bg-white border border-slate-200 rounded-3xl p-6 sm:p-10 shadow-xs mb-16">
+        <h2 class="font-display text-2xl font-black text-slate-900 mb-8 pb-3 border-b border-slate-100">
+          Frequently Asked Questions (FAQ)
+        </h2>
+        
+        <div class="space-y-4">
+          {faqSchema.mainEntity.map((faq, index) => (
+            <details class="group rounded-2xl bg-slate-50 border border-slate-200/80 p-4 transition-all duration-300 [&_summary::-webkit-details-marker]:hidden">
+              <summary class="flex items-center justify-between cursor-pointer focus:outline-none">
+                <h4 class="text-sm font-semibold text-slate-800 transition-colors group-hover:text-indigo-600">
+                  {faq.name}
+                </h4>
+                <span class="ml-1.5 shrink-0 rounded-lg bg-white p-1 text-slate-400 group-open:rotate-180 transition-transform duration-300 border border-slate-200">
+                  <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                  </svg>
+                </span>
+              </summary>
+              <p class="mt-3 text-xs text-slate-500 leading-relaxed border-t border-slate-200/50 pt-2.5">
+                {faq.acceptedAnswer.text}
+              </p>
+            </details>
+          ))}
+        </div>
+      </section>
+
+    </div>
+  </main>
+  
+  <Footer />
+</Layout>
+
+<script>
+  const setupRoiCalculator = () => {
+    // Sliders
+    const slideInvestment = document.getElementById('slide-investment') as HTMLInputElement;
+    const slideRevenue = document.getElementById('slide-revenue') as HTMLInputElement;
+    const slideCosts = document.getElementById('slide-costs') as HTMLInputElement;
+
+    // Number Inputs
+    const numInvestment = document.getElementById('num-investment') as HTMLInputElement;
+    const numRevenue = document.getElementById('num-revenue') as HTMLInputElement;
+    const numCosts = document.getElementById('num-costs') as HTMLInputElement;
+
+    // Output Elements
+    const outProfit = document.getElementById('out-profit');
+    const outRoi = document.getElementById('out-roi');
+    const outStatus = document.getElementById('out-status');
+    const statusCard = document.getElementById('status-card');
+
+    // Visual Scales
+    const funnelCosts = document.getElementById('funnel-costs');
+    const funnelRevenue = document.getElementById('funnel-revenue');
+    const barCosts = document.getElementById('bar-costs');
+    const barRevenue = document.getElementById('bar-revenue');
+
+    // Error Alert
+    const errorAlert = document.getElementById('error-alert');
+
+    if (
+      !slideInvestment || !slideRevenue || !slideCosts ||
+      !numInvestment || !numRevenue || !numCosts ||
+      !outProfit || !outRoi || !outStatus || !statusCard ||
+      !funnelCosts || !funnelRevenue || !barCosts || !barRevenue || !errorAlert
+    ) return;
+
+    const formatCurrency = (val: number) => {
+      const isNegative = val < 0;
+      const absoluteVal = Math.abs(val);
+      const formatted = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        maximumFractionDigits: 0
+      }).format(absoluteVal);
+      return isNegative ? `-${formatted}` : formatted;
+    };
+
+    const calculate = (triggerSource: 'slider' | 'number') => {
+      let investment = 10000;
+      let revenue = 25000;
+      let costs = 5000;
+
+      if (triggerSource === 'slider') {
+        investment = parseFloat(slideInvestment.value) || 0;
+        revenue = parseFloat(slideRevenue.value) || 0;
+        costs = parseFloat(slideCosts.value) || 0;
+
+        // Synchronize numbers
+        numInvestment.value = String(investment);
+        numRevenue.value = String(revenue);
+        numCosts.value = String(costs);
+      } else {
+        investment = Math.max(0, parseFloat(numInvestment.value) || 0);
+        revenue = Math.max(0, parseFloat(numRevenue.value) || 0);
+        costs = Math.max(0, parseFloat(numCosts.value) || 0);
+
+        // Synchronize sliders
+        slideInvestment.value = String(Math.min(parseFloat(slideInvestment.max), investment));
+        slideRevenue.value = String(Math.min(parseFloat(slideRevenue.max), revenue));
+        slideCosts.value = String(Math.min(parseFloat(slideCosts.max), costs));
+      }
+
+      // Check for division by zero error
+      if (investment === 0) {
+        errorAlert.classList.remove('hidden');
+        outRoi.textContent = "N/A";
+        outProfit.textContent = formatCurrency(revenue - costs);
+        
+        statusCard.classList.remove('bg-emerald-500/10', 'border-emerald-500/30', 'bg-rose-500/10', 'border-rose-500/30');
+        statusCard.classList.add('bg-slate-500/10', 'border-slate-500/30');
+        outStatus.textContent = "No Capital spent";
+        outStatus.className = "text-lg font-black text-slate-400 uppercase mt-1 block";
+
+        funnelCosts.textContent = formatCurrency(costs);
+        funnelRevenue.textContent = formatCurrency(revenue);
+        barCosts.style.width = '0%';
+        barRevenue.style.width = '0%';
+        return;
+      } else {
+        errorAlert.classList.add('hidden');
+      }
+
+      // Run Calculations
+      const totalSpend = investment + costs;
+      const netProfit = revenue - totalSpend;
+      const roiPercentage = (netProfit / investment) * 100;
+
+      // Update Outputs
+      outProfit.textContent = formatCurrency(netProfit);
+      outRoi.textContent = `${roiPercentage.toFixed(2)}%`;
+
+      // Status Styling
+      statusCard.classList.remove('bg-emerald-500/10', 'border-emerald-500/30', 'bg-rose-500/10', 'border-rose-500/30', 'bg-slate-500/10', 'border-slate-500/30');
+      if (netProfit >= 0) {
+        statusCard.classList.add('bg-emerald-500/10', 'border-emerald-500/30');
+        outStatus.textContent = "Net Profit";
+        outStatus.className = "text-lg font-black text-emerald-400 uppercase mt-1 block";
+      } else {
+        statusCard.classList.add('bg-rose-500/10', 'border-rose-500/30');
+        outStatus.textContent = "Net Loss";
+        outStatus.className = "text-lg font-black text-rose-400 uppercase mt-1 block";
+      }
+
+      // Visual progress bars
+      funnelCosts.textContent = formatCurrency(totalSpend);
+      funnelRevenue.textContent = formatCurrency(revenue);
+
+      const maxVal = Math.max(totalSpend, revenue, 1);
+      const costsPercent = (totalSpend / maxVal) * 100;
+      const revenuePercent = (revenue / maxVal) * 100;
+
+      barCosts.style.width = `${costsPercent}%`;
+      barRevenue.style.width = `${revenuePercent}%`;
+    };
+
+    // Slider Event Listeners
+    [slideInvestment, slideRevenue, slideCosts].forEach(slider => {
+      slider.addEventListener('input', () => calculate('slider'));
+    });
+
+    // Number Inputs Event Listeners
+    [numInvestment, numRevenue, numCosts].forEach(numInput => {
+      numInput.addEventListener('input', () => calculate('number'));
+      numInput.addEventListener('blur', () => {
+        if (numInvestment.value === '' || parseFloat(numInvestment.value) < 0) numInvestment.value = '0';
+        if (numRevenue.value === '' || parseFloat(numRevenue.value) < 0) numRevenue.value = '0';
+        if (numCosts.value === '' || parseFloat(numCosts.value) < 0) numCosts.value = '0';
+        calculate('number');
+      });
+    });
+
+    // Run Initial Calc
+    calculate('slider');
+  };
+
+  setupRoiCalculator();
+  document.addEventListener('astro:after-swap', setupRoiCalculator);
+</script>
