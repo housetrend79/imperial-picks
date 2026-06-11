@@ -1,0 +1,897 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+
+// Schema Markup for SEO
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Best AI Research Tools in 2026: Unbiased Editorial Review",
+  "description": "Compare the best AI research tools in 2026. Read non-sponsored, detailed reviews, pricing, pros, cons, and guide for Perplexity, NotebookLM, Elicit, Consensus, ChatGPT, and Claude.",
+  "datePublished": "2026-06-11T09:00:00Z",
+  "dateModified": "2026-06-11T09:00:00Z",
+  "author": {
+    "@type": "Organization",
+    "name": "Imperial Picks Editorial Team",
+    "url": "https://imperialpicks.in/about"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Imperial Picks",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://imperialpicks.in/favicon.svg"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://imperialpicks.in/ai-tools/best-ai-research-tools"
+  }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How does Consensus retrieve and verify scientific papers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Consensus searches a database of over 200 million peer-reviewed academic papers compiled from the Semantic Scholar graph. It retrieves matching abstracts, uses language models to extract direct findings, and displays a consensus meter representing the balance of scientific opinions on the queried topic."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What makes Elicit different from a standard Google Scholar search?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Elicit goes beyond simple keyword matching by using semantic search to find papers based on meaning. It also extracts key metadata columns (e.g., patient demographics, dosage details, research methodologies, and exact findings) into structured comparison tables, eliminating the need to read every paper manually."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can Perplexity search private academic databases?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Perplexity searches the indexable web and public academic databases like Semantic Scholar. It cannot access paywalled academic journals or private institutional databases unless the user uploads the specific papers manually to Perplexity's workspace collections."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Google's NotebookLM safe for corporate research data?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. According to Google's data privacy policies for NotebookLM, uploaded files and user prompts are kept private and are not used to train consumer Gemini models. However, corporate researchers should always verify their company's data protection agreements before uploading proprietary files."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do reasoning models like ChatGPT o1 improve scientific analysis?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "OpenAI's reasoning models (such as o1 and o3-mini) execute a step-by-step chain of thought before generating an answer. This allows the AI to perform complex logical calculations, debug mathematical models, check its reasoning, and find errors in data tables more effectively than standard language models."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can Claude analyze a full textbook PDF?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Claude's 200,000-token context window can hold approximately 150,000 words, allowing it to analyze full books, technical guides, or codebases. The Projects feature also saves these documents in memory, letting you reference them for future prompts."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is an AI hallucination in academic research?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "An AI hallucination occurs when a language model confidently generates false information, such as inventing academic journal citations, page numbers, or statistics. This happens because LLMs predict word sequences based on training probabilities rather than checking a database of verified facts."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which AI research tool is best for compiling systematic reviews?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Elicit is the leading tool for systematic reviews, as it automatically extracts methodologies, population sizes, and metrics from multiple papers into editable comparison spreadsheets."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Elicit require a paid subscription in 2026?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Elicit offers a free tier with basic search credits. To run automated column extractions, summarize large sets of papers, or export spreadsheets, users must subscribe to a Plus plan ($12/month) or Enterprise plan."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I double-check if a cited paper actually exists?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Copy the DOI (Digital Object Identifier) or the exact title of the cited paper and search for it directly on Google Scholar, PubMed, or Crossref. If the paper does not show up on these databases, it is likely an AI hallucination."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which tool is best for finding direct scientific consensus?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Consensus is the best tool for finding direct scientific alignment, as its consensus meter analyzes peer-reviewed papers to calculate the percentage of studies that support, dispute, or remain neutral on a specific question."
+      }
+    }
+  ]
+};
+---
+
+<Layout title="Best AI Research Tools in 2026: Unbiased Editorial Review - Imperial Picks" description="Compare the top AI research tools in 2026. Read non-sponsored, detailed reviews, pricing, pros, cons, and guide for Perplexity, NotebookLM, Elicit, Consensus, ChatGPT, and Claude.">
+  
+  <!-- Inject JSON-LD Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <Navbar />
+  
+  <main class="relative bg-slate-50 min-h-screen py-12">
+    <!-- Background Patterns -->
+    <div class="absolute inset-0 bg-grid-pattern pointer-events-none"></div>
+
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      
+      <!-- Breadcrumbs -->
+      <nav class="flex text-xs font-semibold text-slate-500 gap-1.5 mb-6 relative z-10" aria-label="Breadcrumb">
+        <a href="/" class="hover:text-indigo-600">Home</a>
+        <span>/</span>
+        <a href="/#categories" class="hover:text-indigo-600">AI Tools</a>
+        <span>/</span>
+        <span class="text-slate-800 truncate">Best AI Research Tools</span>
+      </nav>
+
+      <!-- Layout Grid: Left Content (Prose), Right Sticky Table of Contents -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 relative z-10">
+        
+        <!-- Main Article Body (Prose) -->
+        <article class="lg:col-span-8 bg-white border border-slate-200/80 rounded-3xl p-6 sm:p-10 lg:p-12 shadow-xs max-w-none">
+          
+          <!-- Article Header -->
+          <header class="border-b border-slate-100 pb-8 mb-8">
+            <span class="inline-flex items-center rounded-md bg-indigo-50 px-2.5 py-1 text-xs font-bold text-indigo-700 mb-4">
+              Research & Academics
+            </span>
+            <h1 class="font-display text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-[1.15] mb-6">
+              Best AI Research Tools in 2026: Unbiased Editorial Review
+            </h1>
+            
+            <!-- Author Card -->
+            <div class="flex items-center gap-3">
+              <div class="h-10 w-10 rounded-full bg-indigo-600 text-indigo-50 flex items-center justify-center font-display text-sm font-bold shadow-sm">
+                IP
+              </div>
+              <div class="text-xs">
+                <p class="font-bold text-slate-800">Imperial Picks Editorial Team</p>
+                <p class="text-slate-400 font-medium mt-0.5">Published on June 11, 2026 • 20 min read</p>
+              </div>
+            </div>
+          </header>
+
+          <!-- Introduction Section -->
+          <section id="introduction" class="prose max-w-[72ch]">
+            <h2 class="sr-only">Introduction</h2>
+            <p class="text-base sm:text-lg text-slate-600 leading-relaxed font-medium mb-6">
+              The process of academic and professional research has entered a new era. Historically, literature reviews required researchers to spend hours writing search queries on indexing databases, skimming through hundreds of paper abstracts, and manually extracting details into spreadsheets.
+            </p>
+            <p class="text-sm sm:text-base text-slate-600 leading-relaxed mb-6">
+              In 2026, artificial intelligence has simplified this workflow. Rather than relying on simple keyword matching, modern research tools use semantic search to understand the conceptual meaning behind a query. They can scan through millions of peer-reviewed papers, extract key methodologies and metrics, analyze consensus trends, and answer complex questions using only verified sources.
+            </p>
+            <p class="text-sm sm:text-base text-slate-600 leading-relaxed mb-6">
+              However, the rise of AI research has also introduced new challenges. General language models are designed to predict word sequences rather than verify facts, making them susceptible to hallucinations—inventing citations, statistics, and journal references that do not exist. To perform reliable research, you must choose tools that use grounded Retrieval-Augmented Generation (RAG) and search verified databases like Semantic Scholar.
+            </p>
+            <p class="text-sm sm:text-base text-slate-600 leading-relaxed mb-6">
+              To guide you through the AI research ecosystem, the Imperial Picks Editorial Team has conducted an independent audit of the leading platforms. We evaluate the core strengths, weaknesses, pricing, and accuracy considerations of the six best AI research tools in 2026.
+            </p>
+
+            <!-- Callout: Trust & Data Integrity -->
+            <div class="border-l-4 border-indigo-500 bg-indigo-50/50 p-5 rounded-r-2xl mb-8">
+              <div class="flex gap-2">
+                <span class="text-lg">🎓</span>
+                <div>
+                  <h4 class="font-bold text-indigo-900 text-sm">Our Research Standard</h4>
+                  <p class="text-xs text-indigo-800 leading-relaxed mt-1">
+                    At Imperial Picks, we test software ourselves. This review contains no affiliate links, sponsored rankings, or automated summaries. We evaluate tools based on database size, citation accuracy, data privacy, spreadsheet extraction capabilities, and value for money.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Comparison Table Section -->
+          <section id="comparison-table" class="mt-12 scroll-mt-20">
+            <h2 class="font-display text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight mb-6 pb-2 border-b border-slate-100">
+              Quick Comparison: AI Research Tools
+            </h2>
+            <p class="text-sm text-slate-600 leading-relaxed mb-6">
+              The table below summarizes the key trade-offs in search scope, database integrations, pricing, and primary use cases among the top research engines in 2026.
+            </p>
+            
+            <div class="overflow-x-auto rounded-2xl border border-slate-200 bg-slate-50/50 p-1 mb-8">
+              <table class="w-full text-left text-sm border-collapse bg-white rounded-xl overflow-hidden">
+                <thead>
+                  <tr class="bg-slate-900 text-white font-display text-xs uppercase tracking-wider">
+                    <th class="py-4 px-4 font-semibold">Tool</th>
+                    <th class="py-4 px-4 font-semibold">Best For</th>
+                    <th class="py-4 px-4 font-semibold">Free Plan</th>
+                    <th class="py-4 px-4 font-semibold">Starting Price</th>
+                    <th class="py-4 px-4 font-semibold">Database Scope</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100 text-slate-700">
+                  <tr class="hover:bg-slate-50/80 transition-colors">
+                    <td class="py-4 px-4 font-bold text-slate-900">Perplexity</td>
+                    <td class="py-4 px-4">Web-wide citation search & current events</td>
+                    <td class="py-4 px-4">
+                      <span class="inline-flex items-center rounded-md bg-emerald-50 px-2 py-1 text-xs font-semibold text-emerald-800 border border-emerald-200/50">Yes (Basic search)</span>
+                    </td>
+                    <td class="py-4 px-4 font-semibold text-slate-900">$20/month</td>
+                    <td class="py-4 px-4 text-xs">Live indexable Web + Semantic Scholar filter</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50/80 transition-colors">
+                    <td class="py-4 px-4 font-bold text-slate-900">NotebookLM</td>
+                    <td class="py-4 px-4">Grounded private PDF analysis & podcasts</td>
+                    <td class="py-4 px-4">
+                      <span class="inline-flex items-center rounded-md bg-emerald-50 px-2 py-1 text-xs font-semibold text-emerald-800 border border-emerald-200/50">Yes (100% Free)</span>
+                    </td>
+                    <td class="py-4 px-4 font-semibold text-slate-900">Free</td>
+                    <td class="py-4 px-4 text-xs">User-uploaded sources (50 files max)</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50/80 transition-colors">
+                    <td class="py-4 px-4 font-bold text-slate-900">Elicit</td>
+                    <td class="py-4 px-4">Literature reviews & column extraction</td>
+                    <td class="py-4 px-4">
+                      <span class="inline-flex items-center rounded-md bg-emerald-50 px-2 py-1 text-xs font-semibold text-emerald-800 border border-emerald-200/50">Yes (Basic credits)</span>
+                    </td>
+                    <td class="py-4 px-4 font-semibold text-slate-900">$12/month</td>
+                    <td class="py-4 px-4 text-xs">200M+ academic papers (Semantic Scholar)</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50/80 transition-colors">
+                    <td class="py-4 px-4 font-bold text-slate-900">Consensus</td>
+                    <td class="py-4 px-4">Checking scientific consensus percentages</td>
+                    <td class="py-4 px-4">
+                      <span class="inline-flex items-center rounded-md bg-emerald-50 px-2 py-1 text-xs font-semibold text-emerald-800 border border-emerald-200/50">Yes (Limited searches)</span>
+                    </td>
+                    <td class="py-4 px-4 font-semibold text-slate-900">$9.99/month</td>
+                    <td class="py-4 px-4 text-xs">200M+ peer-reviewed papers</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50/80 transition-colors">
+                    <td class="py-4 px-4 font-bold text-slate-900">ChatGPT (o1)</td>
+                    <td class="py-4 px-4">Quantitative modeling & python math</td>
+                    <td class="py-4 px-4">
+                      <span class="inline-flex items-center rounded-md bg-emerald-50 px-2 py-1 text-xs font-semibold text-emerald-800 border border-emerald-200/50">Yes (Limited o3-mini)</span>
+                    </td>
+                    <td class="py-4 px-4 font-semibold text-slate-900">$20/month</td>
+                    <td class="py-4 px-4 text-xs">General LLM training + Web Search API</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50/80 transition-colors">
+                    <td class="py-4 px-4 font-bold text-slate-900">Claude</td>
+                    <td class="py-4 px-4">Analyzing long papers & drafting reports</td>
+                    <td class="py-4 px-4">
+                      <span class="inline-flex items-center rounded-md bg-emerald-50 px-2 py-1 text-xs font-semibold text-emerald-800 border border-emerald-200/50">Yes (Sonnet 3.5 basic)</span>
+                    </td>
+                    <td class="py-4 px-4 font-semibold text-slate-900">$20/month</td>
+                    <td class="py-4 px-4 text-xs">General LLM training + user uploads (200k context)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- Detailed Reviews Section -->
+          <section id="detailed-reviews" class="mt-16 space-y-20">
+            <h2 class="font-display text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight pb-2 border-b border-slate-100">
+              Detailed Reviews: The Top 6 AI Research Tools
+            </h2>
+
+            <!-- Review: Perplexity -->
+            <div id="tool-perplexity" class="scroll-mt-20">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-purple-50 text-purple-600 border border-purple-100 font-bold font-display">01</span>
+                <h3 class="font-display text-2xl font-extrabold text-slate-900">Perplexity: The Citation Search Engine</h3>
+              </div>
+              
+              <p class="text-sm sm:text-base text-slate-600 leading-relaxed mb-6">
+                Perplexity AI has established itself as the leading alternative to traditional search engines. It answers queries directly by searching the live web and summarizing pages, citing the source domains and papers using inline footnotes.
+              </p>
+              <p class="text-sm sm:text-base text-slate-600 leading-relaxed mb-6">
+                The "Focus" mode allows you to restrict search scopes. Choosing "Academic" mode directs the engine to query database networks like Semantic Scholar, filtering out low-quality web articles to focus on peer-reviewed papers.
+              </p>
+
+              <h4 class="font-display text-sm font-bold text-slate-800 mb-3">Key Features</h4>
+              <ul class="list-disc pl-5 mb-6 text-sm text-slate-600 space-y-2">
+                <li><strong>Academic Focus Mode:</strong> Restricts search targets to academic databases, providing scientific citations for every claim.</li>
+                <li><strong>Pro Search:</strong> Uses advanced models (such as GPT-4o or Claude 3.5 Sonnet) to run multi-step web queries and follow-up questions.</li>
+                <li><strong>Workspace Collections:</strong> Upload files (PDFs, docs) to specific project folders to restrict search queries to those documents.</li>
+              </ul>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+                <!-- Pros -->
+                <div class="p-5 rounded-2xl bg-emerald-50/30 border border-emerald-100">
+                  <h4 class="font-display font-bold text-emerald-950 text-sm mb-3">✓ Advantages</h4>
+                  <ul class="list-disc pl-4 space-y-2 text-xs text-emerald-800">
+                    <li>Real-time web access yields current statistics and news.</li>
+                    <li>Direct inline footnotes make it simple to track primary sources.</li>
+                    <li>Ability to switch between different LLMs (Claude, GPT, Gemini) within one interface.</li>
+                  </ul>
+                </div>
+                <!-- Cons -->
+                <div class="p-5 rounded-2xl bg-rose-50/30 border border-rose-100">
+                  <h4 class="font-display font-bold text-rose-950 text-sm mb-3">✗ Disadvantages</h4>
+                  <ul class="list-disc pl-4 space-y-2 text-xs text-rose-800">
+                    <li>Web summaries can occasionally skip critical contextual details.</li>
+                    <li>Cannot extract complex metadata columns from papers like Elicit.</li>
+                    <li>Pro search queries are limited on the free tier.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Callout: Perplexity Details -->
+              <div class="rounded-2xl border border-slate-200 bg-slate-50/50 p-5 space-y-3 text-sm">
+                <p><strong>Pricing:</strong> Free basic search. Perplexity Pro costs $20/month (provides 600 Pro searches/day and file uploads).</p>
+                <p><strong>Accuracy Considerations:</strong> High citation accuracy in Academic focus mode. However, in general web search mode, it can occasionally summarize inaccurate blog posts if they rank highly in search engine indices.</p>
+                <p><strong>Best Use Cases:</strong> Fact-checking, exploring new topics, compiling bibliographies, and finding real-time updates.</p>
+              </div>
+            </div>
+
+            <!-- Review: NotebookLM -->
+            <div id="tool-notebooklm" class="scroll-mt-20 border-t border-slate-100 pt-12">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600 border border-indigo-100 font-bold font-display">02</span>
+                <h3 class="font-display text-2xl font-extrabold text-slate-900">NotebookLM: The Grounded Research assistant</h3>
+              </div>
+              
+              <p class="text-sm sm:text-base text-slate-600 leading-relaxed mb-6">
+                Google's NotebookLM has changed how researchers analyze personal files. Instead of querying the open web, NotebookLM is a closed system. You upload up to 50 source documents (such as PDF files, Google Slides, Google Docs, or text files), and the Gemini-powered AI answers questions using only your provided sources.
+              </p>
+              <p class="text-sm sm:text-base text-slate-600 leading-relaxed mb-6">
+                Because it uses grounded Retrieval-Augmented Generation (RAG), it does not hallucinate facts outside your uploaded documents. If you ask a question not covered in the uploads, it will simply state that it cannot find the answer in the sources.
+              </p>
+
+              <h4 class="font-display text-sm font-bold text-slate-800 mb-3">Key Features</h4>
+              <ul class="list-disc pl-5 mb-6 text-sm text-slate-600 space-y-2">
+                <li><strong>Grounded Citations:</strong> Answers queries using only your sources, providing clickable citations that highlight specific page numbers and sentences.</li>
+                <li><strong>Audio Overviews:</strong> Generates highly realistic, two-host podcasts summarizing your uploaded source documents in an engaging audio format.</li>
+                <li><strong>Study Guide Generator:</strong> Automatically converts uploaded files into study guides, FAQs, timelines, or briefing documents.</li>
+              </ul>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+                <!-- Pros -->
+                <div class="p-5 rounded-2xl bg-emerald-50/30 border border-emerald-100">
+                  <h4 class="font-display font-bold text-emerald-950 text-sm mb-3">✓ Advantages</h4>
+                  <ul class="list-disc pl-4 space-y-2 text-xs text-emerald-800">
+                    <li>Completely free to use in 2026.</li>
+                    <li>Highly reliable references with zero hallucinations outside your sources.</li>
+                    <li>Huge context window of 500,000 words per source document.</li>
+                  </ul>
+                </div>
+                <!-- Cons -->
+                <div class="p-5 rounded-2xl bg-rose-50/30 border border-rose-100">
+                  <h4 class="font-display font-bold text-rose-950 text-sm mb-3">✗ Disadvantages</h4>
+                  <ul class="list-disc pl-4 space-y-2 text-xs text-rose-800">
+                    <li>Cannot search external databases or the live web.</li>
+                    <li>No folder organization; limited to separate notebooks.</li>
+                    <li>Requires uploading files to Google Cloud (though Google states uploads are kept private).</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Callout: NotebookLM Details -->
+              <div class="rounded-2xl border border-slate-200 bg-slate-50/50 p-5 space-y-3 text-sm">
+                <p><strong>Pricing:</strong> Completely free in 2026.</p>
+                <p><strong>Accuracy Considerations:</strong> The most accurate tool for private sources because it restricts its context pool to your uploaded files, eliminating general web search hallucinations.</p>
+                <p><strong>Best Use Cases:</strong> Analyzing textbooks, studying complex PDFs, reviewing research papers, and generating educational audio summaries.</p>
+              </div>
+            </div>
+
+            <!-- Review: Elicit -->
+            <div id="tool-elicit" class="scroll-mt-20 border-t border-slate-100 pt-12">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-orange-50 text-orange-600 border border-orange-100 font-bold font-display">03</span>
+                <h3 class="font-display text-2xl font-extrabold text-slate-900">Elicit: The Literature Review Workspace</h3>
+              </div>
+              
+              <p class="text-sm sm:text-base text-slate-600 leading-relaxed mb-6">
+                Elicit is built specifically for academic literature reviews and data synthesis. It queries a database of over 200 million papers, returning relevant studies along with summaries of their key findings and methodologies.
+              </p>
+              <p class="text-sm sm:text-base text-slate-600 leading-relaxed mb-6">
+                Elicit's primary advantage is its table extraction tool. Instead of reading each paper to find specific details, Elicit extracts metadata columns (e.g., patient demographics, dosage details, research methodologies, and exact findings) into structured comparison spreadsheets.
+              </p>
+
+              <h4 class="font-display text-sm font-bold text-slate-800 mb-3">Key Features</h4>
+              <ul class="list-disc pl-5 mb-6 text-sm text-slate-600 space-y-2">
+                <li><strong>Table Extraction:</strong> Automatically extracts methodologies, participant numbers, dosages, and statistics from multiple papers.</li>
+                <li><strong>Semantic Literature Search:</strong> Finds relevant papers based on meaning even if they don't share the exact keywords.</li>
+                <li><strong>Automatic Paper Summarization:</strong> Generates concise summaries of a paper's abstract, methodology, and results in a single paragraph.</li>
+              </ul>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+                <!-- Pros -->
+                <div class="p-5 rounded-2xl bg-emerald-50/30 border border-emerald-100">
+                  <h4 class="font-display font-bold text-emerald-950 text-sm mb-3">✓ Advantages</h4>
+                  <ul class="list-disc pl-4 space-y-2 text-xs text-emerald-800">
+                    <li>Saves hours of manual literature tracking and data extraction.</li>
+                    <li>Extracted columns can be exported to Excel or CSV formats.</li>
+                    <li>Excellent semantic mapping of concept definitions.</li>
+                  </ul>
+                </div>
+                <!-- Cons -->
+                <div class="p-5 rounded-2xl bg-rose-50/30 border border-rose-100">
+                  <h4 class="font-display font-bold text-rose-950 text-sm mb-3">✗ Disadvantages</h4>
+                  <ul class="list-disc pl-4 space-y-2 text-xs text-rose-800">
+                    <li>Free plan credits are consumed quickly by column extractions.</li>
+                    <li>Requires a paid subscription ($12/month) to export datasets.</li>
+                    <li>Can occasionally misinterpret complex table layouts inside scanned PDF files.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Callout: Elicit Details -->
+              <div class="rounded-2xl border border-slate-200 bg-slate-50/50 p-5 space-y-3 text-sm">
+                <p><strong>Pricing:</strong> Free basic tier with limited credits. Plus Plan starts at $12/month (adds 5,000 credits/month and CSV exports).</p>
+                <p><strong>Accuracy Considerations:</strong> Highly reliable for papers indexed in its database. However, it relies on summaries extracted from abstracts, meaning researchers must still verify details in the full paper text.</p>
+                <p><strong>Best Use Cases:</strong> Systematic literature reviews, extracting statistics, mapping research trends, and comparing experimental parameters.</p>
+              </div>
+            </div>
+
+            <!-- Review: Consensus -->
+            <div id="tool-consensus" class="scroll-mt-20 border-t border-slate-100 pt-12">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-blue-600 border border-blue-100 font-bold font-display">04</span>
+                <h3 class="font-display text-2xl font-extrabold text-slate-900">Consensus: The Scientific Consensus Engine</h3>
+              </div>
+              
+              <p class="text-sm sm:text-base text-slate-600 leading-relaxed mb-6">
+                Consensus is a search engine designed to extract direct scientific findings from peer-reviewed literature. It queries over 200 million academic papers, using LLMs to extract abstracts that answer your question directly.
+              </p>
+              <p class="text-sm sm:text-base text-slate-600 leading-relaxed mb-6">
+                Consensus's key feature is the <strong>Consensus Meter</strong>. When you ask a yes/no scientific question, the meter analyzes search results to calculate the percentage of studies that support, dispute, or remain neutral on the topic, providing a quick view of scientific consensus.
+              </p>
+
+              <h4 class="font-display text-sm font-bold text-slate-800 mb-3">Key Features</h4>
+              <ul class="list-disc pl-5 mb-6 text-sm text-slate-600 space-y-2">
+                <li><strong>Consensus Meter:</strong> Calculates the percentage of peer-reviewed papers that agree, disagree, or remain neutral on a research query.</li>
+                <li><strong>Copilot Assistant:</strong> Synthesizes findings from search results to write a structured summary with inline citations.</li>
+                <li><strong>Study Type Filtering:</strong> Filter results by study type, such as randomized controlled trials, systematic reviews, or meta-analyses.</li>
+              </ul>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+                <!-- Pros -->
+                <div class="p-5 rounded-2xl bg-emerald-50/30 border border-emerald-100">
+                  <h4 class="font-display font-bold text-emerald-950 text-sm mb-3">✓ Advantages</h4>
+                  <ul class="list-disc pl-4 space-y-2 text-xs text-emerald-800">
+                    <li>Provides quick, visual consensus trends for yes/no questions.</li>
+                    <li>Filters out non-academic content, focusing exclusively on peer-reviewed papers.</li>
+                    <li>Integrates with citation managers like Zotero and Mendeley.</li>
+                  </ul>
+                </div>
+                <!-- Cons -->
+                <div class="p-5 rounded-2xl bg-rose-50/30 border border-rose-100">
+                  <h4 class="font-display font-bold text-rose-950 text-sm mb-3">✗ Disadvantages</h4>
+                  <ul class="list-disc pl-4 space-y-2 text-xs text-rose-800">
+                    <li>Limited utility for open-ended, creative, or non-scientific queries.</li>
+                    <li>Free plan limits access to the Consensus Meter.</li>
+                    <li>Sourced findings can occasionally lack context from the full study text.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Callout: Consensus Details -->
+              <div class="rounded-2xl border border-slate-200 bg-slate-50/50 p-5 space-y-3 text-sm">
+                <p><strong>Pricing:</strong> Free basic access (limited searches). Premium Plan starts at $9.99/month (unlocks unlimited Consensus Meter analysis and Copilot summaries).</p>
+                <p><strong>Accuracy Considerations:</strong> Highly accurate citations because it references only peer-reviewed papers. However, the consensus percentages can be skewed if a search retrieves studies with different methodologies or population sizes.</p>
+                <p><strong>Best Use Cases:</strong> Fact-checking scientific claims, checking consensus trends, and finding peer-reviewed studies for essays.</p>
+              </div>
+            </div>
+
+            <!-- Review: ChatGPT -->
+            <div id="tool-chatgpt" class="scroll-mt-20 border-t border-slate-100 pt-12">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-orange-50 text-orange-600 border border-orange-100 font-bold font-display">05</span>
+                <h3 class="font-display text-2xl font-extrabold text-slate-900">ChatGPT (o1): The Logic & Calculation Engine</h3>
+              </div>
+              
+              <p class="text-sm sm:text-base text-slate-600 leading-relaxed mb-6">
+                While ChatGPT is a general-purpose assistant, its reasoning models (the o1 and o3-mini series) have turned it into a powerful tool for quantitative research, data analysis, and technical calculations.
+              </p>
+              <p class="text-sm sm:text-base text-slate-600 leading-relaxed mb-6">
+                When asked to analyze datasets, solve mathematical proofs, or write scripts, the reasoning engine checks its logic step-by-step before answering. The built-in <strong>Code Interpreter</strong> also allows ChatGPT to write and run Python code in a secure sandbox, making it highly effective for data modeling, chart creation, and statistical verification.
+              </p>
+
+              <h4 class="font-display text-sm font-bold text-slate-800 mb-3">Key Features</h4>
+              <ul class="list-disc pl-5 mb-6 text-sm text-slate-600 space-y-2">
+                <li><strong>Logic Reasoning:</strong> Executes a step-by-step chain of thought before outputting, reducing logical errors in complex problems.</li>
+                <li><strong>Code Interpreter Sandbox:</strong> Writes and executes Python code in real-time to analyze datasets, generate charts, or check formulas.</li>
+                <li><strong>Custom GPTs Ecosystem:</strong> Access custom, user-created assistants built for academic paper formatting, syllabus design, or translation.</li>
+              </ul>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+                <!-- Pros -->
+                <div class="p-5 rounded-2xl bg-emerald-50/30 border border-emerald-100">
+                  <h4 class="font-display font-bold text-emerald-950 text-sm mb-3">✓ Advantages</h4>
+                  <ul class="list-disc pl-4 space-y-2 text-xs text-emerald-800">
+                    <li>Excellent tool for quantitative research, data processing, and scripting.</li>
+                    <li>Highly versatile across programming, translation, and structured layouts.</li>
+                    <li>Advanced voice mode enables conversational brain-storming.</li>
+                  </ul>
+                </div>
+                <!-- Cons -->
+                <div class="p-5 rounded-2xl bg-rose-50/30 border border-rose-100">
+                  <h4 class="font-display font-bold text-rose-950 text-sm mb-3">✗ Disadvantages</h4>
+                  <ul class="list-disc pl-4 space-y-2 text-xs text-rose-800">
+                    <li>Prone to citation hallucinations unless configured with search plugins.</li>
+                    <li>No native database of peer-reviewed papers like Elicit or Consensus.</li>
+                    <li>Reasoning model access is limited on the free tier.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Callout: ChatGPT Details -->
+              <div class="rounded-2xl border border-slate-200 bg-slate-50/50 p-5 space-y-3 text-sm">
+                <p><strong>Pricing:</strong> Free basic access. ChatGPT Plus costs $20/month (unlocks Advanced Voice Mode, GPT Store, and reasoning models).</p>
+                <p><strong>Accuracy Considerations:</strong> Highly accurate for programming scripts and mathematical proofs when verified using the Code Interpreter. However, it should not be trusted for literature citations without external search integrations.</p>
+                <p><strong>Best Use Cases:</strong> Quantitative research, data analysis, python scripting, and mathematical calculations.</p>
+              </div>
+            </div>
+
+            <!-- Review: Claude -->
+            <div id="tool-claude" class="scroll-mt-20 border-t border-slate-100 pt-12">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-50 text-amber-600 border border-amber-100 font-bold font-display">06</span>
+                <h3 class="font-display text-2xl font-extrabold text-slate-900">Claude: The Synthesis & Writing Partner</h3>
+              </div>
+              
+              <p class="text-sm sm:text-base text-slate-600 leading-relaxed mb-6">
+                Anthropic's Claude is highly regarded for its writing tone, text comprehension, and document synthesis capabilities. It is the premier tool for humanities researchers who parse large volumes of text.
+              </p>
+              <p class="text-sm sm:text-base text-slate-600 leading-relaxed mb-6">
+                Claude's 200,000-token context window can hold approximately 150,000 words, allowing it to analyze full textbook PDFs, legal briefs, or codebases. The Projects feature also saves these documents in memory, letting you reference them for future prompts.
+              </p>
+
+              <h4 class="font-display text-sm font-bold text-slate-800 mb-3">Key Features</h4>
+              <ul class="list-disc pl-5 mb-6 text-sm text-slate-600 space-y-2">
+                <li><strong>200k Context Window:</strong> Upload whole textbooks, manuals, or research dossiers to analyze them without losing context.</li>
+                <li><strong>Projects Folder:</strong> Group source documents, coding guidelines, and references into project-specific workspaces.</li>
+                <li><strong>Artifacts UI Panel:</strong> View and edit generated text files, HTML widgets, or SVG graphics in a side-by-side workspace panel.</li>
+              </ul>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+                <!-- Pros -->
+                <div class="p-5 rounded-2xl bg-emerald-50/30 border border-emerald-100">
+                  <h4 class="font-display font-bold text-emerald-950 text-sm mb-3">✓ Advantages</h4>
+                  <ul class="list-disc pl-4 space-y-2 text-xs text-emerald-800">
+                    <li>Writes with a natural, varied prose style that avoids standard AI tropes.</li>
+                    <li>Outstanding comprehension and analysis of dense documents.</li>
+                    <li>Projects UI simplifies context management for different workflows.</li>
+                  </ul>
+                </div>
+                <!-- Cons -->
+                <div class="p-5 rounded-2xl bg-rose-50/30 border border-rose-100">
+                  <h4 class="font-display font-bold text-rose-950 text-sm mb-3">✗ Disadvantages</h4>
+                  <ul class="list-disc pl-4 space-y-2 text-xs text-rose-800">
+                    <li>No native live web search mode like Perplexity or ChatGPT.</li>
+                    <li>Rate limits on the free tier can be highly restrictive.</li>
+                    <li>Prone to citation hallucinations if asked to reference external papers.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Callout: Claude Details -->
+              <div class="rounded-2xl border border-slate-200 bg-slate-50/50 p-5 space-y-3 text-sm">
+                <p><strong>Pricing:</strong> Free basic access (Claude 3.5 Sonnet). Claude Pro costs $20/month (unlocks 5x higher limits and Projects UI).</p>
+                <p><strong>Accuracy Considerations:</strong> Highly accurate when analyzing uploaded documents, but prone to inventing citations if asked to search external sources beyond its training cutoff.</p>
+                <p><strong>Best Use Cases:</strong> Writing literature reviews, summarizing PDFs, editing drafts, and organizing project documentation.</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Best Tool by User Type -->
+          <section id="user-types" class="mt-20 border-t border-slate-100 pt-12 scroll-mt-20">
+            <h2 class="font-display text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight mb-6 pb-2 border-b border-slate-100">
+              The Best AI Research Tool for Your Profile
+            </h2>
+            <p class="text-sm sm:text-base text-slate-600 leading-relaxed mb-6">
+              Your choice of research tool should align with your specific workflow requirements. Here are our recommendations:
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
+              
+              <!-- Students -->
+              <div class="p-6 bg-slate-50 border border-slate-200 rounded-3xl flex flex-col justify-between">
+                <div>
+                  <div class="flex items-center gap-2 mb-3">
+                    <span class="text-lg">🎓</span>
+                    <h3 class="font-display font-bold text-slate-900 text-base">Students</h3>
+                  </div>
+                  <p class="text-xs text-slate-500 leading-relaxed mb-4">
+                    Students need to analyze textbooks, summarize PDFs, and find peer-reviewed sources for essays. 
+                    We recommend **Google NotebookLM** for source-grounded analysis and **Consensus** for finding scientific opinions.
+                  </p>
+                </div>
+                <a href="/ai-tools/best-ai-tools-for-students" class="text-xs font-bold text-indigo-600 hover:text-indigo-800 hover:underline">
+                  Student Tools Guide →
+                </a>
+              </div>
+
+              <!-- Researchers -->
+              <div class="p-6 bg-slate-50 border border-slate-200 rounded-3xl flex flex-col justify-between">
+                <div>
+                  <div class="flex items-center gap-2 mb-3">
+                    <span class="text-lg">🔬</span>
+                    <h3 class="font-display font-bold text-slate-900 text-base">Researchers</h3>
+                  </div>
+                  <p class="text-xs text-slate-500 leading-relaxed mb-4">
+                    Researchers require verified citations, systematic literature reviews, and metadata extraction. 
+                    We recommend **Elicit** for data spreadsheets and **Consensus** for peer-reviewed studies.
+                  </p>
+                </div>
+                <a href="/ai-tools/best-ai-note-taking-apps" class="text-xs font-bold text-indigo-600 hover:text-indigo-800 hover:underline">
+                  Note-Taking Tools Guide →
+                </a>
+              </div>
+
+              <!-- Professionals -->
+              <div class="p-6 bg-slate-50 border border-slate-200 rounded-3xl flex flex-col justify-between">
+                <div>
+                  <div class="flex items-center gap-2 mb-3">
+                    <span class="text-lg">💼</span>
+                    <h3 class="font-display font-bold text-slate-900 text-base">Professionals</h3>
+                  </div>
+                  <p class="text-xs text-slate-500 leading-relaxed mb-4">
+                    Professionals need to analyze datasets, write market reports, and coordinate project wikis. 
+                    We recommend **Claude** for text synthesis, **ChatGPT** for python calculations, and **Perplexity** for web search.
+                  </p>
+                </div>
+                <div class="flex gap-4">
+                  <a href="/ai-tools/chatgpt-vs-claude" class="text-xs font-bold text-indigo-600 hover:text-indigo-800 hover:underline">
+                    ChatGPT vs Claude
+                  </a>
+                  <a href="/ai-tools/best-ai-coding-assistants" class="text-xs font-bold text-indigo-600 hover:text-indigo-800 hover:underline">
+                    Coding Tools
+                  </a>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- How to Verify AI Research -->
+          <section id="verify-research" class="mt-20 border-t border-slate-100 pt-12 scroll-mt-20">
+            <h2 class="font-display text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight mb-6 pb-2 border-b border-slate-100">
+              How to Verify AI Research
+            </h2>
+            <p class="text-sm sm:text-base text-slate-600 leading-relaxed mb-6">
+              To ensure the accuracy and integrity of your research, always follow these four verification guidelines:
+            </p>
+
+            <div class="space-y-4 text-sm text-slate-600">
+              <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
+                <h4 class="font-bold text-slate-900 text-sm mb-1">1. Verify DOIs and Citations</h4>
+                <p class="text-xs leading-relaxed text-slate-500">
+                  Always copy the DOI (Digital Object Identifier) or paper title cited by the AI and verify it directly on academic search engines like Crossref, PubMed, or Google Scholar. If the citation does not exist on these databases, do not use it.
+                </p>
+              </div>
+
+              <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
+                <h4 class="font-bold text-slate-900 text-sm mb-1">2. Read the Full Text</h4>
+                <p class="text-xs leading-relaxed text-slate-500">
+                  AI engines typically summarize paper abstracts, which can occasionally omit critical details about study limitations, population sizes, or conflict of interest declarations. Always read the methodology and conclusion sections of the full text before citing a paper.
+                </p>
+              </div>
+
+              <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
+                <h4 class="font-bold text-slate-900 text-sm mb-1">3. Evaluate the Journal Quality</h4>
+                <p class="text-xs leading-relaxed text-slate-500">
+                  Ensure the cited paper is published in a reputable, peer-reviewed journal. Check the journal's indexing on databases like Scopus or SCImago to verify it is not a predatory publication.
+                </p>
+              </div>
+
+              <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
+                <h4 class="font-bold text-slate-900 text-sm mb-1">4. Analyze the Sample Size</h4>
+                <p class="text-xs leading-relaxed text-slate-500">
+                  When citing medical or psychological findings, check the study's participant sample size ($N$) and control group parameters. A study with a small sample size ($N &lt; 30$) may not represent a consensus, even if it is cited as a finding by the AI.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Common Mistakes Section -->
+          <section id="common-mistakes" class="mt-16 scroll-mt-20">
+            <h2 class="font-display text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight mb-6 pb-2 border-b border-slate-100">
+              Common Mistakes to Avoid
+            </h2>
+            <p class="text-sm sm:text-base text-slate-600 leading-relaxed mb-6">
+              Avoid these four common pitfalls when using AI for research:
+            </p>
+
+            <ul class="space-y-4 text-sm text-slate-600 leading-relaxed">
+              <li class="flex gap-2">
+                <span class="text-rose-500 shrink-0">⚠️</span>
+                <div>
+                  <strong>Citing Hallucinated Sources:</strong> Do not copy bibliographies generated by general models (like ChatGPT or Claude) without verifying them. General models predict word sequences rather than query verified databases.
+                </div>
+              </li>
+              <li class="flex gap-2">
+                <span class="text-rose-500 shrink-0">⚠️</span>
+                <div>
+                  <strong>Ignoring Paywalled Literature:</strong> AI research engines typically search public indexes. Skimming only open-access papers can bias your literature review; ensure you also search paywalled journals through library subscriptions.
+                </div>
+              </li>
+              <li class="flex gap-2">
+                <span class="text-rose-500 shrink-0">⚠️</span>
+                <div>
+                  <strong>Uploading Sensitive Data:</strong> Avoid uploading unreleased designs, proprietary research datasets, or personal data to cloud-based AI tools unless you have verified their data privacy agreements.
+                </div>
+              </li>
+              <li class="flex gap-2">
+                <span class="text-rose-500 shrink-0">⚠️</span>
+                <div>
+                  <strong>Overlooking Research Methodology:</strong> Do not cite a finding without checking the study type. A randomized controlled trial (RCT) provides stronger scientific evidence than an observational survey, even if both are cited similarly by the AI.
+                </div>
+              </li>
+            </ul>
+          </section>
+
+          <!-- FAQ Section -->
+          <section id="faq-section" class="mt-20 border-t border-slate-100 pt-12 scroll-mt-20">
+            <h2 class="font-display text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight mb-8">
+              Frequently Asked Questions (FAQ)
+            </h2>
+            
+            <div class="space-y-4">
+              {faqSchema.mainEntity.map((faq, index) => (
+                <details class="group rounded-2xl bg-slate-50 border border-slate-200/80 p-4 transition-all duration-300 [&_summary::-webkit-details-marker]:hidden">
+                  <summary class="flex items-center justify-between cursor-pointer focus:outline-none">
+                    <h4 class="text-sm font-semibold text-slate-800 transition-colors group-hover:text-indigo-600">
+                      {faq.name}
+                    </h4>
+                    <span class="ml-1.5 shrink-0 rounded-lg bg-white p-1 text-slate-400 group-open:rotate-180 transition-transform duration-300 border border-slate-200">
+                      <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                      </svg>
+                    </span>
+                  </summary>
+                  <p class="mt-3 text-xs text-slate-500 leading-relaxed border-t border-slate-200/50 pt-2.5">
+                    {faq.acceptedAnswer.text}
+                  </p>
+                </details>
+              ))}
+            </div>
+          </section>
+
+          <!-- Final Recommendations -->
+          <section id="final-recommendations" class="mt-16 scroll-mt-20">
+            <h2 class="font-display text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight mb-6 pb-2 border-b border-slate-100">
+              Final Recommendations: Building Your Research Workflow
+            </h2>
+            <p class="text-sm sm:text-base text-slate-600 leading-relaxed mb-6">
+              The most effective research setups often combine tools to manage different parts of the literature search and data analysis workflow:
+            </p>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12">
+              <div class="p-5 bg-slate-50 border border-slate-200 rounded-2xl">
+                <h4 class="font-bold text-slate-900 text-sm">The Literature Review Stack</h4>
+                <p class="text-xs text-slate-500 leading-relaxed mt-2">
+                  Use **Consensus** to check consensus trends, **Elicit** to extract methodology columns, and **Claude** to draft the final review.
+                </p>
+              </div>
+              <div class="p-5 bg-slate-50 border border-slate-200 rounded-2xl">
+                <h4 class="font-bold text-slate-900 text-sm">The Grounded Source Stack</h4>
+                <p class="text-xs text-slate-500 leading-relaxed mt-2">
+                  Upload textbooks and source files directly to **NotebookLM** to search pages and generate audio study summaries.
+                </p>
+              </div>
+              <div class="p-5 bg-slate-50 border border-slate-200 rounded-2xl">
+                <h4 class="font-bold text-slate-900 text-sm">The Quantitative Stack</h4>
+                <p class="text-xs text-slate-500 leading-relaxed mt-2">
+                  Use **ChatGPT (o1)** to write data-processing scripts, check mathematical formulas, and run statistical models.
+                </p>
+              </div>
+            </div>
+
+            <!-- Author Signoff -->
+            <div class="border-t border-slate-100 pt-8 mt-12 flex items-center justify-between text-xs text-slate-400">
+              <span>© 2026 Imperial Picks. All reviews independent and verified.</span>
+              <a href="/affiliate-disclosure" class="hover:underline text-indigo-600 font-semibold">Affiliate Disclosure</a>
+            </div>
+          </section>
+
+        </article>
+
+        <!-- Right Column: Sticky Table of Contents Sidebar -->
+        <aside class="hidden lg:block lg:col-span-4">
+          <div class="sticky top-24 space-y-6">
+            
+            <!-- Table of Contents Card -->
+            <div class="bg-white border border-slate-200/80 rounded-3xl p-6 shadow-xs">
+              <h3 class="font-display text-sm font-bold text-slate-900 uppercase tracking-widest border-b border-slate-100 pb-3 mb-4">
+                Table of Contents
+              </h3>
+              <nav class="space-y-3">
+                <a href="#introduction" class="toc-link block text-sm text-slate-600 hover:text-indigo-600 transition-colors font-medium">1. Introduction</a>
+                <a href="#comparison-table" class="toc-link block text-sm text-slate-600 hover:text-indigo-600 transition-colors font-medium">2. Comparison Table</a>
+                
+                <!-- Sublinks for detailed reviews -->
+                <div class="pl-4 border-l border-slate-200 space-y-2">
+                  <a href="#tool-perplexity" class="toc-link block text-xs text-slate-500 hover:text-indigo-600 transition-colors">Perplexity Review</a>
+                  <a href="#tool-notebooklm" class="toc-link block text-xs text-slate-500 hover:text-indigo-600 transition-colors">NotebookLM Review</a>
+                  <a href="#tool-elicit" class="toc-link block text-xs text-slate-500 hover:text-indigo-600 transition-colors">Elicit Review</a>
+                  <a href="#tool-consensus" class="toc-link block text-xs text-slate-500 hover:text-indigo-600 transition-colors">Consensus Review</a>
+                  <a href="#tool-chatgpt" class="toc-link block text-xs text-slate-500 hover:text-indigo-600 transition-colors">ChatGPT Review</a>
+                  <a href="#tool-claude" class="toc-link block text-xs text-slate-500 hover:text-indigo-600 transition-colors">Claude Review</a>
+                </div>
+
+                <a href="#user-types" class="toc-link block text-sm text-slate-600 hover:text-indigo-600 transition-colors font-medium">3. Best by User Type</a>
+                <a href="#verify-research" class="toc-link block text-sm text-slate-600 hover:text-indigo-600 transition-colors font-medium">4. How to Verify</a>
+                <a href="#common-mistakes" class="toc-link block text-sm text-slate-600 hover:text-indigo-600 transition-colors font-medium">5. Common Mistakes</a>
+                <a href="#faq-section" class="toc-link block text-sm text-slate-600 hover:text-indigo-600 transition-colors font-medium">6. FAQ Section</a>
+                <a href="#final-recommendations" class="toc-link block text-sm text-slate-600 hover:text-indigo-600 transition-colors font-medium">7. Final Verdict</a>
+              </nav>
+            </div>
+
+            <!-- Submit a Tool Ad Card -->
+            <div class="bg-gradient-to-br from-indigo-900 via-indigo-950 to-slate-950 rounded-3xl p-6 text-white relative overflow-hidden shadow-sm">
+              <div class="absolute inset-0 bg-grid-pattern opacity-5 pointer-events-none"></div>
+              <h4 class="font-display text-base font-bold">Have a Great App?</h4>
+              <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+                Submit your AI utility to our catalog for organic curation and review by the editorial team.
+              </p>
+              <a 
+                href="/contact" 
+                class="inline-flex items-center justify-center w-full rounded-xl bg-white text-indigo-950 py-2.5 mt-4 text-xs font-bold shadow-xs hover:bg-slate-100 transition-colors"
+              >
+                Submit Now
+              </a>
+            </div>
+
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<script>
+  // Simple active state observer for the Table of Contents sidebar
+  const setupTOC = () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const id = entry.target.getAttribute('id');
+        const tocLink = document.querySelector(`.toc-link[href="#${id}"]`);
+        
+        if (!tocLink) return;
+
+        if (entry.isIntersecting) {
+          tocLink.classList.add('text-indigo-600');
+          tocLink.classList.remove('text-slate-600', 'text-slate-500');
+        } else {
+          tocLink.classList.remove('text-indigo-600');
+          if (tocLink.classList.contains('text-xs')) {
+            tocLink.classList.add('text-slate-500');
+          } else {
+            tocLink.classList.add('text-slate-600');
+          }
+        }
+      });
+    }, {
+      rootMargin: '-100px 0px -60% 0px'
+    });
+
+    const targets = document.querySelectorAll('section[id], div[id^="tool-"]');
+    targets.forEach(target => observer.observe(target));
+  };
+
+  setupTOC();
+  document.addEventListener('astro:after-swap', setupTOC);
+</script>
