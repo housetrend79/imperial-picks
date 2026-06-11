@@ -1,0 +1,372 @@
+---
+import { articles } from "../data/articles.js";
+import { calculators } from "../data/calculators.js";
+
+// Categories mapping to include in search index
+const categoryPages = [
+  { title: "AI Tools Hub", excerpt: "Discover and compare top artificial intelligence systems, custom developer agents, writing apps, and image engines.", link: "/ai-tools", category: "Directories", tags: ["ai", "llm", "writing", "coding", "images"] },
+  { title: "Software Directory", excerpt: "Independent evaluations of pipeline CRM software, email builders, and SaaS suites.", link: "/software", category: "Directories", tags: ["saas", "crm", "email", "business"] },
+  { title: "Calculators & Tools Hub", excerpt: "Zero-dependency dynamic calculators to model marketing campaign budgets, commission payouts, and growth returns.", link: "/tools", category: "Directories", tags: ["roi", "affiliate", "youtube", "earnings", "calculator"] },
+  { title: "Guides & Articles Blog", excerpt: "Read tutorials and strategies for marketing setups, framework performance, and study tools.", link: "/blog", category: "Directories", tags: ["seo", "blog", "guides", "articles"] }
+];
+
+// Combine all searchable elements into index
+const searchIndex = [
+  ...articles.map(a => ({
+    title: a.title,
+    excerpt: a.excerpt,
+    link: a.link,
+    category: a.category,
+    tags: a.tags || []
+  })),
+  ...calculators.map(c => ({
+    title: c.name,
+    excerpt: c.description,
+    link: c.link,
+    category: "Calculators",
+    tags: ["calculator", c.category]
+  })),
+  ...categoryPages
+];
+---
+
+<!-- Search Overlay Backdrop -->
+<div 
+  id="search-overlay" 
+  class="fixed inset-0 z-50 hidden bg-slate-900/40 backdrop-blur-md transition-opacity duration-300"
+  aria-modal="true"
+  role="dialog"
+>
+  <div class="fixed inset-0 overflow-y-auto p-4 sm:p-6 md:p-20">
+    <!-- Search Modal Card -->
+    <div 
+      id="search-modal-card"
+      class="mx-auto max-w-2xl transform divide-y divide-slate-100 rounded-3xl bg-white shadow-2xl ring-1 ring-slate-900/5 transition-all duration-300 scale-95 opacity-0 mt-[10vh]"
+    >
+      <!-- Input bar -->
+      <div class="relative flex items-center px-4 py-4">
+        <!-- Search icon -->
+        <svg class="h-5 w-5 text-slate-400 mr-3 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.602 10.602Z" />
+        </svg>
+        <input 
+          type="text" 
+          id="search-query-input"
+          class="h-8 w-full bg-transparent text-slate-900 placeholder-slate-400 focus:outline-none sm:text-sm font-sans"
+          placeholder="Search articles, calculators, categories..." 
+          role="combobox"
+          aria-expanded="false"
+          aria-autocomplete="list"
+          aria-controls="search-results-list"
+          autocomplete="off"
+        />
+        <!-- Esc Indicator & Close -->
+        <button 
+          id="search-close-btn"
+          class="rounded-lg border border-slate-200 bg-slate-50 px-2 py-0.5 text-[10px] font-bold text-slate-400 hover:bg-slate-150 transition-colors shrink-0"
+        >
+          ESC
+        </button>
+      </div>
+
+      <!-- Results/Content Panel -->
+      <div class="max-h-96 overflow-y-auto py-4 px-4 sm:px-6" id="search-results-panel">
+        
+        <!-- Empty Input State: Quick Links -->
+        <div id="search-quick-links" class="space-y-4">
+          <h3 class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Popular Searches</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <a href="/tools/roi-calculator" class="quick-link flex items-center gap-3 p-3 rounded-2xl bg-slate-50 hover:bg-indigo-50/50 hover:text-indigo-600 transition-colors group">
+              <span class="p-2 rounded-xl bg-white border border-slate-200 group-hover:border-indigo-200">📈</span>
+              <div class="text-xs">
+                <p class="font-bold text-slate-900 group-hover:text-indigo-600">ROI Calculator</p>
+                <p class="text-[10px] text-slate-500">Ad Spend Return Modeler</p>
+              </div>
+            </a>
+            <a href="/ai-tools/best-ai-coding-assistants" class="quick-link flex items-center gap-3 p-3 rounded-2xl bg-slate-50 hover:bg-indigo-50/50 hover:text-indigo-600 transition-colors group">
+              <span class="p-2 rounded-xl bg-white border border-slate-200 group-hover:border-indigo-200">💻</span>
+              <div class="text-xs">
+                <p class="font-bold text-slate-900 group-hover:text-indigo-600">AI Coding Assistants</p>
+                <p class="text-[10px] text-slate-500">Cursor, Copilot, Windsurf</p>
+              </div>
+            </a>
+            <a href="/ai-tools/chatgpt-vs-claude" class="quick-link flex items-center gap-3 p-3 rounded-2xl bg-slate-50 hover:bg-indigo-50/50 hover:text-indigo-600 transition-colors group">
+              <span class="p-2 rounded-xl bg-white border border-slate-200 group-hover:border-indigo-200">⚖️</span>
+              <div class="text-xs">
+                <p class="font-bold text-slate-900 group-hover:text-indigo-600">ChatGPT vs Claude</p>
+                <p class="text-[10px] text-slate-500">2026 Head-to-Head Comparison</p>
+              </div>
+            </a>
+            <a href="/tools/affiliate-earnings-calculator" class="quick-link flex items-center gap-3 p-3 rounded-2xl bg-slate-50 hover:bg-indigo-50/50 hover:text-indigo-600 transition-colors group">
+              <span class="p-2 rounded-xl bg-white border border-slate-200 group-hover:border-indigo-200">💰</span>
+              <div class="text-xs">
+                <p class="font-bold text-slate-900 group-hover:text-indigo-600">Affiliate Calculator</p>
+                <p class="text-[10px] text-slate-500">Commission revenue modeler</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Dynamic Results List -->
+        <ul id="search-results-list" class="hidden divide-y divide-slate-100 text-sm" role="listbox" aria-label="Search results">
+          <!-- Populated via Client JS -->
+        </ul>
+
+        <!-- No Results State -->
+        <div id="search-no-results" class="hidden py-14 text-center">
+          <div class="h-12 w-12 rounded-full bg-slate-50 border border-slate-200/80 flex items-center justify-center mx-auto mb-4 text-slate-400">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.602 10.602Z" />
+            </svg>
+          </div>
+          <h3 class="text-sm font-bold text-slate-900">No results found</h3>
+          <p class="text-xs text-slate-500 mt-2 max-w-xs mx-auto">
+            We couldn't find any articles, calculators, or categories matching "<span id="no-results-query" class="font-semibold text-slate-700"></span>".
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Search Modal Footer Shortcuts -->
+      <div class="flex items-center justify-between px-6 py-3 bg-slate-50/80 text-[10px] font-semibold text-slate-400 rounded-b-3xl">
+        <div class="flex items-center gap-3">
+          <span class="flex items-center gap-1"><kbd class="rounded border border-slate-200 bg-white px-1.5 py-0.5 shadow-xs">↑↓</kbd> Navigate</span>
+          <span class="flex items-center gap-1"><kbd class="rounded border border-slate-200 bg-white px-1.5 py-0.5 shadow-xs">Enter</kbd> Select</span>
+        </div>
+        <span class="flex items-center gap-1"><kbd class="rounded border border-slate-200 bg-white px-1.5 py-0.5 shadow-xs">ESC</kbd> Close</span>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Pass the serialized index array to browser context -->
+<script define:vars={{ searchIndex }} id="search-index-loader">
+  window.IMPERIAL_SEARCH_INDEX = searchIndex;
+</script>
+
+<script>
+  const setupSearch = () => {
+    const overlay = document.getElementById('search-overlay');
+    const card = document.getElementById('search-modal-card');
+    const queryInput = document.getElementById('search-query-input') as HTMLInputElement;
+    const closeBtn = document.getElementById('search-close-btn');
+    const quickLinks = document.getElementById('search-quick-links');
+    const resultsList = document.getElementById('search-results-list');
+    const noResults = document.getElementById('search-no-results');
+    const noResultsQuery = document.getElementById('no-results-query');
+    
+    // Open trigger classes
+    const openSearch = (initialQuery = '') => {
+      if (!overlay || !card || !queryInput) return;
+      
+      overlay.classList.remove('hidden');
+      document.body.classList.add('overflow-hidden');
+      
+      // Animation trigger
+      setTimeout(() => {
+        card.classList.remove('scale-95', 'opacity-0');
+        card.classList.add('scale-100', 'opacity-100');
+        queryInput.focus();
+        
+        if (initialQuery) {
+          queryInput.value = initialQuery;
+          handleSearch(initialQuery);
+        }
+      }, 50);
+    };
+
+    const closeSearch = () => {
+      if (!overlay || !card || !queryInput) return;
+      
+      card.classList.remove('scale-100', 'opacity-100');
+      card.classList.add('scale-95', 'opacity-0');
+      document.body.classList.remove('overflow-hidden');
+      
+      setTimeout(() => {
+        overlay.classList.add('hidden');
+        queryInput.value = '';
+        if (quickLinks) quickLinks.classList.remove('hidden');
+        if (resultsList) resultsList.classList.add('hidden');
+        if (noResults) noResults.classList.add('hidden');
+      }, 150);
+    };
+
+    // Main search handler
+    const handleSearch = (query: string) => {
+      if (!resultsList || !quickLinks || !noResults || !noResultsQuery) return;
+      
+      const trimmed = query.trim().toLowerCase();
+      
+      if (!trimmed) {
+        // Reset states
+        quickLinks.classList.remove('hidden');
+        resultsList.classList.add('hidden');
+        noResults.classList.add('hidden');
+        queryInput.setAttribute('aria-expanded', 'false');
+        return;
+      }
+      
+      const index = window.IMPERIAL_SEARCH_INDEX || [];
+      const matches = index.filter(item => {
+        const titleMatch = item.title.toLowerCase().includes(trimmed);
+        const excerptMatch = item.excerpt.toLowerCase().includes(trimmed);
+        const categoryMatch = item.category.toLowerCase().includes(trimmed);
+        const tagMatch = item.tags.some((t: string) => t.toLowerCase().includes(trimmed));
+        return titleMatch || excerptMatch || categoryMatch || tagMatch;
+      });
+      
+      // Render results
+      quickLinks.classList.add('hidden');
+      
+      if (matches.length === 0) {
+        resultsList.classList.add('hidden');
+        noResults.classList.remove('hidden');
+        noResultsQuery.textContent = query;
+        queryInput.setAttribute('aria-expanded', 'false');
+        return;
+      }
+      
+      noResults.classList.add('hidden');
+      resultsList.classList.remove('hidden');
+      queryInput.setAttribute('aria-expanded', 'true');
+      
+      // Construct HTML results
+      resultsList.innerHTML = matches.map((item, idx) => {
+        const categoryBadgeColor = 
+          item.category === 'Calculators' ? 'bg-amber-50 text-amber-700 border-amber-200/50' :
+          item.category === 'Directories' ? 'bg-purple-50 text-purple-700 border-purple-200/50' :
+          item.category === 'Education' ? 'bg-blue-50 text-blue-700 border-blue-200/50' :
+          'bg-indigo-50 text-indigo-700 border-indigo-200/50';
+
+        return `
+          <li role="presentation">
+            <a 
+              href="${item.link}" 
+              class="search-result-item flex flex-col sm:flex-row sm:items-center justify-between p-3.5 my-1.5 rounded-2xl transition-colors cursor-pointer group focus:outline-none hover:bg-indigo-50/30"
+              id="search-result-item-${idx}"
+              role="option"
+              aria-selected="false"
+              data-index="${idx}"
+            >
+              <div class="space-y-1 pr-4">
+                <h4 class="font-display text-sm font-bold text-slate-900 group-hover:text-indigo-600 transition-colors">
+                  ${item.title}
+                </h4>
+                <p class="text-xs text-slate-500 leading-relaxed line-clamp-1">
+                  ${item.excerpt}
+                </p>
+              </div>
+              <span class="inline-flex items-center rounded-md px-2 py-0.5 text-[9px] font-bold border self-start sm:self-auto mt-2 sm:mt-0 ${categoryBadgeColor}">
+                ${item.category}
+              </span>
+            </a>
+          </li>
+        `;
+      }).join('');
+
+      // Focus first element default highlight styling when moving key focus
+      setupResultSelectionEvents();
+    };
+
+    // Keyboard highlight index tracking
+    let activeResultIdx = -1;
+
+    const setupResultSelectionEvents = () => {
+      const items = document.querySelectorAll('.search-result-item');
+      activeResultIdx = -1;
+      
+      items.forEach((item, index) => {
+        item.addEventListener('mouseenter', () => {
+          removeHighlights();
+          item.classList.add('bg-indigo-50/50', 'text-indigo-600');
+          item.setAttribute('aria-selected', 'true');
+          activeResultIdx = index;
+        });
+      });
+    };
+
+    const removeHighlights = () => {
+      const items = document.querySelectorAll('.search-result-item');
+      items.forEach(item => {
+        item.classList.remove('bg-indigo-50/50', 'text-indigo-600');
+        item.setAttribute('aria-selected', 'false');
+      });
+    };
+
+    // Event listeners
+    if (queryInput) {
+      queryInput.addEventListener('input', (e) => {
+        handleSearch((e.target as HTMLInputElement).value);
+      });
+      
+      queryInput.addEventListener('keydown', (e) => {
+        const items = document.querySelectorAll('.search-result-item') as NodeListOf<HTMLAnchorElement>;
+        
+        if (items.length === 0) return;
+
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          removeHighlights();
+          activeResultIdx = (activeResultIdx + 1) % items.length;
+          const target = items[activeResultIdx];
+          target.classList.add('bg-indigo-50/50', 'text-indigo-600');
+          target.setAttribute('aria-selected', 'true');
+          target.scrollIntoView({ block: 'nearest' });
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          removeHighlights();
+          activeResultIdx = (activeResultIdx - 1 + items.length) % items.length;
+          const target = items[activeResultIdx];
+          target.classList.add('bg-indigo-50/50', 'text-indigo-600');
+          target.setAttribute('aria-selected', 'true');
+          target.scrollIntoView({ block: 'nearest' });
+        } else if (e.key === 'Enter') {
+          if (activeResultIdx >= 0 && activeResultIdx < items.length) {
+            e.preventDefault();
+            items[activeResultIdx].click();
+          }
+        }
+      });
+    }
+
+    // Global toggle listener
+    window.addEventListener('keydown', (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        if (overlay && overlay.classList.contains('hidden')) {
+          openSearch();
+        } else {
+          closeSearch();
+        }
+      } else if (e.key === 'Escape') {
+        if (overlay && !overlay.classList.contains('hidden')) {
+          closeSearch();
+        }
+      }
+    });
+
+    // Close on overlay backdrop click
+    if (overlay) {
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay || e.target === overlay.firstElementChild) {
+          closeSearch();
+        }
+      });
+    }
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', closeSearch);
+    }
+
+    // Custom events for header/hero integration
+    window.addEventListener('open-global-search', (e: CustomEvent) => {
+      const q = e.detail?.query || '';
+      openSearch(q);
+    });
+  };
+
+  // Setup search
+  setupSearch();
+  document.addEventListener('astro:after-swap', setupSearch);
+</script>

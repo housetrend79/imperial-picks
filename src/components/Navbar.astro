@@ -31,6 +31,20 @@
 
       <!-- Right CTAs -->
       <div class="hidden md:flex items-center gap-4">
+        <!-- Search Button -->
+        <button 
+          type="button" 
+          id="nav-search-btn"
+          class="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-xs font-semibold text-slate-500 hover:border-indigo-300 hover:text-indigo-600 transition-all shadow-xs focus:outline-none"
+          aria-label="Search site"
+        >
+          <svg class="h-4 w-4 text-slate-400 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.602 10.602Z" />
+          </svg>
+          <span>Search</span>
+          <kbd class="hidden lg:inline-block rounded bg-slate-100 border border-slate-200 px-1.5 py-0.5 text-[9px] font-bold text-slate-400 select-none">⌘K</kbd>
+        </button>
+
         <a href="/#newsletter" class="text-sm font-medium text-slate-600 transition-colors hover:text-indigo-600">Subscribe</a>
         <a 
           href="/contact" 
@@ -40,8 +54,20 @@
         </a>
       </div>
 
-      <!-- Mobile Menu Button -->
-      <div class="flex md:hidden">
+      <!-- Mobile Menu Button & Search -->
+      <div class="flex items-center gap-2 md:hidden">
+        <!-- Mobile Search Button -->
+        <button 
+          type="button" 
+          id="mobile-search-btn"
+          class="inline-flex items-center justify-center rounded-xl p-2 text-slate-500 hover:bg-slate-100 hover:text-slate-900 focus:outline-none transition-colors"
+          aria-label="Open search"
+        >
+          <svg class="h-5.5 w-5.5" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.602 10.602Z" />
+          </svg>
+        </button>
+
         <button 
           type="button" 
           id="mobile-menu-btn"
@@ -66,7 +92,20 @@
 
   <!-- Mobile Menu Dropdown -->
   <div class="hidden md:hidden border-t border-slate-200 bg-slate-50/95 backdrop-blur-lg" id="mobile-menu">
-    <div class="space-y-1 px-4 py-4">
+    <div class="px-4 pt-3 pb-1">
+      <!-- Mobile Menu Search Box -->
+      <button 
+        type="button" 
+        id="mobile-menu-search-trigger"
+        class="w-full flex items-center gap-2.5 rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-sm font-medium text-slate-400 focus:outline-none hover:border-indigo-300 transition-colors"
+      >
+        <svg class="h-4.5 w-4.5 text-slate-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.602 10.602Z" />
+        </svg>
+        <span>Search site...</span>
+      </button>
+    </div>
+    <div class="space-y-1 px-4 py-3">
       <a href="/#categories" class="mobile-nav-link block rounded-xl px-4 py-2.5 text-base font-medium text-slate-700 hover:bg-slate-100 hover:text-indigo-600 transition-colors">Categories</a>
       <a href="/#popular-tools" class="mobile-nav-link block rounded-xl px-4 py-2.5 text-base font-medium text-slate-700 hover:bg-slate-100 hover:text-indigo-600 transition-colors">Popular Tools</a>
       <a href="/#calculators" class="mobile-nav-link block rounded-xl px-4 py-2.5 text-base font-medium text-slate-700 hover:bg-slate-100 hover:text-indigo-600 transition-colors">Free Calculators</a>
@@ -136,6 +175,23 @@
         }
       });
     });
+
+    // Search trigger setup
+    const navSearchBtn = document.getElementById('nav-search-btn');
+    const mobileSearchBtn = document.getElementById('mobile-search-btn');
+    const mobileMenuSearchTrigger = document.getElementById('mobile-menu-search-trigger');
+
+    const triggerSearch = () => {
+      // If mobile menu is open, close it first
+      if (!mobileMenu.classList.contains('hidden')) {
+        toggleMenu();
+      }
+      window.dispatchEvent(new CustomEvent('open-global-search'));
+    };
+
+    if (navSearchBtn) navSearchBtn.addEventListener('click', triggerSearch);
+    if (mobileSearchBtn) mobileSearchBtn.addEventListener('click', triggerSearch);
+    if (mobileMenuSearchTrigger) mobileMenuSearchTrigger.addEventListener('click', triggerSearch);
   };
 
   // Run on page load

@@ -26,7 +26,7 @@
 
     <!-- Search Box -->
     <div class="mt-10 max-w-xl mx-auto px-2">
-      <form action="#popular-tools" method="GET" class="relative flex items-center rounded-2xl bg-white p-1.5 shadow-xl shadow-slate-200/50 border border-slate-200/80 focus-within:border-indigo-500 focus-within:ring-2 focus-within:ring-indigo-150 transition-all duration-300">
+      <form id="hero-search-form" class="relative flex items-center rounded-2xl bg-white p-1.5 shadow-xl shadow-slate-200/50 border border-slate-200/80 focus-within:border-indigo-500 focus-within:ring-2 focus-within:ring-indigo-150 transition-all duration-300">
         <div class="flex items-center flex-1 px-3">
           <!-- Search Icon -->
           <svg class="h-5 w-5 text-slate-400 mr-2.5 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
@@ -34,10 +34,10 @@
           </svg>
           <input 
             type="text" 
-            name="search" 
             placeholder="Search tools, calculators, templates..." 
             class="w-full bg-transparent text-slate-800 placeholder-slate-400 focus:outline-none text-sm md:text-base font-normal"
             id="hero-search-input"
+            autocomplete="off"
           />
         </div>
         <button 
@@ -51,13 +51,13 @@
       <!-- Trending tags -->
       <div class="mt-4 flex flex-wrap items-center justify-center gap-2 text-xs text-slate-500">
         <span class="font-medium">Trending:</span>
-        <button onclick="document.getElementById('hero-search-input').value = 'Claude 3.5'; document.getElementById('hero-search-input').focus();" class="hover:text-indigo-600 hover:underline">Claude 3.5</button>
+        <button type="button" data-query="Claude 3.5" class="trending-tag-btn hover:text-indigo-600 hover:underline focus:outline-none">Claude 3.5</button>
         <span class="text-slate-300">•</span>
-        <button onclick="document.getElementById('hero-search-input').value = 'ROI Calculator'; document.getElementById('hero-search-input').focus();" class="hover:text-indigo-600 hover:underline">ROI Calculator</button>
+        <button type="button" data-query="ROI Calculator" class="trending-tag-btn hover:text-indigo-600 hover:underline focus:outline-none">ROI Calculator</button>
         <span class="text-slate-300">•</span>
-        <button onclick="document.getElementById('hero-search-input').value = 'Midjourney'; document.getElementById('hero-search-input').focus();" class="hover:text-indigo-600 hover:underline">Midjourney</button>
+        <button type="button" data-query="Midjourney" class="trending-tag-btn hover:text-indigo-600 hover:underline focus:outline-none">Midjourney</button>
         <span class="text-slate-300">•</span>
-        <button onclick="document.getElementById('hero-search-input').value = 'Notion Template'; document.getElementById('hero-search-input').focus();" class="hover:text-indigo-600 hover:underline">Notion</button>
+        <button type="button" data-query="Notion" class="trending-tag-btn hover:text-indigo-600 hover:underline focus:outline-none">Notion</button>
       </div>
     </div>
 
@@ -85,3 +85,48 @@
 
   </div>
 </section>
+
+<script>
+  const setupHeroSearch = () => {
+    const searchForm = document.getElementById('hero-search-form');
+    const searchInput = document.getElementById('hero-search-input') as HTMLInputElement;
+    const trendingBtns = document.querySelectorAll('.trending-tag-btn');
+
+    if (!searchInput) return;
+
+    const triggerGlobalSearch = (query = '') => {
+      window.dispatchEvent(new CustomEvent('open-global-search', {
+        detail: { query }
+      }));
+      // Clear and blur the hero search input so it doesn't stay active
+      searchInput.value = '';
+      searchInput.blur();
+    };
+
+    // When the user starts typing, clicks, or focuses the hero search box, open modal
+    searchInput.addEventListener('focus', () => triggerGlobalSearch());
+    searchInput.addEventListener('click', (e) => {
+      e.stopPropagation();
+      triggerGlobalSearch();
+    });
+
+    if (searchForm) {
+      searchForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        triggerGlobalSearch(searchInput.value);
+      });
+    }
+
+    // Connect trending tag click handlers
+    trendingBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const query = (btn as HTMLButtonElement).getAttribute('data-query') || '';
+        triggerGlobalSearch(query);
+      });
+    });
+  };
+
+  setupHeroSearch();
+  document.addEventListener('astro:after-swap', setupHeroSearch);
+</script>
