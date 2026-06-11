@@ -1,0 +1,843 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+
+// Schema Markup for SEO
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Best AI Writing Tools in 2026: Unbiased Editorial Review",
+  "description": "Compare the best AI writing tools in 2026. Read non-sponsored, detailed reviews, pricing, pros, cons, and guide for ChatGPT, Claude, Grammarly, Jasper, Copy.ai, and Writesonic.",
+  "datePublished": "2026-06-11T12:25:00Z",
+  "dateModified": "2026-06-11T12:25:00Z",
+  "author": {
+    "@type": "Organization",
+    "name": "Imperial Picks Editorial Team",
+    "url": "https://imperialpicks.in/about"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Imperial Picks",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://imperialpicks.in/favicon.svg"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://imperialpicks.in/ai-tools/best-ai-writing-tools"
+  }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Which AI writing tool is best for generating long-form blogs?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Claude is widely considered the best for natural, long-form prose due to its advanced language styling, massive 200,000-token context window, and cohesive structure. For teams requiring structured SEO pipelines with automatic keyword inclusion, Jasper or Writesonic are excellent alternatives."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does ChatGPT compare to Claude for copyediting and rewriting?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ChatGPT (utilizing o1/o3 reasoning models) is outstanding for structural analysis, correcting logical flow, and formatting code-heavy text. Claude is far superior for maintaining a natural human-like voice, adjusting brand tones, and writing engaging narrative copy."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can AI writing tools completely bypass AI detectors in 2026?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. While advanced tools can generate highly human-like text, security and academic institutions use multi-variable semantic detectors that check for predictable token patterns. The only guaranteed way to bypass AI detection is to manually rewrite sections, add unique perspectives, and include personal case studies."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the key difference between Jasper and Copy.ai?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Jasper functions primarily as a content creation suite tailored for marketing and SEO campaigns, featuring built-in templates and style guides. Copy.ai has transitioned towards automated workflow orchestration, enabling teams to build complete content pipelines that pull data from external APIs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Grammarly offer generative writing features?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Grammarly includes Grammarly Go, a generative AI assistant that can draft email responses, outline documents, rewrite sentences for clarity, and adjust tone directly inside your active applications."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Writesonic suitable for bulk SEO article generation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, Writesonic's Sonic Editor and bulk writer features are designed specifically to generate multiple SEO-friendly drafts simultaneously. However, these drafts should always undergo human editing to ensure accuracy and readability."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do enterprise plans for these writing tools protect my data?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Enterprise-tier plans for ChatGPT, Claude, Jasper, and Copy.ai guarantee that all inputs, reference files, and prompts are kept private and are not used for model training."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I train these tools on my brand's style guide?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, platforms like Jasper, Copy.ai, and Claude (via Projects and custom system instructions) allow you to upload style guides, tone definitions, and reference blogs to ensure all outputs match your company's voice."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do these tools support multi-lingual content writing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. ChatGPT, Claude, and Writesonic support writing and translating content across more than 30 languages, maintaining local idioms and tone adjustments."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is context window dilution, and how does it affect writing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Context window dilution occurs when too much background information is uploaded to a model, causing it to lose focus or ignore earlier guidelines. To prevent this, keep reference files focused and use structured outlines."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is past performance a guarantee of AI content quality?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Models are updated frequently, which can cause writing styles, limits, and pricing to change over time. It is always best to run small tests before committing to a platform."
+      }
+    }
+  ]
+};
+---
+
+<Layout title="Best AI Writing Tools in 2026: Unbiased Editorial Review - Imperial Picks" description="Compare the top AI writing tools in 2026. Read non-sponsored, detailed reviews, pricing, pros, cons, and guide for ChatGPT, Claude, Grammarly, Jasper, Copy.ai, and Writesonic.">
+  
+  <!-- Inject JSON-LD Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)}></script>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)}></script>
+
+  <Navbar />
+  
+  <main class="relative bg-slate-50 min-h-screen py-12">
+    <!-- Background Patterns -->
+    <div class="absolute inset-0 bg-grid-pattern pointer-events-none"></div>
+
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      
+      <!-- Breadcrumbs -->
+      <nav class="flex text-xs font-semibold text-slate-500 gap-1.5 mb-6 relative z-10" aria-label="Breadcrumb">
+        <a href="/" class="hover:text-indigo-600">Home</a>
+        <span>/</span>
+        <a href="/ai-tools" class="hover:text-indigo-600">AI Tools</a>
+        <span>/</span>
+        <span class="text-slate-800 truncate">Best AI Writing Tools</span>
+      </nav>
+
+      <!-- Layout Grid: Left Content (Prose), Right Sticky Table of Contents -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 relative z-10">
+        
+        <!-- Main Article Body (Prose) -->
+        <article class="lg:col-span-8 bg-white border border-slate-200/80 rounded-3xl p-6 sm:p-10 lg:p-12 shadow-xs max-w-none">
+          
+          <!-- Article Header -->
+          <header class="border-b border-slate-100 pb-8 mb-8">
+            <span class="inline-flex items-center rounded-md bg-rose-50 px-2.5 py-1 text-xs font-bold text-rose-800 mb-4 border border-rose-200/40">
+              Content & Copywriting
+            </span>
+            <h1 class="font-display text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-[1.15] mb-6">
+              Best AI Writing Tools in 2026: Unbiased Editorial Review
+            </h1>
+            
+            <!-- Author Card -->
+            <div class="flex items-center gap-3">
+              <div class="h-10 w-10 rounded-full bg-indigo-600 text-indigo-50 flex items-center justify-center font-display text-sm font-bold shadow-sm">
+                IP
+              </div>
+              <div class="text-xs">
+                <p class="font-bold text-slate-800">Imperial Picks Editorial Team</p>
+                <p class="text-slate-400 font-medium mt-0.5">Published on June 11, 2026 • 22 min read</p>
+              </div>
+            </div>
+          </header>
+
+          <!-- Introduction Section -->
+          <section id="introduction" class="prose max-w-[72ch] text-slate-600 text-sm leading-relaxed space-y-6">
+            <h2 class="sr-only">Introduction</h2>
+            <p class="text-base sm:text-lg font-medium">
+              The AI content landscape has matured. The era of generating thousands of generic, low-quality blog posts to game search engine indexing is over. Today, search engine algorithms and readers alike demand original perspectives, detailed analysis, and clear style guidelines.
+            </p>
+            <p>
+              In 2026, writing tools have shifted from simple prompt-response generators to collaborative assistants. Modern copywriters, authors, and marketing teams use AI to build content calendars, refine brand voices, analyze competitor structures, and draft highly technical guides.
+            </p>
+            <p>
+              However, selecting the right software is challenging. Many platforms are simple wrappers around basic models, charging premium monthly fees for minor feature updates. Furthermore, relying entirely on AI writing without human editing can lead to generic tone, factual inaccuracies, and brand drift.
+            </p>
+            <p>
+              To help you select the ideal assistant, the Imperial Picks Editorial Team has conducted an independent audit of the leading systems. In this guide, we analyze the six best AI writing tools in 2026, evaluating their tone control, workflow integration, pricing structures, pros, and cons.
+            </p>
+
+            <!-- Callout: Trust & Data Integrity -->
+            <div class="border-l-4 border-indigo-500 bg-indigo-50/50 p-5 rounded-r-2xl my-8">
+              <div class="flex gap-2.5">
+                <span class="text-lg">🔒</span>
+                <div>
+                  <h4 class="font-bold text-indigo-900 text-sm">Our Editorial Promise</h4>
+                  <p class="text-xs text-indigo-800 leading-relaxed mt-1">
+                    Imperial Picks does not accept sponsorship fees or utilize affiliate links. Our recommendations are based entirely on objective evaluations: ease of use, tone flexibility, API consistency, data security compliance, and price-to-value ratios.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Comparison Table Section -->
+          <section id="comparison-table" class="mt-12 scroll-mt-20">
+            <h2 class="font-display text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight mb-6 pb-2 border-b border-slate-100">
+              2. Quick Comparison: AI Writing Tools
+            </h2>
+            <p class="text-sm text-slate-600 leading-relaxed mb-6">
+              The table below summarizes the key trade-offs in use cases, free plan availability, starting prices, and primary strengths of the top writing engines.
+            </p>
+            
+            <div class="overflow-x-auto rounded-2xl border border-slate-200 bg-slate-50/50 p-1 mb-8">
+              <table class="w-full text-left text-xs border-collapse bg-white rounded-xl overflow-hidden">
+                <thead>
+                  <tr class="bg-slate-900 text-white font-display text-[10px] uppercase tracking-wider">
+                    <th class="py-4 px-4 font-semibold">Tool</th>
+                    <th class="py-4 px-4 font-semibold">Best For</th>
+                    <th class="py-4 px-4 font-semibold">Free Plan</th>
+                    <th class="py-4 px-4 font-semibold">Starting Price</th>
+                    <th class="py-4 px-4 font-semibold">Core Synergy</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100 text-slate-700">
+                  <tr class="hover:bg-slate-50/80 transition-colors">
+                    <td class="py-4 px-4 font-bold text-slate-900">ChatGPT</td>
+                    <td class="py-4 px-4">Technical outlines, data parsing, and multi-lingual drafts</td>
+                    <td class="py-4 px-4">
+                      <span class="inline-flex items-center rounded-md bg-emerald-50 px-2 py-0.5 text-[10px] font-semibold text-emerald-800 border border-emerald-200/50">Yes (Basic GPT-4o)</span>
+                    </td>
+                    <td class="py-4 px-4 font-semibold text-slate-900">$20/month</td>
+                    <td class="py-4 px-4">Great for structured, analytical outlining</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50/80 transition-colors">
+                    <td class="py-4 px-4 font-bold text-slate-900">Claude</td>
+                    <td class="py-4 px-4">Nuanced long-form prose, essays, and creative copy</td>
+                    <td class="py-4 px-4">
+                      <span class="inline-flex items-center rounded-md bg-emerald-50 px-2 py-0.5 text-[10px] font-semibold text-emerald-800 border border-emerald-200/50">Yes (Sonnet 3.5 basic)</span>
+                    </td>
+                    <td class="py-4 px-4 font-semibold text-slate-900">$20/month</td>
+                    <td class="py-4 px-4">Excellent for drafting high-quality narrative text</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50/80 transition-colors">
+                    <td class="py-4 px-4 font-bold text-slate-900">Grammarly</td>
+                    <td class="py-4 px-4">Real-time editing, tone adjustment, and proofreading</td>
+                    <td class="py-4 px-4">
+                      <span class="inline-flex items-center rounded-md bg-emerald-50 px-2 py-0.5 text-[10px] font-semibold text-emerald-800 border border-emerald-200/50">Yes (Basic grammar)</span>
+                    </td>
+                    <td class="py-4 px-4 font-semibold text-slate-900">$12/month</td>
+                    <td class="py-4 px-4">Runs globally across browser pages and email apps</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50/80 transition-colors">
+                    <td class="py-4 px-4 font-bold text-slate-900">Jasper</td>
+                    <td class="py-4 px-4">Marketing campaigns, SEO blogs, and brand voices</td>
+                    <td class="py-4 px-4">
+                      <span class="inline-flex items-center rounded-md bg-rose-50 px-2 py-0.5 text-[10px] font-semibold text-rose-800 border border-rose-200/50">No (7-day trial)</span>
+                    </td>
+                    <td class="py-4 px-4 font-semibold text-slate-900">$39/month (billed annually)</td>
+                    <td class="py-4 px-4">Designed for marketing teams and business agencies</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50/80 transition-colors">
+                    <td class="py-4 px-4 font-bold text-slate-900">Copy.ai</td>
+                    <td class="py-4 px-4">Automated content pipelines and email workflows</td>
+                    <td class="py-4 px-4">
+                      <span class="inline-flex items-center rounded-md bg-emerald-50 px-2 py-0.5 text-[10px] font-semibold text-emerald-800 border border-emerald-200/50">Yes (Basic seat)</span>
+                    </td>
+                    <td class="py-4 px-4 font-semibold text-slate-900">$36/month (billed annually)</td>
+                    <td class="py-4 px-4">Connects with sales and lead generation platforms</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50/80 transition-colors">
+                    <td class="py-4 px-4 font-bold text-slate-900">Writesonic</td>
+                    <td class="py-4 px-4">Bulk article generation & SEO-targeted landing pages</td>
+                    <td class="py-4 px-4">
+                      <span class="inline-flex items-center rounded-md bg-emerald-50 px-2 py-0.5 text-[10px] font-semibold text-emerald-800 border border-emerald-200/50">Yes (25 credits)</span>
+                    </td>
+                    <td class="py-4 px-4 font-semibold text-slate-900">$16/month (billed annually)</td>
+                    <td class="py-4 px-4">Integrates keyword optimization tools</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- Detailed Reviews Section -->
+          <section id="detailed-reviews" class="mt-16 space-y-20">
+            <h2 class="font-display text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight pb-2 border-b border-slate-100">
+              3. Detailed Reviews: The Top 6 AI Writing Tools
+            </h2>
+
+            <!-- Review: ChatGPT -->
+            <div id="tool-chatgpt" class="scroll-mt-20 space-y-4">
+              <div class="flex items-center gap-3">
+                <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-purple-50 text-purple-600 border border-purple-100 font-bold font-display">01</span>
+                <h3 class="font-display text-2xl font-extrabold text-slate-900">ChatGPT: The Structured Outliner</h3>
+              </div>
+              <p class="text-slate-600 text-sm leading-relaxed">
+                OpenAI's ChatGPT is an essential component of the content pipeline. Its advanced reasoning models (o1 and o3-mini) are superior for technical research, structuring complex layouts, and analyzing data logs before drafting begins.
+              </p>
+              <p class="text-slate-600 text-sm leading-relaxed">
+                While ChatGPT can write full drafts, its default cadence can sound dry or predictable. Its true strength lies in technical outlines: parsing technical documents, identifying core themes, and creating detailed briefs that copywriters can expand upon. Its custom GPT feature also allows teams to configure micro-agents for specific formatting styles.
+              </p>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6 text-xs">
+                <div class="bg-emerald-50/50 border border-emerald-100 rounded-2xl p-5">
+                  <h4 class="font-bold text-emerald-900 mb-2">Key Features</h4>
+                  <ul class="list-disc pl-4 space-y-1 text-slate-600">
+                    <li>Advanced reasoning models with structured chain-of-thought analysis.</li>
+                    <li>Python integration for verifying data metrics before writing.</li>
+                    <li>Custom GPT templates for formatting guidelines.</li>
+                    <li>Real-time web search integration for facts and statistics.</li>
+                  </ul>
+                </div>
+                <div class="bg-slate-50 border border-slate-200/60 rounded-2xl p-5">
+                  <h4 class="font-bold text-slate-900 mb-2">Pros & Cons</h4>
+                  <ul class="space-y-1 text-slate-600">
+                    <li><strong class="text-emerald-600">✓</strong> Outstanding technical outlining and logical structuring.</li>
+                    <li><strong class="text-emerald-600">✓</strong> Fast API response times and offline developer access.</li>
+                    <li><strong class="text-rose-600">✗</strong> Default writing style can sound robotic or generic.</li>
+                    <li><strong class="text-rose-600">✗</strong> Requires careful prompting to avoid repetitive phrasing.</li>
+                  </ul>
+                </div>
+              </div>
+              <p class="text-slate-600 text-sm leading-relaxed">
+                <strong>Pricing:</strong> Free basic tier available. Plus subscription costs $20/month. Team plans start at $25/user/month (billed annually) and guarantee data privacy.
+              </p>
+              <p class="text-slate-650 text-xs italic bg-slate-50 p-3.5 rounded-xl border border-slate-200/60">
+                <strong>Best Use Case:</strong> Technical research, data logs parsing, and creating detailed outline structures.
+              </p>
+            </div>
+
+            <!-- Review: Claude -->
+            <div id="tool-claude" class="scroll-mt-20 space-y-4">
+              <div class="flex items-center gap-3">
+                <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-50 text-amber-600 border border-amber-100 font-bold font-display">02</span>
+                <h3 class="font-display text-2xl font-extrabold text-slate-900">Claude: The Prose Specialist</h3>
+              </div>
+              <p class="text-slate-600 text-sm leading-relaxed">
+                Anthropic's Claude is the leading choice for drafting high-quality, natural-sounding copy. With a 200,000-token context window and the Claude Projects feature, it allows you to upload reference articles, company voice specifications, and brand style guides that persist across sessions.
+              </p>
+              <p class="text-slate-600 text-sm leading-relaxed">
+                Claude's writing tone is exceptionally natural and avoids the generic clichés typical of basic language models. This makes it the premier assistant for drafting full blogs, editing manuals, and writing engaging narratives. It also includes an Artifacts interface that displays clean visual layouts, SVG charts, and mockups in a side-by-side view.
+              </p>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6 text-xs">
+                <div class="bg-emerald-50/50 border border-emerald-100 rounded-2xl p-5">
+                  <h4 class="font-bold text-emerald-900 mb-2">Key Features</h4>
+                  <ul class="list-disc pl-4 space-y-1 text-slate-600">
+                    <li>200k token context window for large documentation uploads.</li>
+                    <li>Claude Projects to store brand style assets and reference links.</li>
+                    <li>Interactive Artifacts panel for split-screen layouts.</li>
+                    <li>Nuanced language understanding tailored for professional copywriting.</li>
+                  </ul>
+                </div>
+                <div class="bg-slate-50 border border-slate-200/60 rounded-2xl p-5">
+                  <h4 class="font-bold text-slate-900 mb-2">Pros & Cons</h4>
+                  <ul class="space-y-1 text-slate-600">
+                    <li><strong class="text-emerald-600">✓</strong> Natural, engaging writing voice.</li>
+                    <li><strong class="text-emerald-600">✓</strong> Massive context window supports uploading complex books or datasets.</li>
+                    <li><strong class="text-rose-600">✗</strong> Lacks an integrated Python environment for exact math.</li>
+                    <li><strong class="text-rose-600">✗</strong> Usage limits can be restrictive during peak hours.</li>
+                  </ul>
+                </div>
+              </div>
+              <p class="text-slate-600 text-sm leading-relaxed">
+                <strong>Pricing:</strong> Free basic tier available. Pro plans cost $20/month. Team plans cost $25/user/month (minimum 5 seats).
+              </p>
+              <p class="text-slate-650 text-xs italic bg-slate-50 p-3.5 rounded-xl border border-slate-200/60">
+                <strong>Best Use Case:</strong> Content writing, brand copy editing, and narrative storytelling.
+              </p>
+            </div>
+
+            <!-- Review: Grammarly -->
+            <div id="tool-grammarly" class="scroll-mt-20 space-y-4">
+              <div class="flex items-center gap-3">
+                <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-green-50 text-green-600 border border-green-100 font-bold font-display">03</span>
+                <h3 class="font-display text-2xl font-extrabold text-slate-900">Grammarly: The Editor-in-Chief</h3>
+              </div>
+              <p class="text-slate-600 text-sm leading-relaxed">
+                While generative tools write content, Grammarly ensures clarity, grammar correctness, and tone consistency. Operating globally across desktop and browser applications, Grammarly provides real-time proofreading and editing feedback.
+              </p>
+              <p class="text-slate-600 text-sm leading-relaxed">
+                In addition to spelling checks, Grammarly Go provides generative assistance that can rewrite sentences, adjust style guides, and outline emails. Its tone analyzer dashboard visually displays how your message will sound to readers, ensuring your copy remains professional.
+              </p>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6 text-xs">
+                <div class="bg-emerald-50/50 border border-emerald-100 rounded-2xl p-5">
+                  <h4 class="font-bold text-emerald-900 mb-2">Key Features</h4>
+                  <ul class="list-disc pl-4 space-y-1 text-slate-600">
+                    <li>Real-time grammar, spelling, and tone audits.</li>
+                    <li>Grammarly Go generative assistant for quick rewrites.</li>
+                    <li>Custom team style guides for brand consistency.</li>
+                    <li>Integrated plagiarism checker.</li>
+                  </ul>
+                </div>
+                <div class="bg-slate-50 border border-slate-200/60 rounded-2xl p-5">
+                  <h4 class="font-bold text-slate-900 mb-2">Pros & Cons</h4>
+                  <ul class="space-y-1 text-slate-600">
+                    <li><strong class="text-emerald-600">✓</strong> Runs everywhere you write (Slack, Gmail, Word, browsers).</li>
+                    <li><strong class="text-emerald-600">✓</strong> Helps maintain a consistent brand tone across teams.</li>
+                    <li><strong class="text-rose-600">✗</strong> Premium tier subscription is relatively expensive.</li>
+                    <li><strong class="text-rose-600">✗</strong> Editing suggestions can sometimes dull creative styling.</li>
+                  </ul>
+                </div>
+              </div>
+              <p class="text-slate-600 text-sm leading-relaxed">
+                <strong>Pricing:</strong> Free basic plan available. Premium plans cost $12/month (billed annually) or $30/month (billed monthly). Business tiers cost $15/user/month (billed annually).
+              </p>
+              <p class="text-slate-650 text-xs italic bg-slate-50 p-3.5 rounded-xl border border-slate-200/60">
+                <strong>Best Use Case:</strong> Real-time editing, emails audit, and brand tone checking.
+              </p>
+            </div>
+
+            <!-- Review: Jasper -->
+            <div id="tool-jasper" class="scroll-mt-20 space-y-4">
+              <div class="flex items-center gap-3">
+                <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-50 text-indigo-650 border border-indigo-150 font-bold font-display">04</span>
+                <h3 class="font-display text-2xl font-extrabold text-slate-900">Jasper: The Enterprise Campaign Suite</h3>
+              </div>
+              <p class="text-slate-600 text-sm leading-relaxed">
+                Jasper is designed for marketing teams and agencies that need to produce cohesive campaigns. Rather than acting as a simple chat interface, it provides a workspace with built-in templates, content calendars, and SEO guidelines.
+              </p>
+              <p class="text-slate-600 text-sm leading-relaxed">
+                Jasper allows you to build a "Brand Voice" profile by analyzing your website or style guides, ensuring all generated copy matches your tone. Its campaign generation tool can take a single brief and automatically draft a matching blog post, email sequence, and social copy.
+              </p>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6 text-xs">
+                <div class="bg-emerald-50/50 border border-emerald-100 rounded-2xl p-5">
+                  <h4 class="font-bold text-emerald-900 mb-2">Key Features</h4>
+                  <ul class="list-disc pl-4 space-y-1 text-slate-600">
+                    <li>Custom Brand Voice profiles.</li>
+                    <li>Multi-asset marketing campaigns builder.</li>
+                    <li>Integrated SEO analyzer (SurferSEO partnership).</li>
+                    <li>Team review workflows and task boards.</li>
+                  </ul>
+                </div>
+                <div class="bg-slate-50 border border-slate-200/60 rounded-2xl p-5">
+                  <h4 class="font-bold text-slate-900 mb-2">Pros & Cons</h4>
+                  <ul class="space-y-1 text-slate-600">
+                    <li><strong class="text-emerald-600">✓</strong> Streamlines multi-channel marketing campaigns.</li>
+                    <li><strong class="text-emerald-600">✓</strong> Keeps tone consistent across copywriters.</li>
+                    <li><strong class="text-rose-600">✗</strong> Pricing is expensive for freelancers or individual users.</li>
+                    <li><strong class="text-rose-600">✗</strong> Requires configuration to achieve maximum brand accuracy.</li>
+                  </ul>
+                </div>
+              </div>
+              <p class="text-slate-600 text-sm leading-relaxed">
+                <strong>Pricing:</strong> Offers a 7-day trial. Creator plans cost $39/month (billed annually) or $49/month (billed monthly). Pro plans start at $59/user/month (billed annually).
+              </p>
+              <p class="text-slate-650 text-xs italic bg-slate-50 p-3.5 rounded-xl border border-slate-200/60">
+                <strong>Best Use Case:</strong> Digital agencies, marketing departments, and multi-channel campaign managers.
+              </p>
+            </div>
+
+            <!-- Review: Copy.ai -->
+            <div id="tool-copyai" class="scroll-mt-20 space-y-4">
+              <div class="flex items-center gap-3">
+                <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-sky-50 text-sky-600 border border-sky-100 font-bold font-display">05</span>
+                <h3 class="font-display text-2xl font-extrabold text-slate-900">Copy.ai: The Content Workflow Orchestrator</h3>
+              </div>
+              <p class="text-slate-600 text-sm leading-relaxed">
+                Copy.ai has transitioned from a basic writing template wrapper into a powerful workflow automation engine. It allows teams to build "AI Workflows" that automate complex content tasks (e.g., pulling a product listing, translating it, and generating email promotions).
+              </p>
+              <p class="text-slate-600 text-sm leading-relaxed">
+                This workflow focus makes Copy.ai highly valuable for operations teams, letting you build custom integrations with CRM systems, databases, and marketing platforms. It includes a brand voice feature to keep tone consistent across automated campaigns.
+              </p>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6 text-xs">
+                <div class="bg-emerald-50/50 border border-emerald-100 rounded-2xl p-5">
+                  <h4 class="font-bold text-emerald-900 mb-2">Key Features</h4>
+                  <ul class="list-disc pl-4 space-y-1 text-slate-600">
+                    <li>Custom automated AI Workflows builder.</li>
+                    <li>Database and CRM API integrations.</li>
+                    <li>Dynamic brand voice analyzer profiles.</li>
+                    <li>Unified workspace for team collaboration.</li>
+                  </ul>
+                </div>
+                <div class="bg-slate-50 border border-slate-200/60 rounded-2xl p-5">
+                  <h4 class="font-bold text-slate-900 mb-2">Pros & Cons</h4>
+                  <ul class="space-y-1 text-slate-600">
+                    <li><strong class="text-emerald-600">✓</strong> Outstanding automation capabilities for scale writing.</li>
+                    <li><strong class="text-emerald-600">✓</strong> Simplifies data extraction and translation.</li>
+                    <li><strong class="text-rose-600">✗</strong> Visual layout options are limited.</li>
+                    <li><strong class="text-rose-600">✗</strong> Setting up custom workflows requires technical planning.</li>
+                  </ul>
+                </div>
+              </div>
+              <p class="text-slate-600 text-sm leading-relaxed">
+                <strong>Pricing:</strong> Free plan includes basic chat features. Starter plans start at $36/month (billed annually) or $49/month (billed monthly) with unlimited words.
+              </p>
+              <p class="text-slate-650 text-xs italic bg-slate-50 p-3.5 rounded-xl border border-slate-200/60">
+                <strong>Best Use Case:</strong> Content operations managers, sales automation teams, and multi-market e-commerce listings.
+              </p>
+            </div>
+
+            <!-- Review: Writesonic -->
+            <div id="tool-writesonic" class="scroll-mt-20 space-y-4">
+              <div class="flex items-center gap-3">
+                <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-pink-50 text-pink-650 border border-pink-150 font-bold font-display">06</span>
+                <h3 class="font-display text-2xl font-extrabold text-slate-900">Writesonic: The Bulk SEO Writer</h3>
+              </div>
+              <p class="text-slate-600 text-sm leading-relaxed">
+                Writesonic is designed for bulk content writing and SEO performance. Its Article Writer tool allows you to input keywords, select top-ranking competitor references, and automatically generate structured, SEO-focused draft blogs.
+              </p>
+              <p class="text-slate-600 text-sm leading-relaxed">
+                Writesonic includes built-in SEO scoring checkers that evaluate keyword density, search intent, and structure. It also features Chatsonic, a search-grounded chatbot, and Photosonic for generating blog images, providing a complete media workflow.
+              </p>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6 text-xs">
+                <div class="bg-emerald-50/50 border border-emerald-100 rounded-2xl p-5">
+                  <h4 class="font-bold text-emerald-900 mb-2">Key Features</h4>
+                  <ul class="list-disc pl-4 space-y-1 text-slate-600">
+                    <li>Bulk AI Article Writer with custom SEO inputs.</li>
+                    <li>Integrated keyword density optimizer.</li>
+                    <li>Photosonic generator for post images.</li>
+                    <li>Chatsonic search assistant with citations.</li>
+                  </ul>
+                </div>
+                <div class="bg-slate-50 border border-slate-200/60 rounded-2xl p-5">
+                  <h4 class="font-bold text-slate-900 mb-2">Pros & Cons</h4>
+                  <ul class="space-y-1 text-slate-600">
+                    <li><strong class="text-emerald-600">✓</strong> Fast generation of search-optimized drafts.</li>
+                    <li><strong class="text-emerald-600">✓</strong> Built-in SEO analyzer saves optimization time.</li>
+                    <li><strong class="text-rose-600">✗</strong> Drafts can feel formulaic without manual rewriting.</li>
+                    <li><strong class="text-rose-600">✗</strong> Pricing is based on credits, which can be used quickly for bulk writing.</li>
+                  </ul>
+                </div>
+              </div>
+              <p class="text-slate-600 text-sm leading-relaxed">
+                <strong>Pricing:</strong> Free basic plan with limited credits. Individual plans start at $16/month (billed annually) or $20/month (billed monthly). Professional team plans cost $49/month (billed annually).
+              </p>
+              <p class="text-slate-650 text-xs italic bg-slate-50 p-3.5 rounded-xl border border-slate-200/60">
+                <strong>Best Use Case:</strong> SEO specialists, affiliate website networks, and marketing teams managing blogs.
+              </p>
+            </div>
+
+          </section>
+
+          <!-- Best Writing Tool by User Type Section -->
+          <section id="user-types" class="mt-16 scroll-mt-20 space-y-6">
+            <h2 class="font-display text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight pb-2 border-b border-slate-100">
+              4. Best AI Writing Tool by User Type
+            </h2>
+            <p class="text-slate-600 text-sm leading-relaxed">
+              Choosing the right tool is about matching features to your workflow:
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-4">
+              
+              <!-- Copywriters -->
+              <div class="p-6 bg-slate-50 border border-slate-200 rounded-3xl">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="text-lg">✍️</span>
+                  <h4 class="font-bold text-slate-900 text-sm">Copywriters & Content Marketers</h4>
+                </div>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                  Professional copywriters should use **Claude** for its natural, engaging tone, paired with **Grammarly** to ensure style consistency and clarity. For high-volume marketing campaigns, **Jasper** provides excellent template support.
+                </p>
+              </div>
+
+              <!-- Novelists -->
+              <div class="p-6 bg-slate-50 border border-slate-200 rounded-3xl">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="text-lg">📚</span>
+                  <h4 class="font-bold text-slate-900 text-sm">Novelists & Long-form Authors</h4>
+                </div>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                  Long-form authors benefit from **Claude Pro's** 200,000-token context window. Upload outline files and character specifications to keep narrative details consistent across long chapters.
+                </p>
+              </div>
+
+              <!-- Marketing Teams -->
+              <div class="p-6 bg-slate-50 border border-slate-200 rounded-3xl">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="text-lg">💼</span>
+                  <h4 class="font-bold text-slate-900 text-sm">Marketing Departments</h4>
+                </div>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                  Agencies and marketing teams should choose **Jasper** or **Copy.ai**. These platforms maintain consistent brand voices across multiple team members while streamlining email and social copy generation.
+                </p>
+              </div>
+
+              <!-- Tech Writers -->
+              <div class="p-6 bg-slate-50 border border-slate-200 rounded-3xl">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="text-lg">💻</span>
+                  <h4 class="font-bold text-slate-900 text-sm">Technical Writers & Developers</h4>
+                </div>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                  Technical writers should pair **ChatGPT (o1)** (for structural outlines, code blocks analysis, and formatting technical guides) with **Grammarly** to verify clarity and structure.
+                </p>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- Pricing Comparison Section -->
+          <section id="pricing-comparison" class="mt-16 scroll-mt-20 space-y-6">
+            <h2 class="font-display text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight pb-2 border-b border-slate-100">
+              5. Pricing Structure Comparison
+            </h2>
+            <p class="text-slate-600 text-sm leading-relaxed">
+              Below is a structured breakdown of the starting subscription tiers and value offerings across the top writing utilities in 2026.
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 my-4">
+              <div class="p-5 border border-slate-200 rounded-2xl text-center space-y-3">
+                <h4 class="font-bold text-slate-900 text-sm">Freelance Stack</h4>
+                <div class="text-2xl font-black text-indigo-600">$0 - $20/mo</div>
+                <p class="text-[11px] text-slate-500 leading-relaxed">
+                  Includes the free tier of **Claude** (for natural writing) paired with the free tier of **Grammarly** for basic proofreading.
+                </p>
+              </div>
+
+              <div class="p-5 border border-slate-200 rounded-2xl text-center space-y-3">
+                <h4 class="font-bold text-slate-900 text-sm">Professional Stack</h4>
+                <div class="text-2xl font-black text-indigo-600">$32 - $40/mo</div>
+                <p class="text-[11px] text-slate-500 leading-relaxed">
+                  Pairing **Claude Pro** ($20/mo) with **Grammarly Premium** ($12/mo) to provide professional-grade copyediting, rewriting, and style checks.
+                </p>
+              </div>
+
+              <div class="p-5 border border-slate-200 rounded-2xl text-center space-y-3">
+                <h4 class="font-bold text-slate-900 text-sm">Agency Stack</h4>
+                <div class="text-2xl font-black text-indigo-600">$75+/mo</div>
+                <p class="text-[11px] text-slate-500 leading-relaxed">
+                  Deploying **Jasper Pro** or **Copy.ai Enterprise** to manage multi-channel campaigns, style guides, and brand voice profiles across teams.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Common Writing Mistakes Section -->
+          <section id="common-mistakes" class="mt-16 scroll-mt-20 space-y-6">
+            <h2 class="font-display text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight pb-2 border-b border-slate-100">
+              6. Common Mistakes to Avoid When Writing with AI
+            </h2>
+            <p class="text-slate-600 text-sm leading-relaxed">
+              When utilizing AI assistants in your content pipeline, avoid these common mistakes:
+            </p>
+            
+            <ul class="space-y-4 pl-1 text-slate-600 text-sm">
+              <li class="flex gap-2.5">
+                <span class="text-rose-500 shrink-0 text-base">⚠️</span>
+                <div>
+                  <strong>Copy-Pasting Raw Outputs:</strong> AI-generated text often contains predictable structural patterns and phrases. Always rewrite drafts to ensure a natural voice.
+                </div>
+              </li>
+              <li class="flex gap-2.5">
+                <span class="text-rose-500 shrink-0 text-base">⚠️</span>
+                <div>
+                  <strong>Ignoring Fact Verification:</strong> Generative models are designed to predict language patterns, not check databases. Always manually verify cited stats, quotes, and research papers.
+                </div>
+              </li>
+              <li class="flex gap-2.5">
+                <span class="text-rose-500 shrink-0 text-base">⚠️</span>
+                <div>
+                  <strong>Context Window Dilution:</strong> Uploading too many background files at once can dilute the model's focus, causing it to ignore style or structural guidelines. Keep reference files focused.
+                </div>
+              </li>
+              <li class="flex gap-2.5">
+                <span class="text-rose-500 shrink-0 text-base">⚠️</span>
+                <div>
+                  <strong>Failing to Define Brand Tone:</strong> Prompting without specifying your voice can result in generic content. Establish style guidelines or save voice profiles in your workspaces.
+                </div>
+              </li>
+            </ul>
+          </section>
+
+          <!-- FAQ Accordions Section -->
+          <section id="faq-section" class="mt-16 scroll-mt-20 space-y-6">
+            <h2 class="font-display text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight pb-2 border-b border-slate-100">
+              7. Frequently Asked Questions (FAQ)
+            </h2>
+            <p class="text-slate-600 text-sm leading-relaxed mb-6">
+              Find answers to the most common questions about selecting and using AI writing software.
+            </p>
+            
+            <div class="space-y-4">
+              {faqSchema.mainEntity.map((faq, index) => (
+                <details class="group rounded-2xl bg-slate-50 border border-slate-200/80 p-4 transition-all duration-300 [&_summary::-webkit-details-marker]:hidden">
+                  <summary class="flex items-center justify-between cursor-pointer focus:outline-none">
+                    <h4 class="text-sm font-semibold text-slate-800 transition-colors group-hover:text-indigo-600">
+                      {faq.name}
+                    </h4>
+                    <span class="ml-1.5 shrink-0 rounded-lg bg-white p-1 text-slate-400 group-open:rotate-180 transition-transform duration-300 border border-slate-200">
+                      <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                      </svg>
+                    </span>
+                  </summary>
+                  <p class="mt-3 text-xs text-slate-500 leading-relaxed border-t border-slate-200/50 pt-2.5">
+                    {faq.acceptedAnswer.text}
+                  </p>
+                </details>
+              ))}
+            </div>
+          </section>
+
+          <!-- Final Recommendations Section -->
+          <section id="final-recommendations" class="mt-16 scroll-mt-20 space-y-6">
+            <h2 class="font-display text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight pb-2 border-b border-slate-100">
+              8. Final Recommendations: Build Your Content Workflow
+            </h2>
+            <p class="text-slate-600 text-sm leading-relaxed">
+              Choosing the right tool is about building a stack where each application handles what it does best. Rather than looking for a single tool that does everything, we recommend selecting specialized services that work well together.
+            </p>
+            <div class="p-6 rounded-3xl bg-indigo-950 text-white space-y-4">
+              <h4 class="font-display text-lg font-bold">The Recommended Writing Stack:</h4>
+              <ul class="space-y-3 text-xs text-slate-300 pl-1">
+                <li class="flex gap-2">
+                  <span class="text-indigo-400 font-bold">1.</span>
+                  <div><strong>Drafting & Tone:</strong> Use **Claude** for drafting client proposals, outlines, and blogs. Its natural cadence is unmatched.</div>
+                </li>
+                <li class="flex gap-2">
+                  <span class="text-indigo-400 font-bold">2.</span>
+                  <div><strong>Outlining & Code:</strong> Use **ChatGPT** to structure complex guides, analyze technical specs, and check mathematical models.</div>
+                </li>
+                <li class="flex gap-2">
+                  <span class="text-indigo-400 font-bold">3.</span>
+                  <div><strong>Real-Time Auditing:</strong> Use **Grammarly** to verify sentence structure, check tone indicators, and ensure clarity across all applications.</div>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Internal Resource Guide Links -->
+            <div class="border-t border-slate-100 pt-8 mt-12 space-y-4">
+              <h3 class="font-display text-base font-bold text-slate-900">Related Curation & Study Utilities:</h3>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-semibold">
+                <a href="/ai-tools/best-ai-productivity-tools" class="p-3 bg-slate-50 border border-slate-200 rounded-xl hover:text-indigo-650 transition-colors">
+                  Best AI Productivity Tools →
+                </a>
+                <a href="/ai-tools/best-ai-tools-for-students" class="p-3 bg-slate-50 border border-slate-200 rounded-xl hover:text-indigo-650 transition-colors">
+                  Best AI Tools for Students →
+                </a>
+                <a href="/ai-tools/best-ai-research-tools" class="p-3 bg-slate-50 border border-slate-200 rounded-xl hover:text-indigo-650 transition-colors">
+                  Best AI Research Tools →
+                </a>
+                <a href="/ai-tools/chatgpt-vs-claude" class="p-3 bg-slate-50 border border-slate-200 rounded-xl hover:text-indigo-650 transition-colors">
+                  ChatGPT vs Claude Head-to-Head →
+                </a>
+                <a href="/ai-tools/best-ai-resume-builders" class="p-3 bg-slate-50 border border-slate-200 rounded-xl hover:text-indigo-650 transition-colors">
+                  Best AI Resume Builders →
+                </a>
+              </div>
+            </div>
+
+            <!-- Author Signoff -->
+            <div class="border-t border-slate-100 pt-8 mt-12 flex flex-col sm:flex-row gap-4 items-center justify-between text-xs text-slate-400">
+              <span>© 2026 Imperial Picks. All reviews independent and verified.</span>
+              <a href="/affiliate-disclosure" class="hover:underline text-indigo-600 font-semibold">Affiliate Disclosure</a>
+            </div>
+          </section>
+
+        </article>
+
+        <!-- Right Column: Sticky Table of Contents Sidebar -->
+        <aside class="hidden lg:block lg:col-span-4">
+          <div class="sticky top-24 space-y-6">
+            
+            <!-- Table of Contents Card -->
+            <div class="bg-white border border-slate-200/80 rounded-3xl p-6 shadow-xs">
+              <h3 class="font-display text-sm font-bold text-slate-900 uppercase tracking-widest border-b border-slate-100 pb-3 mb-4">
+                Table of Contents
+              </h3>
+              <nav class="space-y-3">
+                <a href="#introduction" class="toc-link block text-sm text-slate-600 hover:text-indigo-600 transition-colors font-medium">1. Introduction</a>
+                <a href="#comparison-table" class="toc-link block text-sm text-slate-600 hover:text-indigo-600 transition-colors font-medium">2. Comparison Table</a>
+                
+                <!-- Sublinks for detailed reviews -->
+                <div class="pl-4 border-l border-slate-200 space-y-2">
+                  <a href="#tool-chatgpt" class="toc-link block text-xs text-slate-500 hover:text-indigo-600 transition-colors">ChatGPT Review</a>
+                  <a href="#tool-claude" class="toc-link block text-xs text-slate-500 hover:text-indigo-600 transition-colors">Claude Review</a>
+                  <a href="#tool-grammarly" class="toc-link block text-xs text-slate-500 hover:text-indigo-600 transition-colors">Grammarly Review</a>
+                  <a href="#tool-jasper" class="toc-link block text-xs text-slate-500 hover:text-indigo-600 transition-colors">Jasper Review</a>
+                  <a href="#tool-copyai" class="toc-link block text-xs text-slate-500 hover:text-indigo-600 transition-colors">Copy.ai Review</a>
+                  <a href="#tool-writesonic" class="toc-link block text-xs text-slate-500 hover:text-indigo-600 transition-colors">Writesonic Review</a>
+                </div>
+
+                <a href="#user-types" class="toc-link block text-sm text-slate-600 hover:text-indigo-600 transition-colors font-medium">4. Best by User Type</a>
+                <a href="#pricing-comparison" class="toc-link block text-sm text-slate-600 hover:text-indigo-600 transition-colors font-medium">5. Pricing Comparison</a>
+                <a href="#common-mistakes" class="toc-link block text-sm text-slate-600 hover:text-indigo-600 transition-colors font-medium">6. Common Mistakes</a>
+                <a href="#faq-section" class="toc-link block text-sm text-slate-600 hover:text-indigo-600 transition-colors font-medium">7. FAQ Section</a>
+                <a href="#final-recommendations" class="toc-link block text-sm text-slate-600 hover:text-indigo-600 transition-colors font-medium">8. Final Verdict</a>
+              </nav>
+            </div>
+
+            <!-- Submit a Tool Ad Card -->
+            <div class="bg-gradient-to-br from-indigo-900 via-indigo-950 to-slate-950 rounded-3xl p-6 text-white relative overflow-hidden shadow-sm">
+              <div class="absolute inset-0 bg-grid-pattern opacity-5 pointer-events-none"></div>
+              <h4 class="font-display text-base font-bold">Have a Great App?</h4>
+              <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+                Submit your AI utility to our catalog for organic curation and review by the editorial team.
+              </p>
+              <a 
+                href="/contact" 
+                class="inline-flex items-center justify-center w-full rounded-xl bg-white text-indigo-950 py-2.5 mt-4 text-xs font-bold shadow-xs hover:bg-slate-100 transition-colors"
+              >
+                Submit Now
+              </a>
+            </div>
+
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<script>
+  // Simple active state observer for the Table of Contents sidebar
+  const setupTOC = () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const id = entry.target.getAttribute('id');
+        const tocLink = document.querySelector(`.toc-link[href="#${id}"]`);
+        
+        if (!tocLink) return;
+
+        if (entry.isIntersecting) {
+          tocLink.classList.add('text-indigo-600');
+          tocLink.classList.remove('text-slate-600', 'text-slate-500');
+        } else {
+          tocLink.classList.remove('text-indigo-600');
+          if (tocLink.classList.contains('text-xs')) {
+            tocLink.classList.add('text-slate-500');
+          } else {
+            tocLink.classList.add('text-slate-600');
+          }
+        }
+      });
+    }, {
+      rootMargin: '-100px 0px -60% 0px'
+    });
+
+    const targets = document.querySelectorAll('section[id], div[id^="tool-"]');
+    targets.forEach(target => observer.observe(target));
+  };
+
+  setupTOC();
+  document.addEventListener('astro:after-swap', setupTOC);
+</script>
